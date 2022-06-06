@@ -8,6 +8,7 @@
       <change afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyzerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,21 +56,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "openjdk-18",
     "last_opened_file_path": "/home/jonathan/IdeaProjects/WirSchiffendas/Workflow_Engine_MS",
-    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "spring.configuration.checksum": "52bba4e995c9dc99dd2c49158fdb24e9"
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="RunDashboard">
@@ -88,17 +83,12 @@
       </method>
     </configuration>
     <configuration name="WorkflowEngineMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <option name="ACTIVE_PROFILES" />
       <module name="Workflow_Engine_MS.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Workflow_Engine_MS.WorkflowEngineMsApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Spring Boot.FluidAnalyserMsApplication" />
-      <item itemvalue="Spring Boot.WorkflowEngineMsApplication" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -110,8 +100,6 @@
       <updated>1654509303281</updated>
       <workItem from="1654509306081" duration="9000" />
       <workItem from="1654509403134" duration="712000" />
-      <workItem from="1654510410981" duration="1409000" />
-      <workItem from="1654511894950" duration="4099000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
