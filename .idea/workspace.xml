@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Workflow_Engine_MS/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/FluidAnalyserMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/FluidAnalyserMsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Diesel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Diesel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Motor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Motor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Workflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/WorkflowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/WorkflowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +37,59 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="help" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -62,6 +106,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.13.3/87fe580a4141d26b6036234fb0c240aa1d4592db/jackson-databind-2.13.3-sources.jar!/com/fasterxml/jackson/databind/ObjectMapper.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -71,25 +118,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "openjdk-18",
-    "last_opened_file_path": "/home/jonathan/IdeaProjects/WirSchiffendas/servicetodiscover",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "spring.configuration.checksum": "52bba4e995c9dc99dd2c49158fdb24e9"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jonathan/IdeaProjects/WirSchiffendas/servicetodiscover&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;52bba4e995c9dc99dd2c49158fdb24e9&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -100,7 +147,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.FluidAnalyserMsApplication">
+  <component name="RunManager" selected="Spring Boot.WorkflowEngineMsApplication">
     <configuration name="FluidAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Fluid_Analyser_MS.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Fluid_Analyser_MS.FluidAnalyserMsApplication" />
@@ -148,6 +195,7 @@
       <workItem from="1654614795149" duration="2596000" />
       <workItem from="1654626795898" duration="1567000" />
       <workItem from="1655292162326" duration="5716000" />
+      <workItem from="1655743674476" duration="310000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
