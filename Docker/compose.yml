@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+    fluidAnalyserInstanz:
+      image: wirschiffendas/fluidanalyser
+      networks:
+        - front-tier
+    workflowEngineInstanz:
+      image: wirschiffendas/workflowengine
+      networks:
+        - front-tier
+networks:
+    front-tier: {}

@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Workflow_Engine_MS/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docker/compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +32,9 @@
     <system id="GRADLE">
       <state>
         <task path="$PROJECT_DIR$/Fluid_Analyser_MS">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/Workflow_Engine_MS">
           <activation />
         </task>
         <projects_view>
@@ -88,6 +90,21 @@
                 <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -147,7 +164,28 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.WorkflowEngineMsApplication">
+  <component name="RunManager" selected="Gradle.Workflow_Engine_MS [jar]">
+    <configuration name="Workflow_Engine_MS [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Workflow_Engine_MS" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="FluidAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Fluid_Analyser_MS.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Fluid_Analyser_MS.FluidAnalyserMsApplication" />
@@ -171,10 +209,16 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
       <item itemvalue="Spring Boot.ServicediscoveryApplication" />
       <item itemvalue="Spring Boot.FluidAnalyserMsApplication" />
       <item itemvalue="Spring Boot.WorkflowEngineMsApplication" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -195,7 +239,8 @@
       <workItem from="1654614795149" duration="2596000" />
       <workItem from="1654626795898" duration="1567000" />
       <workItem from="1655292162326" duration="5716000" />
-      <workItem from="1655743674476" duration="310000" />
+      <workItem from="1655743674476" duration="846000" />
+      <workItem from="1655827191997" duration="2644000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -204,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654509640939</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Es wurden Dockerfiles für die Containerisierung hinzugefügt.">
+      <created>1655744179399</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655744179399</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +275,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Es wurden Dockerfiles für die Containerisierung hinzugefügt." />
+    <option name="LAST_COMMIT_MESSAGE" value="Es wurden Dockerfiles für die Containerisierung hinzugefügt." />
   </component>
 </project>
