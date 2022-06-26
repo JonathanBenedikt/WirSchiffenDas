@@ -1,13 +1,15 @@
 package com.example.Fluid_Analyser_MS.RESTController;
-import com.netflix.appinfo.InstanceInfo;
-import com.netflix.discovery.EurekaClient;
-import com.netflix.discovery.shared.Application;
+//import com.netflix.appinfo.InstanceInfo;
+//import com.netflix.discovery.EurekaClient;
+//import com.netflix.discovery.shared.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,16 +18,33 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
-@EnableEurekaClient
+
 @RestController
 public class FluidAnalyserController {
 
     @Autowired
-    private EurekaClient eurekaClient;
+    private KafkaTemplate<String, String> kafkaTemplate;
+
+    public void sendMessage(String msg){
+        kafkaTemplate.send("topicName",msg);
+    }
+
+    //@Autowired
+    //private EurekaClient eurekaClient;
 
     @Autowired
     private ApplicationContext appContext;
 
+    @GetMapping(path="/sendKafkaMessage")
+    public String sendKafkaMessage(){
+        sendMessage("Testnachricht");
+        return "Es wurde eine Kafka-Nachricht geschickt";
+    }
+
+    @KafkaListener(topics="topicName", groupId = "foo")
+    public void listen(String message){
+        System.out.println("Received Message in group - group-id "+message);
+    }
     @GetMapping(path="/information")
     public String showInfo() {return "Name: Fluid-Analyser\nType: Microservice\nVersion: 1.0.0";}
 

@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docker/compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/KafkaConsumerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/KafkaProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/KafkaTopicConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/FluidAnalyserMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/FluidAnalyserMsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WirSchiffendas.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WirSchiffendas.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,27 +145,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/jonathan/IdeaProjects/WirSchiffendas/servicetodiscover&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;52bba4e995c9dc99dd2c49158fdb24e9&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "openjdk-18",
+    "last_opened_file_path": "/Users/niclaswolf/SynologyDrive/Master/Objektorientierte Komponenten-Architekturen/WirSchiffenDas/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "spring.configuration.checksum": "52bba4e995c9dc99dd2c49158fdb24e9"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -164,7 +179,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Workflow_Engine_MS [jar]">
+  <component name="RunManager" selected="Spring Boot.FluidAnalyserMsApplication">
     <configuration name="Workflow_Engine_MS [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -240,7 +255,9 @@
       <workItem from="1654626795898" duration="1567000" />
       <workItem from="1655292162326" duration="5716000" />
       <workItem from="1655743674476" duration="846000" />
-      <workItem from="1655827191997" duration="2644000" />
+      <workItem from="1655827191997" duration="2965000" />
+      <workItem from="1656091670833" duration="1904000" />
+      <workItem from="1656246108055" duration="4994000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -256,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655744179399</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Für die Orchestrierung der Container wurde eine Compose-Datei erstellt.">
+      <created>1655833789695</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655833789695</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +300,23 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Es wurden Dockerfiles für die Containerisierung hinzugefügt." />
-    <option name="LAST_COMMIT_MESSAGE" value="Es wurden Dockerfiles für die Containerisierung hinzugefügt." />
+    <MESSAGE value="Für die Orchestrierung der Container wurde eine Compose-Datei erstellt." />
+    <option name="LAST_COMMIT_MESSAGE" value="Für die Orchestrierung der Container wurde eine Compose-Datei erstellt." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
