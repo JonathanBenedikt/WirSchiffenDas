@@ -2,25 +2,18 @@ package com.example.Fluid_Analyser_MS.RESTController;
 //import com.netflix.appinfo.InstanceInfo;
 //import com.netflix.discovery.EurekaClient;
 //import com.netflix.discovery.shared.Application;
-import com.example.Fluid_Analyser_MS.Motor;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import netscape.javascript.JSObject;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.bson.json.JsonObject;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 //import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.json.JSONObject;
 
 import java.util.Collections;
@@ -55,20 +48,31 @@ public class FluidAnalyserController {
     @KafkaListener(topics="analyse", groupId = "1")
     public void listen(ConsumerRecord<?, ?> record ){
 
+        try {
+            String recordKey = record.key().toString();
 
-        if(record.key().toString().equals("Fluid-Analysis-Result")) {
-            JSONObject obj = new JSONObject(record.value().toString());
-            JSONArray array = obj.getJSONArray("Fluid");
+            if (recordKey.equals("Start_Fluid-Analysis")) {
+                JSONObject analysisRequest = new JSONObject(record.value().toString());
+                JSONArray analysisParameter = analysisRequest.getJSONArray("Analysis Parameter");
+                JSONObject analysisResult = createAnalysisObject(analysisParameter.getJSONObject(0).getString("Fuel System"), analysisParameter.getJSONObject(1).getString("Exhaus System"));
 
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject innerObject = array.getJSONObject(i);
-                for (Iterator it = innerObject.keys(); it.hasNext(); ) {
-                    String key = (String) it.next();
-                    System.out.println("Received Message in group - group-id " + key + " " + innerObject.get(key));
+                kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result", analysisResult.toString()));
+            } else if (recordKey.equals("Fluid-Analysis-Result")) {
+                JSONObject fluidJson = new JSONObject(record.value().toString());
+                JSONArray fluidJsonArray = fluidJson.getJSONArray("Fluid");
+
+                for (int i = 0; i < fluidJsonArray.length(); i++) {
+                    JSONObject innerObject = fluidJsonArray.getJSONObject(i);
+                    for (Iterator it = innerObject.keys(); it.hasNext(); ) {
+                        String key = (String) it.next();
+                        System.out.println("Received Message in group - group-id " + key + " " + innerObject.get(key));
+                    }
                 }
             }
+        }catch (Exception ex)
+        {
+            System.out.println(ex);
         }
-
     }
     @GetMapping(path="/information")
     public String showInfo() {return "Name: Fluid-Analyser\nType: Microservice\nVersion: 1.0.0";}
@@ -78,22 +82,7 @@ public class FluidAnalyserController {
         try {
             List<FluidInformation> fluidData = Collections.singletonList(providedFluid);
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-
-            JSONObject fluidJson = new JSONObject();
-            JSONArray fluidpropertiesArray = new JSONArray();
-            //JSONObject fluidpropertiesJson = new JSONObject();
-            JSONObject fuelsystemObject = new JSONObject().put("Fuel System", providedFluid.fuelsystem);
-            JSONObject exhaustsystemObject = new JSONObject().put("Exhaust System", providedFluid.exhaustsystem);
-            JSONObject statusObject = new JSONObject().put("Status","Analysis Completed");
-            JSONObject successObject = new JSONObject().put("Success","True");
-
-            fluidpropertiesArray.put(fuelsystemObject);
-            fluidpropertiesArray.put(exhaustsystemObject);
-            fluidpropertiesArray.put(statusObject);
-            fluidpropertiesArray.put(successObject);
-
-            //fluidpropertiesArray.put(fluidpropertiesJson);
-            fluidJson.put("Fluid",fluidpropertiesArray);
+            JSONObject fluidJson = createAnalysisObject(providedFluid.fuelsystem,providedFluid.exhaustsystem);
             kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result",fluidJson.toString()));
             return ResponseEntity.ok(fluidData);
         }catch (Exception ex){
@@ -104,6 +93,26 @@ public class FluidAnalyserController {
     @GetMapping(path="/shutdown")
     public void shutdown(){
         SpringApplication.exit(appContext, () -> 0);
+    }
+
+    private JSONObject createAnalysisObject(String fuelsystem, String exhaustsystem)
+    {
+        JSONObject fluidJson = new JSONObject();
+        JSONArray fluidpropertiesArray = new JSONArray();
+        //JSONObject fluidpropertiesJson = new JSONObject();
+        JSONObject fuelsystemObject = new JSONObject().put("Fuel System", fuelsystem);
+        JSONObject exhaustsystemObject = new JSONObject().put("Exhaust System", exhaustsystem);
+        JSONObject statusObject = new JSONObject().put("Status","Analysis Completed");
+        JSONObject successObject = new JSONObject().put("Success","True");
+
+        fluidpropertiesArray.put(fuelsystemObject);
+        fluidpropertiesArray.put(exhaustsystemObject);
+        fluidpropertiesArray.put(statusObject);
+        fluidpropertiesArray.put(successObject);
+
+        //fluidpropertiesArray.put(fluidpropertiesJson);
+        fluidJson.put("Fluid",fluidpropertiesArray);
+        return fluidJson;
     }
 
     public static class FluidInformation {

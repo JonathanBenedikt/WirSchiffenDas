@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Es wurden Anpassungen für die Einbindung von Kafka vorgenommen.">
-      <change afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/Motor.java" afterDir="false" />
+    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/Motor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -255,7 +253,7 @@
       <workItem from="1656246108055" duration="5389000" />
       <workItem from="1659340370734" duration="922000" />
       <workItem from="1659348184982" duration="77000" />
-      <workItem from="1659423801939" duration="12072000" />
+      <workItem from="1659423801939" duration="13642000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -285,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656251727637</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Die Verarbeitung der Nachrichten im Fluid-Analyser werden über JSON-Objekte vorgenommen.">
+      <created>1659441750446</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1659441750447</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,16 +312,12 @@
     <MESSAGE value="Es wurden Dockerfiles für die Containerisierung hinzugefügt." />
     <MESSAGE value="Für die Orchestrierung der Container wurde eine Compose-Datei erstellt." />
     <MESSAGE value="Es wurden Anpassungen für die Einbindung von Kafka vorgenommen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Es wurden Anpassungen für die Einbindung von Kafka vorgenommen." />
+    <MESSAGE value="Die Verarbeitung der Nachrichten im Fluid-Analyser werden über JSON-Objekte vorgenommen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Die Verarbeitung der Nachrichten im Fluid-Analyser werden über JSON-Objekte vorgenommen." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java</url>
-          <line>94</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java</url>
           <line>58</line>
