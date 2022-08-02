@@ -1,4 +1,4 @@
-package com.example.Workflow_Engine_MS;
+package com.Workflow_Engine;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -24,7 +24,11 @@ public class KafkaTopicConfig {
     }
 
     @Bean
-    public NewTopic topic1(){
-        return new NewTopic("topicName", 1, (short) 1);
+    public NewTopic analyse(){
+        return new NewTopic("analyse", 1, (short) 1);
+    } //könnte probleme geben, da anderer service das topic ebenfalls definiert
+    @Bean
+    public NewTopic wf_bff(){
+        return new NewTopic("wf_bff", 1, (short) 1);
     }
 }
