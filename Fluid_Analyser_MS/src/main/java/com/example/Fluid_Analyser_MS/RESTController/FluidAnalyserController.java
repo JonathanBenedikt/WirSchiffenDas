@@ -54,7 +54,7 @@ public class FluidAnalyserController {
             if (recordKey.equals("Start_Fluid-Analysis")) {
                 JSONObject analysisRequest = new JSONObject(record.value().toString());
                 JSONArray analysisParameter = analysisRequest.getJSONArray("Analysis Parameter");
-                JSONObject analysisResult = createAnalysisObject(analysisParameter.getJSONObject(0).getString("Fuel System"), analysisParameter.getJSONObject(1).getString("Exhaus System"));
+                JSONObject analysisResult = createAnalysisObject(analysisParameter.getJSONObject(0).getString("Fuel System"), analysisParameter.getJSONObject(1).getString("Exhaust System"));
 
                 kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result", analysisResult.toString()));
             } else if (recordKey.equals("Fluid-Analysis-Result")) {
