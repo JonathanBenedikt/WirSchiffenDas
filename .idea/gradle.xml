@@ -5,10 +5,37 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/Fluid_Analyser_MS" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/Fluid_Analyser_MS" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/StartingElements_Analyser_MS" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/StartingElements_Analyser_MS" />
           </set>
         </option>
       </GradleProjectSettings>
