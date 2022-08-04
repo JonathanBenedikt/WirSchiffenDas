@@ -1,7 +1,9 @@
 package com.Workflow_Engine;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public abstract class Motor {
     @Id
     public int ID = 0;
