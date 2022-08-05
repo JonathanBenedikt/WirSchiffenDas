@@ -5,40 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/CoolingSystemsAnalyserMsApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/PowerTransmissionElementsAnalyserMsApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/StartingElementsAnalyserMsApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,12 +285,12 @@
     <list>
       <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
       <item itemvalue="Spring Boot.CoolingSystemsAnalyserMsApplication" />
+      <item itemvalue="Spring Boot.PowerTransmissionElementsAnalyserMsApplication" />
       <item itemvalue="Spring Boot.WorkflowEngineMsApplication (1)" />
       <item itemvalue="Spring Boot.ServicediscoveryApplication" />
       <item itemvalue="Spring Boot.WorkflowEngineMsApplication" />
       <item itemvalue="Spring Boot.FluidAnalyserMsApplication" />
       <item itemvalue="Spring Boot.StartingElementsAnalyserMsApplication" />
-      <item itemvalue="Spring Boot.PowerTransmissionElementsAnalyserMsApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -353,7 +323,7 @@
       <workItem from="1656246108055" duration="5389000" />
       <workItem from="1659340370734" duration="922000" />
       <workItem from="1659348184982" duration="77000" />
-      <workItem from="1659423801939" duration="18572000" />
+      <workItem from="1659423801939" duration="20307000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -397,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659443544152</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Es wurden weitere Microservices als Module für die Verarbeitung der Algorithmen-Informationen hinzugefügt.">
+      <created>1659540834777</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1659540834777</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,6 +398,7 @@
     <MESSAGE value="Es wurden Anpassungen für die Einbindung von Kafka vorgenommen." />
     <MESSAGE value="Die Verarbeitung der Nachrichten im Fluid-Analyser werden über JSON-Objekte vorgenommen." />
     <MESSAGE value="Die Verarbeitung der Nachrichten wurde im Fluid-Analyser angepasst." />
-    <option name="LAST_COMMIT_MESSAGE" value="Die Verarbeitung der Nachrichten wurde im Fluid-Analyser angepasst." />
+    <MESSAGE value="Es wurden weitere Microservices als Module für die Verarbeitung der Algorithmen-Informationen hinzugefügt." />
+    <option name="LAST_COMMIT_MESSAGE" value="Es wurden weitere Microservices als Module für die Verarbeitung der Algorithmen-Informationen hinzugefügt." />
   </component>
 </project>
