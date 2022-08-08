@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/Motor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +52,69 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="help" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -67,8 +126,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -87,33 +146,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/niclaswolf/SynologyDrive/Master/Objektorientierte Komponenten-Architekturen/WirSchiffenDas/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;52bba4e995c9dc99dd2c49158fdb24e9&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelOrder2": "2",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RequestMappingsPanelWidth2": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "corretto-17",
+    "last_opened_file_path": "/Users/niclaswolf/SynologyDrive/Master/Objektorientierte Komponenten-Architekturen/WirSchiffenDas/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "spring.configuration.checksum": "52bba4e995c9dc99dd2c49158fdb24e9"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS" />
+      <recent name="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS" />
+      <recent name="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS" />
+      <recent name="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/resources" />
+      <recent name="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/resources" />
+      <recent name="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -123,7 +186,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.FluidAnalyserMsApplication">
+  <component name="RunManager" selected="Spring Boot.PowerTransmissionElementsAnalyserMsApplication">
     <configuration name="Workflow_Engine_MS [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -145,16 +208,68 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="CoolingSystemsAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="CoolingSystems_Analyser_MS.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.CoolingSystems_Analyser_MS.CoolingSystemsAnalyserMsApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.CoolingSystems_Analyser_MS.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FluidAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="Fluid_Analyser_MS.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Fluid_Analyser_MS.FluidAnalyserMsApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PowerTransmissionElementsAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="PowerTransmissionElements_Analyser_MS.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.PowerTransmissionElements_Analyser_MS.PowerTransmissionElementsAnalyserMsApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.PowerTransmissionElements_Analyser_MS.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServicediscoveryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="servicediscovery.main" />
+      <option name="ACTIVE_PROFILES" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.servicediscovery.ServicediscoveryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StartingElementsAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <module name="StartingElements_Analyser_MS.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.StartingElments_Analyser_MS.StartingElementsAnalyserMsApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.StartingElments_Analyser_MS.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WorkflowEngineMsApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Workflow_Engine_MS.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.Workflow_Engine.WorkflowEngineMsApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -169,9 +284,13 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
+      <item itemvalue="Spring Boot.CoolingSystemsAnalyserMsApplication" />
+      <item itemvalue="Spring Boot.PowerTransmissionElementsAnalyserMsApplication" />
+      <item itemvalue="Spring Boot.WorkflowEngineMsApplication (1)" />
       <item itemvalue="Spring Boot.ServicediscoveryApplication" />
-      <item itemvalue="Spring Boot.FluidAnalyserMsApplication" />
       <item itemvalue="Spring Boot.WorkflowEngineMsApplication" />
+      <item itemvalue="Spring Boot.FluidAnalyserMsApplication" />
+      <item itemvalue="Spring Boot.StartingElementsAnalyserMsApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -204,7 +323,7 @@
       <workItem from="1656246108055" duration="5389000" />
       <workItem from="1659340370734" duration="922000" />
       <workItem from="1659348184982" duration="77000" />
-      <workItem from="1659423801939" duration="13642000" />
+      <workItem from="1659423801939" duration="20307000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -241,7 +360,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659441750447</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Die Verarbeitung der Nachrichten wurde im Fluid-Analyser angepasst.">
+      <created>1659443544152</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1659443544152</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Es wurden weitere Microservices als Module für die Verarbeitung der Algorithmen-Informationen hinzugefügt.">
+      <created>1659540834777</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1659540834777</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,17 +397,8 @@
     <MESSAGE value="Für die Orchestrierung der Container wurde eine Compose-Datei erstellt." />
     <MESSAGE value="Es wurden Anpassungen für die Einbindung von Kafka vorgenommen." />
     <MESSAGE value="Die Verarbeitung der Nachrichten im Fluid-Analyser werden über JSON-Objekte vorgenommen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Die Verarbeitung der Nachrichten im Fluid-Analyser werden über JSON-Objekte vorgenommen." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Die Verarbeitung der Nachrichten wurde im Fluid-Analyser angepasst." />
+    <MESSAGE value="Es wurden weitere Microservices als Module für die Verarbeitung der Algorithmen-Informationen hinzugefügt." />
+    <option name="LAST_COMMIT_MESSAGE" value="Es wurden weitere Microservices als Module für die Verarbeitung der Algorithmen-Informationen hinzugefügt." />
   </component>
 </project>
