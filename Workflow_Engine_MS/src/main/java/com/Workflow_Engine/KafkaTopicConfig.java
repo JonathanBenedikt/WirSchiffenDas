@@ -24,9 +24,24 @@ public class KafkaTopicConfig {
     }
 
     @Bean
-    public NewTopic analyse(){
-        return new NewTopic("analyse", 1, (short) 1);
-    } //könnte probleme geben, da anderer service das topic ebenfalls definiert
+    public NewTopic coolingsystemelements_analyse(){
+        return new NewTopic("coolingsystemelements_analyse", 1, (short) 1);
+    }
+
+    @Bean
+    public NewTopic fluidelements_analyse(){
+        return new NewTopic("fluidelements_analyse", 1, (short) 1);
+    }
+
+    @Bean
+    public NewTopic powertransmissionelements_analyse(){
+        return new NewTopic("powertransmissionelements_analyse", 1, (short) 1);
+    }
+
+    @Bean
+    public NewTopic startingelements_analyse(){
+        return new NewTopic("startingelements_analyse", 1, (short) 1);
+    }
     @Bean
     public NewTopic wf_bff(){
         return new NewTopic("wf_bff", 1, (short) 1);
