@@ -2,6 +2,7 @@ package com.example.Fluid_Analyser_MS.RESTController;
 //import com.netflix.appinfo.InstanceInfo;
 //import com.netflix.discovery.EurekaClient;
 //import com.netflix.discovery.shared.Application;
+import com.google.gson.Gson;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.json.JSONArray;
@@ -15,6 +16,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.json.JSONObject;
+
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -49,6 +51,7 @@ public class FluidAnalyserController {
     public void listen(ConsumerRecord<?, ?> record ){
 
         try {
+            Gson gson = new Gson();
             String recordKey = record.key().toString();
 
             if (recordKey.equals("Start_Fluid-Analysis")) {
@@ -58,16 +61,8 @@ public class FluidAnalyserController {
 
                 kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result", analysisResult.toString()));
             } else if (recordKey.equals("Fluid-Analysis-Result")) {
-                JSONObject fluidJson = new JSONObject(record.value().toString());
-                JSONArray fluidJsonArray = fluidJson.getJSONArray("Fluid");
-
-                for (int i = 0; i < fluidJsonArray.length(); i++) {
-                    JSONObject innerObject = fluidJsonArray.getJSONObject(i);
-                    for (Iterator it = innerObject.keys(); it.hasNext(); ) {
-                        String key = (String) it.next();
-                        System.out.println("Received Message in group - group-id " + key + " " + innerObject.get(key));
-                    }
-                }
+                FluidInformation fluid = gson.fromJson(record.value().toString(), FluidInformation.class);
+                System.out.println("Received Message in group - 1 - "+ recordKey.toString() + " " +fluid.name);
             }
         }catch (Exception ex)
         {
@@ -82,8 +77,9 @@ public class FluidAnalyserController {
         try {
             List<FluidInformation> fluidData = Collections.singletonList(providedFluid);
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-            JSONObject fluidJson = createAnalysisObject(providedFluid.fuelsystem,providedFluid.exhaustsystem);
-            kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result",fluidJson.toString()));
+            Gson gson = new Gson();
+            String json = gson.toJson(providedFluid);
+            kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result",json));
             return ResponseEntity.ok(fluidData);
         }catch (Exception ex){
             System.out.println(ex);
@@ -97,6 +93,7 @@ public class FluidAnalyserController {
 
     private JSONObject createAnalysisObject(String fuelsystem, String exhaustsystem)
     {
+
         JSONObject fluidJson = new JSONObject();
         JSONArray fluidpropertiesArray = new JSONArray();
         //JSONObject fluidpropertiesJson = new JSONObject();
