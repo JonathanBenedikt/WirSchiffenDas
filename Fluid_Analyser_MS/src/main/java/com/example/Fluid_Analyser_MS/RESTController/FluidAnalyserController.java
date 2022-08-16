@@ -32,7 +32,7 @@ public class FluidAnalyserController {
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendMessage(String msg){
-        kafkaTemplate.send("analyse",msg);
+        kafkaTemplate.send("fluidsystemelements_analysis",msg);
     }
 
     //@Autowired
@@ -47,19 +47,19 @@ public class FluidAnalyserController {
         return HttpStatus.OK;
     }
 
-    @KafkaListener(topics="analyse", groupId = "1")
+    @KafkaListener(topics="fluidsystemelements_analysis", groupId = "One")
     public void listen(ConsumerRecord<?, ?> record ){
 
         try {
             Gson gson = new Gson();
             String recordKey = record.key().toString();
 
-            if (recordKey.equals("Start_Fluid-Analysis")) {
+            if (recordKey.equals("WF_Starts_Fluidsystemelements_Analysis")) {
                 JSONObject analysisRequest = new JSONObject(record.value().toString());
                 JSONArray analysisParameter = analysisRequest.getJSONArray("Analysis Parameter");
                 JSONObject analysisResult = createAnalysisObject(analysisParameter.getJSONObject(0).getString("Fuel System"), analysisParameter.getJSONObject(1).getString("Exhaust System"));
 
-                kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result", analysisResult.toString()));
+                kafkaTemplate.send(new ProducerRecord<String,String>("fluidsystemelements_analysis","Analyser_Finished", analysisResult.toString()));
             } else if (recordKey.equals("Fluid-Analysis-Result")) {
                 FluidInformation fluid = gson.fromJson(record.value().toString(), FluidInformation.class);
                 System.out.println("Received Message in group - 1 - "+ recordKey.toString() + " " +fluid.name);
@@ -79,7 +79,7 @@ public class FluidAnalyserController {
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
             Gson gson = new Gson();
             String json = gson.toJson(providedFluid);
-            kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result",json));
+            kafkaTemplate.send(new ProducerRecord<String,String>("fluidsystemelements_analysis","Analyser_Finished",json));
             return ResponseEntity.ok(fluidData);
         }catch (Exception ex){
             System.out.println(ex);

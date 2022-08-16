@@ -30,10 +30,10 @@ public class CoolingSystemsAnalyserController {
         private ApplicationContext appContext;
 
         public void sendMessage(String msg){
-                kafkaTemplate.send("analyse",msg);
+                kafkaTemplate.send("coolingsystemelements_analysis",msg);
         }
 
-        @KafkaListener(topics="analyse", groupId = "1")
+        @KafkaListener(topics="coolingsystemelements_analysis", groupId = "One")
         public void listen(ConsumerRecord<?, ?> record ){
 
         }
@@ -53,7 +53,7 @@ public class CoolingSystemsAnalyserController {
                         TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
                         Gson gson = new Gson();
                         String json = gson.toJson(providedCoolingInfos);
-                        kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result",json));
+                        kafkaTemplate.send(new ProducerRecord<String,String>("coolingsystemelements_analysis","Analyser_Finished",json));
                         return ResponseEntity.ok(fluidData);
                 }catch (Exception ex){
                         System.out.println(ex);

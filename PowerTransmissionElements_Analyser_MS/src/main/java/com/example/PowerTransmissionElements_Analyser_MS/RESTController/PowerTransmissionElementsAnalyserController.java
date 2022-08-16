@@ -29,10 +29,10 @@ public class PowerTransmissionElementsAnalyserController {
     private ApplicationContext appContext;
 
     public void sendMessage(String msg){
-        kafkaTemplate.send("analyse",msg);
+        kafkaTemplate.send("powertransmissionsystemelements_analysis",msg);
     }
 
-    @KafkaListener(topics="analyse", groupId = "1")
+    @KafkaListener(topics="powertransmissionsystemelements_analysis", groupId = "One")
     public void listen(ConsumerRecord<?, ?> record ){
 
     }
@@ -51,7 +51,7 @@ public class PowerTransmissionElementsAnalyserController {
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
             Gson gson = new Gson();
             String json = gson.toJson(providedPowerInfos);
-            kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result",json));
+            kafkaTemplate.send(new ProducerRecord<String,String>("powertransmissionsystemelements_analysis","Analyser_Finished",json));
             return ResponseEntity.ok(fluidData);
         }catch (Exception ex){
             System.out.println(ex);

@@ -29,10 +29,10 @@ public class StartingElementsAnalyserController {
     private ApplicationContext appContext;
 
     public void sendMessage(String msg){
-        kafkaTemplate.send("analyse",msg);
+        kafkaTemplate.send("startingsystemelements_analysis",msg);
     }
 
-    @KafkaListener(topics="analyse", groupId = "1")
+    @KafkaListener(topics="startingsystemelements_analysis", groupId = "One")
     public void listen(ConsumerRecord<?, ?> record ){
 
     }
@@ -52,7 +52,7 @@ public class StartingElementsAnalyserController {
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
             Gson gson = new Gson();
             String json = gson.toJson(providedStartingInfos);
-            kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result",json));
+            kafkaTemplate.send(new ProducerRecord<String,String>("startingsystemelements_analysis","Analyser_Finished",json));
             return ResponseEntity.ok(fluidData);
         }catch (Exception ex){
             System.out.println(ex);
