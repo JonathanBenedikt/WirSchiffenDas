@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
@@ -23,13 +25,14 @@ import java.util.concurrent.TimeUnit;
 public class StartingElementsAnalyserController {
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<String, Map> kafkaTemplate;
 
     @Autowired
     private ApplicationContext appContext;
 
     public void sendMessage(String msg){
-        kafkaTemplate.send("startingsystemelements_analysis",msg);
+        kafkaTemplate.send(
+                "startingsystemelements_analysis",new HashMap(){{put("Message",msg);}});
     }
 
     @KafkaListener(topics="startingsystemelements_analysis", groupId = "One")
@@ -48,17 +51,25 @@ public class StartingElementsAnalyserController {
     @PostMapping(path="/analyse")
     public ResponseEntity<List<StartingElementsInformation>> getData(@RequestBody StartingElementsInformation providedStartingInfos){
         try {
-            List<StartingElementsInformation> fluidData = Collections.singletonList(providedStartingInfos);
+            kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Starts_Analysis",null));
+            List<StartingElementsInformation> startingSystemData = Collections.singletonList(providedStartingInfos);
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-            Gson gson = new Gson();
-            String json = gson.toJson(providedStartingInfos);
-            kafkaTemplate.send(new ProducerRecord<String,String>("startingsystemelements_analysis","Analyser_Finished",json));
-            return ResponseEntity.ok(fluidData);
+            //Gson gson = new Gson();
+            //String json = gson.toJson(providedStartingInfos);
+            kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Finished",createAnalysisValues(startingSystemData)));
+            return ResponseEntity.ok(startingSystemData);
         }catch (Exception ex){
             System.out.println(ex);
         }
         return null;
     }
+
+    private Map createAnalysisValues(List<StartingElementsInformation> requestData){
+        Map analysisValuesMap = new HashMap();
+        analysisValuesMap.put("","");
+        return analysisValuesMap;
+    }
+
     public static class StartingElementsInformation {
 
         private int id;
