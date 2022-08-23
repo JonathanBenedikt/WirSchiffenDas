@@ -1,0 +1,212 @@
+Index: Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/WorkflowEngineMsApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.Workflow_Engine_MS;\n\nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\n\n@SpringBootApplication\npublic class WorkflowEngineMsApplication {\n\n\tpublic static void main(String[] args) {\n\t\tSpringApplication.run(WorkflowEngineMsApplication.class, args);\n\t}\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/WorkflowEngineMsApplication.java b/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/WorkflowEngineMsApplication.java
+--- a/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/WorkflowEngineMsApplication.java	(revision 54ce1189027d1ea09dc6d89d3aa42bcbcbec8348)
++++ b/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/WorkflowEngineMsApplication.java	(date 1654698356829)
+@@ -3,6 +3,11 @@
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ 
++//https://www.mongodb.com/compatibility/spring-boot
++//Mongo Template zum schnellem Zugriff auf
++//Mongo Repositories (für große Anfragen, wie SQL Anfragen, können hier auch große Operationen vordefinieren, die wir dann auf alle anwenden können)
++//To read if needed https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/
++
+ @SpringBootApplication
+ public class WorkflowEngineMsApplication {
+ 
+Index: Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Diesel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.Workflow_Engine_MS;\n\nimport org.springframework.stereotype.Repository;\n\n@Repository\npublic class Diesel implements Motor{\n    public boolean air_starter = false;\n    public String auxiliary_PTO;\n    public String oil_system;\n    public String fuel_system;\n    public String cooling_system;\n    public String gearbox_options;\n    public boolean exhaust_system = false;\n    public boolean resilient_mounts = false;\n    public boolean in_compliance = false;\n    public boolean blueVision = false;\n    public boolean torsionally_resilient_coupling = false;\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Diesel.java b/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Diesel.java
+--- a/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Diesel.java	(revision 54ce1189027d1ea09dc6d89d3aa42bcbcbec8348)
++++ b/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Diesel.java	(date 1654699182476)
+@@ -4,6 +4,7 @@
+ 
+ @Repository
+ public class Diesel implements Motor{
++    //Attributes are getting set in the workflow from the UI and validated by the simulations from the analyses-MS
+     public boolean air_starter = false;
+     public String auxiliary_PTO;
+     public String oil_system;
+Index: Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Workflow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.Workflow_Engine_MS;\n\n\nimport org.springframework.stereotype.Component;\n\n@Component\npublic class Workflow {\n    public int ID;\n    public int State; //Which state the workflow is in\n    private Motor motor;\n\n\n    public void start_simulations(){\n        return;\n    };\n\n    public void send_workflowdata(){\n        return;\n    }\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Workflow.java b/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Workflow.java
+--- a/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Workflow.java	(revision 54ce1189027d1ea09dc6d89d3aa42bcbcbec8348)
++++ b/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Workflow.java	(date 1654699182544)
+@@ -6,17 +6,36 @@
+ @Component
+ public class Workflow {
+     public int ID;
+-    public int State; //Which state the workflow is in
++    public int State; //Which state the workflow is
+     private Motor motor;
+ 
++    private Analyses analyses; //Analyses data
++
++    //TODO: how to to the Communication of the workflow
++    //so far tried to write some functions to outline the flow (probably wrong, need to fill in the communication (REST async) etc.)
+ 
+-    public void start_simulations(){
+-        return;
++
++    //By initializing Model to buy
++    public void start_workflow() {
++        this.motor = new Diesel();
+     };
+ 
+-    public void send_workflowdata(){
+-        return;
++    // check if
++
++
++    //if Premium Customer, start analysis for custom features
++    public void start_analysis() {
++        this.analyses = new Analyses();
++    };
++
++    public void finish_analysis() {
++        // bind the data together, persist & done
+     }
++
++    public void terminate_workflow() {
++        //send final results back to frontend
++    };
++
+ 
+ 
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"c2caa50f-ed07-4fb7-824e-4ee7360b0bf9\" name=\"Changes\" comment=\"Initial Commit\">\n      <change afterPath=\"$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyzerController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/gradle.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/gradle.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Workflow_Engine_MS/build.gradle\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Workflow_Engine_MS/build.gradle\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ExternalProjectsData\">\n    <projectState path=\"$PROJECT_DIR$/Fluid_Analyser_MS\">\n      <ProjectState />\n    </projectState>\n    <projectState path=\"$PROJECT_DIR$/Workflow_Engine_MS\">\n      <ProjectState />\n    </projectState>\n  </component>\n  <component name=\"ExternalProjectsManager\">\n    <system id=\"GRADLE\">\n      <state>\n        <projects_view>\n          <tree_state>\n            <expand />\n            <select />\n          </tree_state>\n        </projects_view>\n      </state>\n    </system>\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2ACMpy8aHNspcZHUI6LjAWYVJKU\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"jdk.selected.JAVA_MODULE\": \"openjdk-18\",\n    \"last_opened_file_path\": \"/home/jonathan/IdeaProjects/WirSchiffendas/Workflow_Engine_MS\",\n    \"project.structure.last.edited\": \"Modules\",\n    \"project.structure.proportion\": \"0.15\",\n    \"project.structure.side.proportion\": \"0.0\"\n  }\n}]]></component>\n  <component name=\"RunDashboard\">\n    <option name=\"configurationTypes\">\n      <set>\n        <option value=\"SpringBootApplicationConfigurationType\" />\n      </set>\n    </option>\n  </component>\n  <component name=\"RunManager\" selected=\"Spring Boot.FluidAnalyserMsApplication\">\n    <configuration name=\"FluidAnalyserMsApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\n      <module name=\"Fluid_Analyser_MS.main\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.Fluid_Analyser_MS.FluidAnalyserMsApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"WorkflowEngineMsApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\n      <module name=\"Workflow_Engine_MS.main\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.Workflow_Engine_MS.WorkflowEngineMsApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"c2caa50f-ed07-4fb7-824e-4ee7360b0bf9\" name=\"Changes\" comment=\"\" />\n      <created>1654509303281</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1654509303281</updated>\n      <workItem from=\"1654509306081\" duration=\"9000\" />\n      <workItem from=\"1654509403134\" duration=\"712000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Initial Commit\">\n      <created>1654509640939</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1654509640939</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Initial Commit\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Initial Commit\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 54ce1189027d1ea09dc6d89d3aa42bcbcbec8348)
++++ b/.idea/workspace.xml	(date 1654699183396)
+@@ -4,11 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Initial Commit">
+-      <change afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyzerController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
++    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Started implementing Workflow_Engine">
++      <change afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Analyses.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Simulation.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/build.gradle" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Diesel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Diesel.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Workflow.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/WorkflowEngineMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/WorkflowEngineMsApplication.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -64,7 +66,8 @@
+     "last_opened_file_path": "/home/jonathan/IdeaProjects/WirSchiffendas/Workflow_Engine_MS",
+     "project.structure.last.edited": "Modules",
+     "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.0"
++    "project.structure.side.proportion": "0.0",
++    "spring.configuration.checksum": "52bba4e995c9dc99dd2c49158fdb24e9"
+   }
+ }]]></component>
+   <component name="RunDashboard">
+@@ -100,6 +103,7 @@
+       <updated>1654509303281</updated>
+       <workItem from="1654509306081" duration="9000" />
+       <workItem from="1654509403134" duration="712000" />
++      <workItem from="1654696101145" duration="2427000" />
+     </task>
+     <task id="LOCAL-00001" summary="Initial Commit">
+       <created>1654509640939</created>
+@@ -108,7 +112,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1654509640939</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Started implementing Workflow_Engine">
++      <created>1654516635427</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1654516635427</updated>
++    </task>
++    <task id="LOCAL-00003" summary="Started implementing Workflow_Engine">
++      <created>1654516665169</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1654516665169</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -127,6 +145,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Initial Commit" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
++    <MESSAGE value="Started implementing Workflow_Engine" />
++    <option name="LAST_COMMIT_MESSAGE" value="Started implementing Workflow_Engine" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Simulation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Simulation.java b/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Simulation.java
+new file mode 100644
+--- /dev/null	(date 1654699182580)
++++ b/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Simulation.java	(date 1654699182580)
+@@ -0,0 +1,9 @@
++package com.example.Workflow_Engine_MS;
++
++import org.springframework.stereotype.Component;
++
++@Component
++public class Simulation {
++    // To Save the Simulation Data of one Simulation. e.g. Fluid Simulation
++    //Needed since we persist
++}
+Index: Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Analyses.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Analyses.java b/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Analyses.java
+new file mode 100644
+--- /dev/null	(date 1654699182412)
++++ b/Workflow_Engine_MS/src/main/java/com/example/Workflow_Engine_MS/Analyses.java	(date 1654699182412)
+@@ -0,0 +1,12 @@
++package com.example.Workflow_Engine_MS;
++
++import org.springframework.stereotype.Component;
++
++import java.util.HashMap;
++
++@Component
++public class Analyses {
++    private String State; //
++    private HashMap<String, Simulation> simulations; //gathers all simulations necessary
++
++}

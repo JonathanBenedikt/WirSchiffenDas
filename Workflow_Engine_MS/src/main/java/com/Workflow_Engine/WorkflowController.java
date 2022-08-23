@@ -36,6 +36,9 @@ public class WorkflowController {
             String recordKey = record.key();
             if (recordKey.equals("BFF_Passes_Configdata")) {
                 save_bff_configdata(record.value());
+            } else if (recordKey.equals("BFF_Ready_For_Analysisresults")) {
+                //how to get the ID here?
+                send_analysisresults("");
             } else {
                 System.out.println(record.key());
             }
@@ -44,6 +47,13 @@ public class WorkflowController {
             System.out.println(ex);
         }
     }
+
+    @PostMapping("/send_analysisresults")
+    public void send_analysisresults(@RequestParam(value="ID", defaultValue = "0") String ID) {
+        Motor m = findmotorbyID(ID);
+
+    }
+
     private void save_bff_configdata(Map data){ //TODO write as type converter (?)
         this.motor = new Diesel(data);
         motors.save(motor);
@@ -177,7 +187,7 @@ public class WorkflowController {
     }
 
     //----------------------------------------------------------------------------------------------------------------
-    //Startingelements
+    //Startingsystemelements
 
     @KafkaListener(topics = "startingsystemelements_analysis", groupId = "One")
     void fluidelements_analyser_listener(ConsumerRecord<String, Map> record) {
