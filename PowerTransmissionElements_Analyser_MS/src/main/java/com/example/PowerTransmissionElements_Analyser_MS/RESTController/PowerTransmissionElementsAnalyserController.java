@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
@@ -23,16 +25,17 @@ import java.util.concurrent.TimeUnit;
 public class PowerTransmissionElementsAnalyserController {
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<String, Map> kafkaTemplate;
 
     @Autowired
     private ApplicationContext appContext;
 
     public void sendMessage(String msg){
-        kafkaTemplate.send("analyse",msg);
+
+        kafkaTemplate.send("powertransmissionsystemelements_analysis",new HashMap(){{put("Message",msg);}});
     }
 
-    @KafkaListener(topics="analyse", groupId = "1")
+    @KafkaListener(topics="powertransmissionsystemelements_analysis", groupId = "One")
     public void listen(ConsumerRecord<?, ?> record ){
 
     }
@@ -47,16 +50,23 @@ public class PowerTransmissionElementsAnalyserController {
     @PostMapping(path="/analyse")
     public ResponseEntity<List<PowerTransmissionElementsInformation>> getData(@RequestBody PowerTransmissionElementsInformation providedPowerInfos){
         try {
-            List<PowerTransmissionElementsInformation> fluidData = Collections.singletonList(providedPowerInfos);
+            kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Starts_Analysis",null));
+            List<PowerTransmissionElementsInformation> powertransmissionData = Collections.singletonList(providedPowerInfos);
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-            Gson gson = new Gson();
-            String json = gson.toJson(providedPowerInfos);
-            kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result",json));
-            return ResponseEntity.ok(fluidData);
+            //Gson gson = new Gson();
+            //String json = gson.toJson(providedPowerInfos);
+            kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Finished",createAnalysisValues(powertransmissionData)));
+            return ResponseEntity.ok(powertransmissionData);
         }catch (Exception ex){
             System.out.println(ex);
         }
         return null;
+    }
+
+    private Map createAnalysisValues(List<PowerTransmissionElementsInformation> requestData){
+        Map analysisValuesMap = new HashMap();
+        analysisValuesMap.put("","");
+        return analysisValuesMap;
     }
 
     public static class PowerTransmissionElementsInformation {

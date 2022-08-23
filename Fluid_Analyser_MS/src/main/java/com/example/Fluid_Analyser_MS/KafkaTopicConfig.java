@@ -24,7 +24,7 @@ public class KafkaTopicConfig {
     }
 
     @Bean
-    public NewTopic topic1(){
-        return new NewTopic("analyse", 1, (short) 1);
+    public NewTopic fluidsystemelements_analysis(){
+        return new NewTopic("fluidsystemelements_analysis", 1, (short) 1);
     }
 }

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Implementierung der Events &quot;WF_Startet_[]_Analyser&quot;">
-      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Interfaces.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/WorkflowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/WorkflowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +50,7 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
               </path>
             </expand>
             <select />
@@ -71,7 +64,6 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
-        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -103,13 +95,12 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/niclaswolf/SynologyDrive/Master/Objektorientierte Komponenten-Architekturen/WirSchiffenDas/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/niclaswolf/SynologyDrive/Studium/HBRS/Master/Objektorientierte Komponenten-Architekturen/WirSchiffenDas&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;918f2c2f49f2d3fde5fa51049cc6152a&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/jonathan/IdeaProjects/WirSchiffendas/frontend/frontend/node_modules/typescript/lib&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.27387804&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;2e1696c01e0eba7db3251444541f1f56&quot;
   }
 }</component>
   <component name="ReactorSettings">
@@ -123,9 +114,6 @@
       <recent name="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/resources" />
       <recent name="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/frontend/frontend/src/app/Services" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -134,7 +122,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.PowerTransmissionElementsAnalyserMsApplication">
+  <component name="RunManager" selected="Spring Boot.FluidAnalyserMsApplication">
     <configuration name="Workflow_Engine_MS [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -273,11 +261,13 @@
       <workItem from="1659348184982" duration="77000" />
       <workItem from="1659423801939" duration="20518000" />
       <workItem from="1659964569656" duration="3399000" />
-      <workItem from="1660207841695" duration="3162000" />
-      <workItem from="1660309610563" duration="2847000" />
-      <workItem from="1660737150753" duration="758000" />
-      <workItem from="1660897685163" duration="1739000" />
-      <workItem from="1660904991847" duration="4007000" />
+      <workItem from="1660647579725" duration="1011000" />
+      <workItem from="1660720272022" duration="294000" />
+      <workItem from="1660720573314" duration="2667000" />
+      <workItem from="1660727212636" duration="701000" />
+      <workItem from="1660752714070" duration="74000" />
+      <workItem from="1660753141662" duration="1011000" />
+      <workItem from="1660903426631" duration="1428000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -335,14 +325,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659718888557</updated>
     </task>
-    <task id="LOCAL-00009" summary="Implementierung der Events &quot;WF_Startet_[]_Analyser&quot;">
-      <created>1660209712233</created>
+    <task id="LOCAL-00009" summary="Die Kafka-Topics und Listener wurden für die Algorithmen-MS angepasst, damit diese mit der Workflow-Engine übereinstimmen.">
+      <created>1660648414572</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1660209712233</updated>
+      <updated>1660648414572</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Die Verarbeitung der JSON-Daten wurde angepasst, damit diese bei allen Microservices einheitlich ist.">
+      <created>1660727861803</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1660727861803</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,7 +365,8 @@
     <MESSAGE value="Die Verarbeitung der Nachrichten wurde im Fluid-Analyser angepasst." />
     <MESSAGE value="Es wurden weitere Microservices als Module für die Verarbeitung der Algorithmen-Informationen hinzugefügt." />
     <MESSAGE value="Bei den Algorithmen-MSs wurden erste Methoden ergänzt, damit eine Kommunikation über das Netzwerk stattfinden kann." />
-    <MESSAGE value="Implementierung der Events &quot;WF_Startet_[]_Analyser&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementierung der Events &quot;WF_Startet_[]_Analyser&quot;" />
+    <MESSAGE value="Die Kafka-Topics und Listener wurden für die Algorithmen-MS angepasst, damit diese mit der Workflow-Engine übereinstimmen." />
+    <MESSAGE value="Die Verarbeitung der JSON-Daten wurde angepasst, damit diese bei allen Microservices einheitlich ist." />
+    <option name="LAST_COMMIT_MESSAGE" value="Die Verarbeitung der JSON-Daten wurde angepasst, damit diese bei allen Microservices einheitlich ist." />
   </component>
 </project>

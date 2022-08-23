@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.json.JSONObject;
 
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
@@ -29,10 +27,11 @@ import java.util.concurrent.TimeUnit;
 public class FluidAnalyserController {
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<String, Map> kafkaTemplate;
 
     public void sendMessage(String msg){
-        kafkaTemplate.send("analyse",msg);
+
+        kafkaTemplate.send("fluidsystemelements_analysis", new HashMap(){{put("Message",msg);}});
     }
 
     //@Autowired
@@ -47,22 +46,22 @@ public class FluidAnalyserController {
         return HttpStatus.OK;
     }
 
-    @KafkaListener(topics="analyse", groupId = "1")
+    @KafkaListener(topics="fluidsystemelements_analysis", groupId = "One")
     public void listen(ConsumerRecord<?, ?> record ){
-
         try {
-            Gson gson = new Gson();
             String recordKey = record.key().toString();
 
-            if (recordKey.equals("Start_Fluid-Analysis")) {
-                JSONObject analysisRequest = new JSONObject(record.value().toString());
-                JSONArray analysisParameter = analysisRequest.getJSONArray("Analysis Parameter");
-                JSONObject analysisResult = createAnalysisObject(analysisParameter.getJSONObject(0).getString("Fuel System"), analysisParameter.getJSONObject(1).getString("Exhaust System"));
+            if (recordKey.equals("WF_Starts_Fluidsystemelements_Analysis")) {
+                HashMap startMap = (HashMap)record.value();
+                int id = (int)startMap.get("ID");
+                String name = (String)startMap.get("Name");
+                performAnalysis(id,name);
 
-                kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result", analysisResult.toString()));
             } else if (recordKey.equals("Fluid-Analysis-Result")) {
-                FluidInformation fluid = gson.fromJson(record.value().toString(), FluidInformation.class);
-                System.out.println("Received Message in group - 1 - "+ recordKey.toString() + " " +fluid.name);
+                HashMap resultMap = (HashMap) record.value();
+
+                System.out.println("The analysis for ID: "+resultMap.get("ID")+" with the name: "+resultMap.get("Name")+" is finished");
+                System.out.println("Results -> exhaust-system: "+resultMap.get("exhaust_system")+" fuel system: "+resultMap.get("fuel_system"));
             }
         }catch (Exception ex)
         {
@@ -76,10 +75,7 @@ public class FluidAnalyserController {
     public ResponseEntity<List<FluidInformation>> getData(@RequestBody FluidInformation providedFluid){
         try {
             List<FluidInformation> fluidData = Collections.singletonList(providedFluid);
-            TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-            Gson gson = new Gson();
-            String json = gson.toJson(providedFluid);
-            kafkaTemplate.send(new ProducerRecord<String,String>("analyse","Fluid-Analysis-Result",json));
+            performAnalysis(fluidData.get(0).id,fluidData.get(0).name);
             return ResponseEntity.ok(fluidData);
         }catch (Exception ex){
             System.out.println(ex);
@@ -91,7 +87,30 @@ public class FluidAnalyserController {
         SpringApplication.exit(appContext, () -> 0);
     }
 
-    private JSONObject createAnalysisObject(String fuelsystem, String exhaustsystem)
+
+    private Map createAnalysisValues(int id, String name){
+        Random rand = new Random();
+        Map analysisValuesMap = new HashMap();
+        analysisValuesMap.put("ID",id);
+        analysisValuesMap.put("Name",name);
+        analysisValuesMap.put("exhaust_system",(rand.nextFloat() * (100 - 1) + 1));
+        analysisValuesMap.put("fuel_system",(rand.nextFloat() * (100 - 1) + 1));
+        return analysisValuesMap;
+    }
+
+    private void performAnalysis(int id, String name)
+    {
+        try {
+            kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Starts_Analysis", null));
+            TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
+            kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Finished", createAnalysisValues(id, name)));
+        }catch (Exception ex)
+        {
+            System.out.println(ex);
+        }
+    }
+
+    private JSONObject createJSONAnalysis(String fuelsystem, String exhaustsystem)
     {
 
         JSONObject fluidJson = new JSONObject();
