@@ -53,15 +53,15 @@ public class FluidAnalyserController {
 
             if (recordKey.equals("WF_Starts_Fluidsystemelements_Analysis")) {
                 HashMap startMap = (HashMap)record.value();
-                int id = (int)startMap.get("ID");
-                String name = (String)startMap.get("Name");
+                int id = (int)startMap.get("id");
+                String name = (String)startMap.get("name");
                 performAnalysis(id,name);
 
-            } else if (recordKey.equals("Fluid-Analysis-Result")) {
+            } else if (recordKey.equals("Analyser_Finished")) {
                 HashMap resultMap = (HashMap) record.value();
 
-                System.out.println("The analysis for ID: "+resultMap.get("ID")+" with the name: "+resultMap.get("Name")+" is finished");
-                System.out.println("Results -> exhaust-system: "+resultMap.get("exhaust_system")+" fuel system: "+resultMap.get("fuel_system"));
+                System.out.println("The analysis for id "+resultMap.get("id")+" with the name "+resultMap.get("name")+" is finished");
+                System.out.println("Results -> exhaust-system: "+resultMap.get("exhaust_system")+", fuel system: "+resultMap.get("fuel_system"));
             }
         }catch (Exception ex)
         {
@@ -72,11 +72,11 @@ public class FluidAnalyserController {
     public String showInfo() {return "Name: Fluid-Analyser\nType: Microservice\nVersion: 1.0.0";}
 
     @PostMapping(path="/analyse")
-    public ResponseEntity<List<FluidInformation>> getData(@RequestBody FluidInformation providedFluid){
+    public ResponseEntity<Map> getData(@RequestBody FluidInformation providedFluid){
         try {
             List<FluidInformation> fluidData = Collections.singletonList(providedFluid);
-            performAnalysis(fluidData.get(0).id,fluidData.get(0).name);
-            return ResponseEntity.ok(fluidData);
+            Map analysisResult = performAnalysis(fluidData.get(0).id,fluidData.get(0).name);
+            return ResponseEntity.ok(analysisResult);
         }catch (Exception ex){
             System.out.println(ex);
         }
@@ -91,23 +91,27 @@ public class FluidAnalyserController {
     private Map createAnalysisValues(int id, String name){
         Random rand = new Random();
         Map analysisValuesMap = new HashMap();
-        analysisValuesMap.put("ID",id);
-        analysisValuesMap.put("Name",name);
-        analysisValuesMap.put("exhaust_system",(rand.nextFloat() * (100 - 1) + 1));
+        analysisValuesMap.put("id",id);
+        analysisValuesMap.put("name",name);
         analysisValuesMap.put("fuel_system",(rand.nextFloat() * (100 - 1) + 1));
+        analysisValuesMap.put("exhaust_system",(rand.nextFloat() * (100 - 1) + 1));
+
         return analysisValuesMap;
     }
 
-    private void performAnalysis(int id, String name)
+    private Map performAnalysis(int id, String name)
     {
         try {
             kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Starts_Analysis", null));
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-            kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Finished", createAnalysisValues(id, name)));
+            Map calculationResults = createAnalysisValues(id, name);
+            kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Finished", calculationResults));
+            return calculationResults;
         }catch (Exception ex)
         {
             System.out.println(ex);
         }
+        return null;
     }
 
     private JSONObject createJSONAnalysis(String fuelsystem, String exhaustsystem)

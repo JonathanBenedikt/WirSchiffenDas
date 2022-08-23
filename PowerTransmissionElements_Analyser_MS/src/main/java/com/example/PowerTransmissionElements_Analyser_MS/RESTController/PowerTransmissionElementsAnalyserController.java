@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
@@ -37,7 +34,24 @@ public class PowerTransmissionElementsAnalyserController {
 
     @KafkaListener(topics="powertransmissionsystemelements_analysis", groupId = "One")
     public void listen(ConsumerRecord<?, ?> record ){
+        try {
+            String recordKey = record.key().toString();
 
+            if (recordKey.equals("WF_Starts_Powertransmissionsystemelements_Analysis")) {
+                HashMap startMap = (HashMap)record.value();
+                int id = (int)startMap.get("id");
+                String name = (String)startMap.get("name");
+                performAnalysis(id,name);
+
+            } else if (recordKey.equals("Analyser_Finished")) {
+                HashMap resultMap = (HashMap) record.value();
+                System.out.println("The analysis for id "+resultMap.get("id")+" with the name "+resultMap.get("name")+" is finished");
+                System.out.println("Results -> mounting system: "+resultMap.get("mountingsystem")+", monitoringsystem: "+resultMap.get("monitoringsystem")+", powertransmission: "+resultMap.get("powertransmission")+", gearboxpotions: "+resultMap.get("gearboxoptions"));
+            }
+        }catch (Exception ex)
+        {
+            System.out.println(ex);
+        }
     }
     @GetMapping(path="/information")
     public String showInfo() {return "Name: PowerTransmissionElements-Analyser\nType: Microservice\nVersion: 1.0.0";}
@@ -48,25 +62,42 @@ public class PowerTransmissionElementsAnalyserController {
     }
 
     @PostMapping(path="/analyse")
-    public ResponseEntity<List<PowerTransmissionElementsInformation>> getData(@RequestBody PowerTransmissionElementsInformation providedPowerInfos){
+    public ResponseEntity<Map> getData(@RequestBody PowerTransmissionElementsInformation providedPowerInfos){
         try {
-            kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Starts_Analysis",null));
             List<PowerTransmissionElementsInformation> powertransmissionData = Collections.singletonList(providedPowerInfos);
-            TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-            //Gson gson = new Gson();
-            //String json = gson.toJson(providedPowerInfos);
-            kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Finished",createAnalysisValues(powertransmissionData)));
-            return ResponseEntity.ok(powertransmissionData);
+            Map analysisResult = performAnalysis(powertransmissionData.get(0).id,powertransmissionData.get(0).name);
+            return ResponseEntity.ok(analysisResult);
         }catch (Exception ex){
             System.out.println(ex);
         }
         return null;
     }
 
-    private Map createAnalysisValues(List<PowerTransmissionElementsInformation> requestData){
+    private Map createAnalysisValues(int id, String name){
+        Random rand = new Random();
         Map analysisValuesMap = new HashMap();
-        analysisValuesMap.put("","");
+        analysisValuesMap.put("id",id);
+        analysisValuesMap.put("name",name);
+        analysisValuesMap.put("mountingsystem",(rand.nextFloat() * (100 - 1) + 1));
+        analysisValuesMap.put("monitoringsystem",(rand.nextFloat() * (100 - 1) + 1));
+        analysisValuesMap.put("powertransmission",(rand.nextFloat() * (100 - 1) + 1));
+        analysisValuesMap.put("gearboxoptions",(rand.nextFloat() * (100 - 1) + 1));
         return analysisValuesMap;
+    }
+
+    private Map performAnalysis(int id, String name)
+    {
+        try{
+            kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Starts_Analysis",null));
+            TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
+            Map calculationResults = createAnalysisValues(id,name);
+            kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Finished",calculationResults));
+            return calculationResults;
+        }catch (Exception ex)
+        {
+            System.out.println(ex);
+        }
+        return null;
     }
 
     public static class PowerTransmissionElementsInformation {
