@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
+    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Added Angular">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Interfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +57,12 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Fluid_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
             </expand>
             <select />
@@ -82,27 +94,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/niclaswolf/SynologyDrive/Studium/HBRS/Master/Objektorientierte Komponenten-Architekturen/WirSchiffenDas&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.27387804&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;2e1696c01e0eba7db3251444541f1f56&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelOrder2": "2",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RequestMappingsPanelWidth2": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "corretto-17",
+    "last_opened_file_path": "/Users/niclaswolf/SynologyDrive/Studium/HBRS/Master/Objektorientierte Komponenten-Architekturen/WirSchiffenDas",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.27387804",
+    "spring.configuration.checksum": "918f2c2f49f2d3fde5fa51049cc6152a",
+    "ts.external.directory.path": "/home/jonathan/IdeaProjects/WirSchiffendas/frontend/frontend/node_modules/typescript/lib"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -268,6 +281,7 @@
       <workItem from="1660752714070" duration="74000" />
       <workItem from="1660753141662" duration="1011000" />
       <workItem from="1660903426631" duration="1428000" />
+      <workItem from="1661350963928" duration="18340000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
