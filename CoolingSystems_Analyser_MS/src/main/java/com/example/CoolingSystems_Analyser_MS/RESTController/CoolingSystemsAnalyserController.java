@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
@@ -38,7 +35,25 @@ public class CoolingSystemsAnalyserController {
 
         @KafkaListener(topics="coolingsystemelements_analysis", groupId = "One")
         public void listen(ConsumerRecord<?, ?> record ){
+                try {
+                        String recordKey = record.key().toString();
 
+                        if (recordKey.equals("WF_Starts_Coolingsystemelements_Analysis")) {
+                                HashMap startMap = (HashMap)record.value();
+                                int id = (int)startMap.get("id");
+                                String name = (String)startMap.get("name");
+                                performAnalysis(id,name);
+
+                        } else if (recordKey.equals("Analyser_Finished")) {
+                                HashMap resultMap = (HashMap) record.value();
+
+                                System.out.println("The analysis for id "+resultMap.get("id")+" with the name "+resultMap.get("name")+" is finished");
+                                System.out.println("Results -> cooling-system: "+resultMap.get("coolingsystem")+", oil system: "+resultMap.get("oilsystem"));
+                        }
+                }catch (Exception ex)
+                {
+                        System.out.println(ex);
+                }
         }
 
         @GetMapping(path="/information")
@@ -50,15 +65,11 @@ public class CoolingSystemsAnalyserController {
         }
 
         @PostMapping(path="/analyse")
-        public ResponseEntity<List<CoolingSystemInformation>> getData(@RequestBody CoolingSystemInformation providedCoolingInfos){
+        public ResponseEntity<Map> getData(@RequestBody CoolingSystemInformation providedCoolingInfos){
                 try {
-                        kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Analyser_Starts_Analysis",null));
                         List<CoolingSystemInformation> coolingDataList = Collections.singletonList(providedCoolingInfos);
-                        TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-                        // Gson gson = new Gson();
-                        // String json = gson.toJson(providedCoolingInfos);
-                        kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Analyser_Finished",createAnalysisValues(coolingDataList)));
-                        return ResponseEntity.ok(coolingDataList);
+                        Map analysisResult = performAnalysis(coolingDataList.get(0).id, coolingDataList.get(0).name);
+                        return ResponseEntity.ok(analysisResult);
                 }catch (Exception ex){
                         System.out.println(ex);
                 }
@@ -66,10 +77,29 @@ public class CoolingSystemsAnalyserController {
         }
 
 
-        private Map createAnalysisValues(List<CoolingSystemInformation> requestData){
+        private Map createAnalysisValues(int id, String name){
+                Random rand = new Random();
                 Map analysisValuesMap = new HashMap();
-                analysisValuesMap.put("","");
+                analysisValuesMap.put("id",id);
+                analysisValuesMap.put("name",name);
+                analysisValuesMap.put("coolingsystem",(rand.nextFloat() * (100 - 1) + 1));
+                analysisValuesMap.put("oilsystem",(rand.nextFloat() * (100 - 1) + 1));
                 return analysisValuesMap;
+        }
+
+        private Map performAnalysis(int id, String name)
+        {
+                try{
+                        kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Analyser_Starts_Analysis",null));
+                        TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
+                        Map calculationResults = createAnalysisValues(id, name);
+                        kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Analyser_Finished",calculationResults));
+                        return calculationResults;
+                }catch (Exception ex)
+                {
+                        System.out.println(ex);
+                }
+                return null;
         }
 
         public static class CoolingSystemInformation {

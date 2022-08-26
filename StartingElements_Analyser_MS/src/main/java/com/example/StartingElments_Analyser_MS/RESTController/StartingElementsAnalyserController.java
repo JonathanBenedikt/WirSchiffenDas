@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
@@ -37,7 +34,25 @@ public class StartingElementsAnalyserController {
 
     @KafkaListener(topics="startingsystemelements_analysis", groupId = "One")
     public void listen(ConsumerRecord<?, ?> record ){
+        try {
+            String recordKey = record.key().toString();
 
+            if (recordKey.equals("WF_Starts_Startingsystemelements_Analysis")) {
+                HashMap startMap = (HashMap)record.value();
+                int id = (int)startMap.get("id");
+                String name = (String)startMap.get("name");
+                performAnalysis(id,name);
+
+            } else if (recordKey.equals("Analyser_Finished")) {
+                HashMap resultMap = (HashMap) record.value();
+
+                System.out.println("The analysis for id "+resultMap.get("ID")+" with the name "+resultMap.get("Name")+" is finished");
+                System.out.println("Results -> startingsystem: "+resultMap.get("startingsystem")+", auxilliarypto: "+resultMap.get("auxilliarypto")+", enginemanagementsystem: "+resultMap.get("enginemanagementsystem"));
+            }
+        }catch (Exception ex)
+        {
+            System.out.println(ex);
+        }
     }
 
     @GetMapping(path="/information")
@@ -49,25 +64,40 @@ public class StartingElementsAnalyserController {
     }
 
     @PostMapping(path="/analyse")
-    public ResponseEntity<List<StartingElementsInformation>> getData(@RequestBody StartingElementsInformation providedStartingInfos){
+    public ResponseEntity<Map> getData(@RequestBody StartingElementsInformation providedStartingInfos){
         try {
-            kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Starts_Analysis",null));
             List<StartingElementsInformation> startingSystemData = Collections.singletonList(providedStartingInfos);
-            TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-            //Gson gson = new Gson();
-            //String json = gson.toJson(providedStartingInfos);
-            kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Finished",createAnalysisValues(startingSystemData)));
-            return ResponseEntity.ok(startingSystemData);
+            Map analysisResult = performAnalysis(startingSystemData.get(0).id,startingSystemData.get(0).name);
+            return ResponseEntity.ok(analysisResult);
         }catch (Exception ex){
             System.out.println(ex);
         }
         return null;
     }
 
-    private Map createAnalysisValues(List<StartingElementsInformation> requestData){
+    private Map createAnalysisValues(int id, String name){
+        Random rand = new Random();
         Map analysisValuesMap = new HashMap();
-        analysisValuesMap.put("","");
+        analysisValuesMap.put("id",id);
+        analysisValuesMap.put("name",name);
+        analysisValuesMap.put("startingsystem",(rand.nextFloat() * (100 - 1) + 1));
+        analysisValuesMap.put("auxilliarypto",(rand.nextFloat() * (100 - 1) + 1));
+        analysisValuesMap.put("enginemanagementsystem",(rand.nextFloat() * (100 - 1) + 1));
         return analysisValuesMap;
+    }
+
+    private Map performAnalysis(int id, String name)
+    {
+        try{
+            kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Starts_Analysis",null));
+            TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
+            Map calculationResults = createAnalysisValues(id, name);
+            kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Finished", calculationResults));
+        }catch (Exception ex)
+        {
+            System.out.println(ex);
+        }
+        return null;
     }
 
     public static class StartingElementsInformation {
