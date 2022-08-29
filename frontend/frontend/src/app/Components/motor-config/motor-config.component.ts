@@ -13,12 +13,12 @@ export class MotorConfigComponent implements OnInit {
   @Input() jsonFormData: any;
 
   Coolingsystem_config : Coolingsystem_config = {
-    oil_system: ['basic', 'performance', 'supreme'],
-    cooling_system: ['cool', 'cooler', 'icecold']
+    oil_system: ['', 'basic', 'performance', 'supreme'],
+    cooling_system: ['', 'cool', 'cooler', 'icecold']
   }
 
   Fluidsystem_config: Fluidsystem_config = {
-    fuel_system: ['duplex fuel pre-filter', 'divert valve', 'monitoring fuel leaks'],
+    fuel_system: ['', 'duplex fuel pre-filter', 'divert valve', 'monitoring fuel leaks'],
     exhaust_system: true
   }
 
@@ -26,13 +26,13 @@ export class MotorConfigComponent implements OnInit {
   resilient_mounts: true,
   bluevision: true,
   torsionally_resilient_coupling: true,
-  gearbox_options: ['reverse reduction gearbox','el. actuated','gearbox mounts','trolling mode for dead-slow propulsion',
+  gearbox_options: ['', 'reverse reduction gearbox','el. actuated','gearbox mounts','trolling mode for dead-slow propulsion',
     'free auxiliary PTO', 'hydraulic pump drive']
 }
 
   Startingsystem_config : Startingsystem_config = {
   airstarter: true,
-  auxiliary_PTO: ['140A', '190A', '250A'],
+  auxiliary_PTO: ['', '140A', '190A', '250A'],
   in_compliance: true
 }
 
@@ -60,13 +60,14 @@ export class MotorConfigComponent implements OnInit {
     })
   })
 
-  constructor(private WFCommunicationService: WFCommunicationService, private fb: FormBuilder){
+  constructor(private bffcommunicator: WFCommunicationService, private fb: FormBuilder){
   }
 
   ngOnInit() {}
 
   saveForm(){
     console.log('Form data is ', this.MotorConfigForm.value);
+
   }
 
 }

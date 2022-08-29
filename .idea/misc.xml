@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/BackendForFrontend" />
     <file type="web" url="file://$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
     <file type="web" url="file://$PROJECT_DIR$/Fluid_Analyser_MS" />
     <file type="web" url="file://$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS" />

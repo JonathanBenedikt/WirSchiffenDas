@@ -4,17 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
+    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Basic form functionality added">
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/example/backendforfrontend/BackendForFrontendApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/test/java/com/example/backendforfrontend/BackendForFrontendApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/Frontendhandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Components/analysers-overview/analysers-overview.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Components/analysers-overview/analysers-overview.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Services/anaylser-communication.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Services/anaylser-communication.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Services/wf-communication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Services/wf-communication.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +34,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/BackendForFrontend">
+      <ProjectState />
+    </projectState>
     <projectState path="$PROJECT_DIR$/CoolingSystems_Analyser_MS">
       <ProjectState />
     </projectState>
@@ -49,7 +64,17 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -97,7 +122,8 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.27387804&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;07843d7871cc59a8b48f40a38f48b82f&quot;
+    &quot;spring.configuration.checksum&quot;: &quot;918f2c2f49f2d3fde5fa51049cc6152a&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/jonathan/IdeaProjects/WirSchiffendas/frontend/frontend/node_modules/typescript/lib&quot;
   }
 }</component>
   <component name="ReactorSettings">
@@ -140,6 +166,13 @@
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
+    </configuration>
+    <configuration name="BackendForFrontendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="BackendForFrontend.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.backendforfrontend.BackendForFrontendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="CoolingSystemsAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="CoolingSystems_Analyser_MS.main" />
@@ -210,6 +243,7 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
+      <item itemvalue="Spring Boot.BackendForFrontendApplication" />
       <item itemvalue="Spring Boot.CoolingSystemsAnalyserMsApplication" />
       <item itemvalue="Spring Boot.PowerTransmissionElementsAnalyserMsApplication" />
       <item itemvalue="Spring Boot.WorkflowEngineMsApplication (1)" />
@@ -259,6 +293,8 @@
       <workItem from="1660903426631" duration="1660000" />
       <workItem from="1661156342727" duration="267000" />
       <workItem from="1661251742384" duration="4555000" />
+      <workItem from="1661599793653" duration="5113000" />
+      <workItem from="1661751709387" duration="5272000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {WFCommunicationService} from "../../Services/wf-communication.service";
 
 @Component({
   selector: 'app-analysers-overview',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnalysersOverviewComponent implements OnInit {
 
-  constructor() { }
+  //Todo Drehende Kreise beim Warten auf den Service
+  //Eine Tabelle Service Name, Status + Kreis der dreht "laden", Start/Stop Button,
+  constructor(private bffcommunication : WFCommunicationService) { }
 
   ngOnInit(): void {
   }
