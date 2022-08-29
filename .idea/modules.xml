@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/BackendForFrontend/BackendForFrontend.iml" filepath="$PROJECT_DIR$/BackendForFrontend/BackendForFrontend.iml" />
       <module fileurl="file://$PROJECT_DIR$/WirSchiffendas.iml" filepath="$PROJECT_DIR$/WirSchiffendas.iml" />
     </modules>
   </component>
