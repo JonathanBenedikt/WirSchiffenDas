@@ -4,36 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Basic form functionality added">
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/example/backendforfrontend/BackendForFrontendApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/test/java/com/example/backendforfrontend/BackendForFrontendApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/Frontendhandler.java" afterDir="false" />
+    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="BackendForFrontend added 2">
+      <change afterPath="$PROJECT_DIR$/BackenForFrontend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackenForFrontend/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackenForFrontend/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackenForFrontend/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackenForFrontend/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackenForFrontend/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackenForFrontend/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackenForFrontend/src/main/java/com/backenforfrontend/BackenForFrontendApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackenForFrontend/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackenForFrontend/src/test/java/com/backenforfrontend/BackenForFrontendApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Services/httpbackend-communication.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Services/httpbackend-communication.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/assets/backendforfrontendURL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Components/analysers-overview/analysers-overview.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Components/analysers-overview/analysers-overview.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Services/anaylser-communication.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Services/anaylser-communication.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Services/wf-communication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Services/wf-communication.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/environments/environment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Services/wf-communication.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Services/wf-communication.service.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/BackenForFrontend">
+      <ProjectState />
+    </projectState>
     <projectState path="$PROJECT_DIR$/BackendForFrontend">
       <ProjectState />
     </projectState>
@@ -106,6 +110,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
@@ -122,7 +127,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.27387804&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;918f2c2f49f2d3fde5fa51049cc6152a&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;6ae0b5a404f6d3d2edc7ee7a20d95415&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/jonathan/IdeaProjects/WirSchiffendas/frontend/frontend/node_modules/typescript/lib&quot;
   }
 }</component>
@@ -166,6 +171,13 @@
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
+    </configuration>
+    <configuration name="BackenForFrontendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="BackenForFrontend.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.backenforfrontend.BackenForFrontendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="BackendForFrontendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="BackendForFrontend.main" />
@@ -243,6 +255,7 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
+      <item itemvalue="Spring Boot.BackenForFrontendApplication" />
       <item itemvalue="Spring Boot.BackendForFrontendApplication" />
       <item itemvalue="Spring Boot.CoolingSystemsAnalyserMsApplication" />
       <item itemvalue="Spring Boot.PowerTransmissionElementsAnalyserMsApplication" />
@@ -294,7 +307,11 @@
       <workItem from="1661156342727" duration="267000" />
       <workItem from="1661251742384" duration="4555000" />
       <workItem from="1661599793653" duration="5113000" />
-      <workItem from="1661751709387" duration="5272000" />
+      <workItem from="1661751709387" duration="6435000" />
+      <workItem from="1661766213241" duration="139000" />
+      <workItem from="1661766457608" duration="257000" />
+      <workItem from="1661766728301" duration="135000" />
+      <workItem from="1661767197364" duration="1089000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -373,7 +390,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660905076068</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="BackendForFrontend added">
+      <created>1661765202400</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1661765202401</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,7 +408,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -402,6 +438,8 @@
     <MESSAGE value="Die Kafka-Topics und Listener wurden für die Algorithmen-MS angepasst, damit diese mit der Workflow-Engine übereinstimmen." />
     <MESSAGE value="Die Verarbeitung der JSON-Daten wurde angepasst, damit diese bei allen Microservices einheitlich ist." />
     <MESSAGE value="Die Rückgabe des Fluid-MS wurde angepasst, sodass nun Float-Werte zurückgegeben werden." />
-    <option name="LAST_COMMIT_MESSAGE" value="Die Rückgabe des Fluid-MS wurde angepasst, sodass nun Float-Werte zurückgegeben werden." />
+    <MESSAGE value="BackendForFrontend added" />
+    <MESSAGE value="BackendForFrontend added 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="BackendForFrontend added 2" />
   </component>
 </project>

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {WFCommunicationService} from "../../Services/wf-communication.service";
 import { FormBuilder } from '@angular/forms';
 import {Motor_config, Coolingsystem_config, Fluidsystem_config, Powertransmissionsystem_config, Startingsystem_config} from "../../Interfaces"
 
