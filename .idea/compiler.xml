@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="BackendForFrontend" target="17" />
+      <module name="BackenForFrontend" target="17" />
       <module name="servicetodiscover" target="17" />
       <module name="servicetodiscover.main" target="17" />
       <module name="servicetodiscover.test" target="17" />

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import {Motor_config, Coolingsystem_config, Fluidsystem_config, Powertransmissionsystem_config, Startingsystem_config} from "../../Interfaces"
+import {Coolingsystem_config, Fluidsystem_config, Powertransmissionsystem_config, Startingsystem_config} from "../../Interfaces"
+import {HTTPBackendCommunicationService} from "../../Services/httpbackend-communication.service";
 
 
 @Component({
@@ -8,8 +9,7 @@ import {Motor_config, Coolingsystem_config, Fluidsystem_config, Powertransmissio
   templateUrl: './motor-config.component.html',
   styleUrls: ['./motor-config.component.css']
 })
-export class MotorConfigComponent implements OnInit {
-  @Input() jsonFormData: any;
+export class MotorConfigComponent {
 
   Coolingsystem_config : Coolingsystem_config = {
     oil_system: ['', 'basic', 'performance', 'supreme'],
@@ -25,7 +25,7 @@ export class MotorConfigComponent implements OnInit {
   resilient_mounts: true,
   bluevision: true,
   torsionally_resilient_coupling: true,
-  gearbox_options: ['', 'reverse reduction gearbox','el. actuated','gearbox mounts','trolling mode for dead-slow propulsion',
+  gearbox_options: ['reverse reduction gearbox','el. actuated','gearbox mounts','trolling mode for dead-slow propulsion',
     'free auxiliary PTO', 'hydraulic pump drive']
 }
 
@@ -36,37 +36,49 @@ export class MotorConfigComponent implements OnInit {
 }
 
   MotorConfigForm = this.fb.group({
-    coolingsystemform: this.fb.group({
+    coolingsystem: this.fb.group({
         oil_system: [''],
         cooling_system: ['']
-
-    }
-    ),
-    fluidsystemform: this.fb.group({
+    }),
+    fluidsystem: this.fb.group({
       exhaust_system: [''],
       fuel_system: ['']
     }),
-    powertransmissionsystemform: this.fb.group({
+    powertransmissionsystem: this.fb.group({
       resilient_mounts: [''],
       bluevision: [''],
       torsionally_resilient_coupling: [''],
       gearbox_options: ['']
     }),
-    startingsystemform: this.fb.group({
+    startingsystem: this.fb.group({
       air_starter: [''],
       auxiliary_PTO:[''],
       engine_management_system: ['']
     })
   })
 
-  constructor(private bffcommunicator: WFCommunicationService, private fb: FormBuilder){
+  constructor(private bffcommunicator: HTTPBackendCommunicationService, private fb: FormBuilder){
   }
 
   ngOnInit() {}
 
   saveForm(){
-    console.log('Form data is ', this.MotorConfigForm.value);
-
+    if (this.MotorConfigForm.valid){
+      let data = {
+        oil_system: this.MotorConfigForm.value.coolingsystem?.oil_system,
+        cooling_system: this.MotorConfigForm.value.coolingsystem?.cooling_system,
+        fuel_system : this.MotorConfigForm.value.fluidsystem?.fuel_system,
+        exhaust_system : this.MotorConfigForm.value.fluidsystem?.exhaust_system,
+        bluevision : this.MotorConfigForm.value.powertransmissionsystem?.bluevision,
+        gearbox_options : this.MotorConfigForm.value.powertransmissionsystem?.gearbox_options,
+        resilient_mounts : this.MotorConfigForm.value.powertransmissionsystem?.resilient_mounts,
+        torsionally_resilient_coupling : this.MotorConfigForm.value.powertransmissionsystem?.torsionally_resilient_coupling,
+        air_starter : this.MotorConfigForm.value.startingsystem?.air_starter,
+        auxiliary_PTO : this.MotorConfigForm.value.startingsystem?.auxiliary_PTO,
+        engine_management_system : this.MotorConfigForm.value.startingsystem?.engine_management_system
+      };
+      this.bffcommunicator.send_Motorconfig(data).subscribe()
+    }
   }
 
 }

@@ -4,22 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Basic form functionality added">
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/backendforfrontend/BackendForFrontendApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/test/java/com/backendforfrontend/backendforfrontend/BackendForFrontendApplicationTests.java" afterDir="false" />
+    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="BackendForFrontend added 2">
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Services/fakebackend.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendForFrontend/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/HELP.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WirSchiffendas.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WirSchiffendas.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Components/analysers-overview/analysers-overview.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Components/analysers-overview/analysers-overview.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Components/analysers-overview/analysers-overview.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Components/analysers-overview/analysers-overview.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Components/analysers-overview/analysers-overview.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Components/analysers-overview/analysers-overview.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Components/motor-config/motor-config.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Interfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/Services/httpbackend-communication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/Services/httpbackend-communication.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/assets/backendforfrontendURL.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/assets/backendforfrontendURL.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +56,17 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -105,7 +114,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.27387804",
-    "spring.configuration.checksum": "10779d1e3b8b31764c069d3341324a76",
+    "spring.configuration.checksum": "f2287bfe48ba546589f0925ea17e3991",
     "ts.external.directory.path": "/home/jonathan/IdeaProjects/WirSchiffendas/frontend/frontend/node_modules/typescript/lib"
   }
 }]]></component>
@@ -128,7 +137,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.StartingElementsAnalyserMsApplication">
+  <component name="RunManager">
     <configuration name="Workflow_Engine_MS [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -150,90 +159,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="BackendForFrontendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="BackendForFrontend.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.backendforfrontend.BackendForFrontendApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CoolingSystemsAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="CoolingSystems_Analyser_MS.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.CoolingSystems_Analyser_MS.CoolingSystemsAnalyserMsApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.CoolingSystems_Analyser_MS.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FluidAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <option name="ACTIVE_PROFILES" />
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <module name="Fluid_Analyser_MS.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Fluid_Analyser_MS.FluidAnalyserMsApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PowerTransmissionElementsAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="PowerTransmissionElements_Analyser_MS.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.PowerTransmissionElements_Analyser_MS.PowerTransmissionElementsAnalyserMsApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.PowerTransmissionElements_Analyser_MS.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StartingElementsAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="ACTIVE_PROFILES" />
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <module name="StartingElements_Analyser_MS.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.StartingElments_Analyser_MS.StartingElementsAnalyserMsApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.StartingElments_Analyser_MS.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WorkflowEngineMsApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="Workflow_Engine_MS.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.Workflow_Engine.WorkflowEngineMsApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WorkflowEngineMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <option name="ACTIVE_PROFILES" />
-      <module name="Workflow_Engine_MS.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Workflow_Engine_MS.WorkflowEngineMsApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
-      <item itemvalue="Spring Boot.BackendForFrontendApplication" />
-      <item itemvalue="Spring Boot.CoolingSystemsAnalyserMsApplication" />
-      <item itemvalue="Spring Boot.PowerTransmissionElementsAnalyserMsApplication" />
-      <item itemvalue="Spring Boot.WorkflowEngineMsApplication (1)" />
-      <item itemvalue="Spring Boot.WorkflowEngineMsApplication" />
-      <item itemvalue="Spring Boot.FluidAnalyserMsApplication" />
-      <item itemvalue="Spring Boot.StartingElementsAnalyserMsApplication" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
@@ -279,6 +204,7 @@
       <workItem from="1661599793653" duration="5113000" />
       <workItem from="1661751709387" duration="5272000" />
       <workItem from="1661768400518" duration="300000" />
+      <workItem from="1661782225966" duration="12417000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -374,7 +300,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>

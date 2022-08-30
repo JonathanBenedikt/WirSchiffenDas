@@ -13,6 +13,10 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatCardModule} from "@angular/material/card";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatTableModule} from "@angular/material/table";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import {MatCardModule} from "@angular/material/card";
     MatSelectModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatSlideToggleModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

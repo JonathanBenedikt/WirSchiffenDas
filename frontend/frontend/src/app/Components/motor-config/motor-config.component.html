@@ -1,7 +1,7 @@
 <p>motor-config works!</p>
 
 <form [formGroup]="MotorConfigForm">
-  <div formGroupName="coolingsystemform">
+  <div formGroupName="coolingsystem">
     <h4>Coolingsystem Configuration</h4>
     <mat-form-field appearance="outline">
       <mat-label>Oilsystem options</mat-label>
@@ -20,10 +20,10 @@
       </mat-select>
     </mat-form-field>
   </div>
-<div formGroupName="fluidsystemform">
+<div formGroupName="fluidsystem">
   <h4>Fluidsystem Configuration</h4>
   <mat-form-field appearance="outline">
-    <mat-label>Coolingsystem options</mat-label>
+    <mat-label>Fluidsystem options</mat-label>
     <mat-select formControlName = 'fuel_system'>
       <mat-option *ngFor="let opt of Fluidsystem_config.fuel_system" [value]="opt">
         {{opt}}
@@ -33,7 +33,7 @@
   <mat-label>Enhanced Exhaustsystem</mat-label>
   <mat-checkbox formControlName = "exhaust_system"></mat-checkbox>
 </div>
-<div formGroupName="powertransmissionsystemform">
+<div formGroupName="powertransmissionsystem">
   <h4>Powertransmissionsystem Configuration</h4>
   <mat-label>Resilient Mounts</mat-label>
   <mat-checkbox formControlName = "resilient_mounts"></mat-checkbox>
@@ -50,7 +50,7 @@
     </mat-select>
   </mat-form-field>
 </div>
-<div formGroupName="startingsystemform">
+<div formGroupName="startingsystem">
   <h4>Startingsystem Configuration</h4>
   <mat-label>Airstarter Delux</mat-label>
   <mat-checkbox formControlName = "air_starter"></mat-checkbox>
