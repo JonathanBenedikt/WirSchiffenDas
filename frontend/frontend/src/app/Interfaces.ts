@@ -33,17 +33,8 @@ export interface Startingsystem_config {
   in_compliance: boolean;
 }
 
-
 export interface Simulationresults {
-  oil_system : number;
-  cooling_system : number;
-  fuel_system : number;
-  exhaust_system: number;
-  resilient_mounts: number;
-  bluevision: number;
-  torsionally_resilient_coupling: number;
-  gearbox_options: number;
-  airstarter: number;
-  auxiliary_PTO: number;
-  in_compliance: number;
+  Property : string;
+  Configuration : string;
+  Result : number;
 }

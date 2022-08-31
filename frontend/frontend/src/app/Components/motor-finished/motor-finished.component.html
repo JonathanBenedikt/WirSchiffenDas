@@ -1,1 +1,26 @@
-<p>motor-finished works!</p>
+<div>
+  <div>
+    <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+      <ng-container matColumnDef="Property">
+        <th mat-header-cell *matHeaderCellDef> Property </th>
+        <td mat-cell *matCellDef="let element"> {{element.Property}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Configuration">
+        <th mat-header-cell *matHeaderCellDef> Configuration </th>
+        <td mat-cell *matCellDef="let element"> {{element.Configuration}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Result">
+        <th mat-header-cell *matHeaderCellDef> Result</th>
+        <td mat-cell *matCellDef="let element"> {{element.Result}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+    <button mat-raised-button color="primary" (click)="restart_process()">Restart</button>
+    <button mat-raised-button color="primary" (click)="buy()">Buy</button>
+  </div>
+
+</div>

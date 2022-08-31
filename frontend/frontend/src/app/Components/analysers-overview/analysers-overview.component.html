@@ -1,25 +1,28 @@
 <div>
   <table mat-table [dataSource]="AnalyserData" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Position Column -->
     <ng-container matColumnDef="Analyser">
       <th mat-header-cell *matHeaderCellDef> Analyser </th>
       <td mat-cell *matCellDef="let element"> {{element.Analyser}} </td>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="Status">
       <th mat-header-cell *matHeaderCellDef> Status </th>
       <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="RefreshStatus">
+      <th mat-header-cell *matHeaderCellDef> Refresh</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-mini-fab color="grey" (click)="refresh_status(element.Analyser)">
+          <mat-icon>refresh</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="StopStart">
       <th mat-header-cell *matHeaderCellDef> Stop/Start </th>
       <td mat-cell *matCellDef="let element">
-        <mat-slide-toggle checked = true color="accent" (click)="toggle_analyser(element.Analyser)">
+        <mat-slide-toggle checked = {{element.Checked}} color="accent" (click)="toggle_analyser(element.Analyser)">
         </mat-slide-toggle>
       </td>
     </ng-container>
@@ -27,14 +30,14 @@
     <ng-container matColumnDef="Restart">
       <th mat-header-cell *matHeaderCellDef>Restart</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-fab color="primary" (click)="restart_analyser(element.Analyser)">
+        <button mat-mini-fab color="primary" (click)="restart_analyser(element.Analyser)">
           <mat-icon>refresh</mat-icon>
         </button>
       </td>
     </ng-container>
 
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <button mat-raised-button color="primary" (click)="get_simulationresults()">Simulation Results</button>
 </div>

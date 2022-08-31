@@ -1,0 +1,42 @@
+
+{
+  "people": [
+    {
+      "id": 1,
+      "name": "Don Bradman"
+    },
+    {
+      "id": 2,
+      "name": "Sachin Tendulkar"
+    }
+  ],
+
+  "motorconfig": [
+    {
+      "oil_system": "good",
+      "cooling_system" : "very good",
+      "fuel_system" : "Gread",
+      "exhaust_system" : true,
+      "bluevision" : true,
+      "gearbox_options" : ["yee", "ttt"],
+      "resilient_mounts" : true,
+      "torsionally_resilient_coupling" : false,
+      "air_starter" : "140A",
+      "auxiliary_PTO" : false,
+      "engine_management_system" : false
+    },
+    {
+      "oil_system": "no good",
+      "cooling_system" : "no very good",
+      "fuel_system" : "nooo Gread",
+      "exhaust_system" : true,
+      "bluevision" : true,
+      "gearbox_options" : ["reee", "tttert"],
+      "resilient_mounts" : true,
+      "torsionally_resilient_coupling" : false,
+      "air_starter" : "140S",
+      "auxiliary_PTO" : false,
+      "engine_management_system" : false
+    }
+  ]
+}

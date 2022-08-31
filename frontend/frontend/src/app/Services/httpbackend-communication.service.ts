@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {Motorconfig, Simulationresults} from '../Interfaces'
-import {FormGroup} from "@angular/forms";
+import {Simulationresults} from '../Interfaces'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -29,31 +28,33 @@ export class HTTPBackendCommunicationService {
   }
 
   get_Simulationresults(){
-    return this.http.get<Simulationresults>(this.baseurl+'/simulation_results')
+    return this.http.get<Simulationresults[]>(this.baseurl+'/simulation_results').pipe(
+      catchError(this.handleError)
+    );
   }
 
-  start_Analyser(analysername : String){
-    return this.http.post(this.baseurl+'/start_Analyser', {name : analysername})
+  get_Analyserstatus(analysername : string) : Observable<string>{
+    return this.http.post<string>(this.baseurl+'/getAnalyzerStatus', {Analysername : analysername}, httpOptions).pipe(
+      catchError(this.handleError)
+    ); //todo post
   }
 
-  stop_Analyser(analysername : String){
-    return this.http.post(this.baseurl+'/stop_Analyser', {name : analysername})
+  start_Analyser(analysername : string){
+    return this.http.post(this.baseurl+'/start_Analyser', {name : analysername}, httpOptions).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  restart_Coolingsystemanalyser(){
-    return this.http.get(this.baseurl+'/restart_Coolingsystemanalyser');
+  stop_Analyser(analysername : string){
+    return this.http.post(this.baseurl+'/stop_Analyser', {name : analysername}, httpOptions).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  restart_Fluidsystemanalyser(){
-    return this.http.get(this.baseurl+'/restart_Fluidsystemanalyser');
-  }
-
-  restart_Startingsystemanalyser(){
-    return this.http.get(this.baseurl+'/restart_Startingsystemanalyser');
-  }
-
-  restart_Powertransmissionsystemanalyser(){
-    return this.http.get(this.baseurl+'/restart_Powertransmissionsystemanalyser');
+  restart(analysername : string){
+    return this.http.post(this.baseurl+'/restart_analyser', {'analysername' : analysername}, httpOptions).pipe(
+      catchError(this.handleError)
+    );;
   }
 
   private handleError(error: HttpErrorResponse) {
