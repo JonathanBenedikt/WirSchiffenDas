@@ -2,7 +2,6 @@ package com.example.Fluid_Analyser_MS.RESTController;
 //import com.netflix.appinfo.InstanceInfo;
 //import com.netflix.discovery.EurekaClient;
 //import com.netflix.discovery.shared.Application;
-import com.google.gson.Gson;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.json.JSONArray;
@@ -29,8 +28,13 @@ public class FluidAnalyserController {
     @Autowired
     private KafkaTemplate<String, Map> kafkaTemplate;
 
-    public void sendMessage(String msg){
+    private String status;
 
+    public FluidAnalyserController()
+    {
+        status = "Idle";
+    }
+    public void sendMessage(String msg){
         kafkaTemplate.send("fluidsystemelements_analysis", new HashMap(){{put("Message",msg);}});
     }
 
@@ -51,9 +55,9 @@ public class FluidAnalyserController {
         try {
             String recordKey = record.key().toString();
 
-            if (recordKey.equals("WF_Starts_Fluidsystemelements_Analysis")) {
+            if (recordKey.equals("BFF_Starts_Fluidsystem_Analysis")) {
                 HashMap startMap = (HashMap)record.value();
-                int id = (int)startMap.get("id");
+                String id = (String)startMap.get("id");
                 String name = (String)startMap.get("name");
                 performAnalysis(id,name);
 
@@ -88,7 +92,7 @@ public class FluidAnalyserController {
     }
 
 
-    private Map createAnalysisValues(int id, String name){
+    private Map createAnalysisValues(String id, String name){
         Random rand = new Random();
         Map analysisValuesMap = new HashMap();
         analysisValuesMap.put("id",id);
@@ -99,12 +103,14 @@ public class FluidAnalyserController {
         return analysisValuesMap;
     }
 
-    private Map performAnalysis(int id, String name)
+    private Map performAnalysis(String id, String name)
     {
         try {
             kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Starts_Analysis", null));
+            status = "Started";
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
             Map calculationResults = createAnalysisValues(id, name);
+            status = "Finished";
             kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Finished", calculationResults));
             return calculationResults;
         }catch (Exception ex)
@@ -137,17 +143,17 @@ public class FluidAnalyserController {
 
     public static class FluidInformation {
 
-        private int id;
+        private String id;
         private String name;
         private String fuelsystem;
 
         private String exhaustsystem;
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 

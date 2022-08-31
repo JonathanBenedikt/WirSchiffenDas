@@ -1,5 +1,4 @@
-package com.example.PowerTransmissionElements_Analyser_MS;
-
+package com.backendforfrontend;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -15,6 +14,7 @@ import java.util.Map;
 
 @Configuration
 public class KafkaProducerConfig {
+
     @Bean
     public ProducerFactory<String, Map> producerFactory(){
         Map<String, Object> configProps = new HashMap<>();

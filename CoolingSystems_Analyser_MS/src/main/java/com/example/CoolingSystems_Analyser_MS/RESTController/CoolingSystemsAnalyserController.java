@@ -28,6 +28,11 @@ public class CoolingSystemsAnalyserController {
         @Autowired
         private ApplicationContext appContext;
 
+        private String status;
+
+        public CoolingSystemsAnalyserController(){
+                status = "Idle";
+        }
         public void sendMessage(String msg){
 
                 kafkaTemplate.send("coolingsystemelements_analysis",new HashMap(){{put("Message",msg);}});
@@ -38,9 +43,9 @@ public class CoolingSystemsAnalyserController {
                 try {
                         String recordKey = record.key().toString();
 
-                        if (recordKey.equals("WF_Starts_Coolingsystemelements_Analysis")) {
+                        if (recordKey.equals("BFF_Starts_Coolingsystem_Analysis")) {
                                 HashMap startMap = (HashMap)record.value();
-                                int id = (int)startMap.get("id");
+                                String id = (String)startMap.get("id");
                                 String name = (String)startMap.get("name");
                                 performAnalysis(id,name);
 
@@ -49,6 +54,12 @@ public class CoolingSystemsAnalyserController {
 
                                 System.out.println("The analysis for id "+resultMap.get("id")+" with the name "+resultMap.get("name")+" is finished");
                                 System.out.println("Results -> cooling-system: "+resultMap.get("coolingsystem")+", oil system: "+resultMap.get("oilsystem"));
+                        }
+                        else if (recordKey.equals("Status_Request"))
+                        {
+                                HashMap statusMap = new HashMap();
+                                statusMap.put("status",status);
+                                kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Status_Response",statusMap));
                         }
                 }catch (Exception ex)
                 {
@@ -77,7 +88,7 @@ public class CoolingSystemsAnalyserController {
         }
 
 
-        private Map createAnalysisValues(int id, String name){
+        private Map createAnalysisValues(String id, String name){
                 Random rand = new Random();
                 Map analysisValuesMap = new HashMap();
                 analysisValuesMap.put("id",id);
@@ -87,12 +98,15 @@ public class CoolingSystemsAnalyserController {
                 return analysisValuesMap;
         }
 
-        private Map performAnalysis(int id, String name)
+        private Map performAnalysis(String id, String name)
         {
                 try{
+
                         kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Analyser_Starts_Analysis",null));
+                        status = "Started";
                         TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
                         Map calculationResults = createAnalysisValues(id, name);
+                        status = "Finished";
                         kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Analyser_Finished",calculationResults));
                         return calculationResults;
                 }catch (Exception ex)
@@ -104,17 +118,17 @@ public class CoolingSystemsAnalyserController {
 
         public static class CoolingSystemInformation {
 
-                private int id;
+                private String id;
                 private String name;
                 private String coolingsystem;
 
                 private String oilsystem;
 
-                public int getId() {
+                public String getId() {
                         return id;
                 }
 
-                public void setId(int id) {
+                public void setId(String id) {
                         this.id = id;
                 }
 

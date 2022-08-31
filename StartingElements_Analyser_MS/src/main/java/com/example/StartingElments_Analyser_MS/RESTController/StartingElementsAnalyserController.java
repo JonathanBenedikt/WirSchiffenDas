@@ -27,6 +27,11 @@ public class StartingElementsAnalyserController {
     @Autowired
     private ApplicationContext appContext;
 
+    private String status;
+
+    public StartingElementsAnalyserController(){
+        status = "Idle";
+    }
     public void sendMessage(String msg){
         kafkaTemplate.send(
                 "startingsystemelements_analysis",new HashMap(){{put("Message",msg);}});
@@ -37,16 +42,16 @@ public class StartingElementsAnalyserController {
         try {
             String recordKey = record.key().toString();
 
-            if (recordKey.equals("WF_Starts_Startingsystemelements_Analysis")) {
+            if (recordKey.equals("BFF_Starts_Startingsystem_Analysis")) {
                 HashMap startMap = (HashMap)record.value();
-                int id = (int)startMap.get("id");
+                String id = (String)startMap.get("id");
                 String name = (String)startMap.get("name");
                 performAnalysis(id,name);
 
             } else if (recordKey.equals("Analyser_Finished")) {
                 HashMap resultMap = (HashMap) record.value();
 
-                System.out.println("The analysis for id "+resultMap.get("ID")+" with the name "+resultMap.get("Name")+" is finished");
+                System.out.println("The analysis for id "+resultMap.get("id")+" with the name "+resultMap.get("name")+" is finished");
                 System.out.println("Results -> startingsystem: "+resultMap.get("startingsystem")+", auxilliarypto: "+resultMap.get("auxilliarypto")+", enginemanagementsystem: "+resultMap.get("enginemanagementsystem"));
             }
         }catch (Exception ex)
@@ -75,9 +80,8 @@ public class StartingElementsAnalyserController {
         return null;
     }
 
-    private Map createAnalysisValues(int id, String name){
-        Random rand = new Random();
-        Map analysisValuesMap = new HashMap();
+    private Map createAnalysisValues(String id, String name){
+        Random rand = new Random();Map analysisValuesMap = new HashMap();
         analysisValuesMap.put("id",id);
         analysisValuesMap.put("name",name);
         analysisValuesMap.put("startingsystem",(rand.nextFloat() * (100 - 1) + 1));
@@ -86,12 +90,14 @@ public class StartingElementsAnalyserController {
         return analysisValuesMap;
     }
 
-    private Map performAnalysis(int id, String name)
+    private Map performAnalysis(String id, String name)
     {
         try{
             kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Starts_Analysis",null));
+            status = "Started";
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
             Map calculationResults = createAnalysisValues(id, name);
+            status = "Finished";
             kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Finished", calculationResults));
         }catch (Exception ex)
         {
@@ -102,17 +108,17 @@ public class StartingElementsAnalyserController {
 
     public static class StartingElementsInformation {
 
-        private int id;
+        private String id;
         private String name;
         private String startingsystem;
         private String auxilliarypto;
         private String enginemanagementsystem;
 
 
-        public int getId() {
+        public String getId() {
             return id;
         }
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 

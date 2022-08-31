@@ -34,7 +34,14 @@ public class WorkflowController {
     void wfbfflistener(ConsumerRecord<String, Map> record){
         try {
             String recordKey = record.key();
-            if (recordKey.equals("BFF_Passes_Configdata")) {
+            if(recordKey.equals("BFF_AnalysisStartingRequest")){
+                HashMap resultMap = (HashMap) record.value();
+                start_coolingsystemelements_analyser((String)resultMap.get("id"));
+                start_fluidsystemelements_analyser((String)resultMap.get("id"));
+                start_powertransmissionsystemelements_analyse((String)resultMap.get("id"));
+                start_startingsystemelements_analyser((String)resultMap.get("id"));
+            }
+         /*   if (recordKey.equals("BFF_Passes_Configdata")) {
                 save_bff_configdata(record.value());
             } else if (recordKey.equals("BFF_Ready_For_Analysisresults")) {
                 //how to get the ID here?
@@ -42,6 +49,8 @@ public class WorkflowController {
             } else {
                 System.out.println(record.key());
             }
+
+          */
         }catch (Exception ex)
         {
             System.out.println(ex);
@@ -95,7 +104,7 @@ public class WorkflowController {
     //----------------------------------------------------------------------------------------------------------------
     //Coolingsystemelements
 
-    @KafkaListener(topics = "coolingsystemelements_analysis", groupId = "One")
+    @KafkaListener(topics = "coolingsystemelements_analysis", groupId = "Three")
     void coolingsystemelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
             String recordKey = record.key().toString();
@@ -111,11 +120,14 @@ public class WorkflowController {
     }
 
     void start_coolingsystemelements_analyser(String ID){
-        Motor m = findmotorbyID(ID);
+        //Motor m = findmotorbyID(ID);
         // cut up the data (
         Map configdata = new HashMap();
-        configdata.put("oil_system", m.exhaust_system);
-        configdata.put("cooling_system", m.fuel_system);
+        configdata.put("id",ID);
+        //configdata.put("oil_system", m.exhaust_system);
+        configdata.put("oil_system", "Testoilsystem");
+        //configdata.put("cooling_system", m.fuel_system);
+        configdata.put("cooling_system","Fuelsystem");
         this.kafkaJsontemplate.send(new ProducerRecord<>("coolingsystemelements_analysis", "WF_Starts_Coolingsystemelements_Analysis", configdata));
     }
 
@@ -128,7 +140,7 @@ public class WorkflowController {
     //----------------------------------------------------------------------------------------------------------------
     //Fluidsystemelements
 
-    @KafkaListener(topics = "fluidsystemelements_analysis", groupId = "One")
+    @KafkaListener(topics = "fluidsystemelements_analysis", groupId = "Three")
     void fluidsystemelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
             String recordKey = record.key().toString();
@@ -144,11 +156,12 @@ public class WorkflowController {
     }
 
     void start_fluidsystemelements_analyser(String ID){
-        Motor m = findmotorbyID(ID);
+        //Motor m = findmotorbyID(ID);
         // cut up the data
         Map configdata = new HashMap();
-        configdata.put("exhaust_system", m.exhaust_system);
-        configdata.put("fuel_system", m.fuel_system);
+        configdata.put("id",ID);
+        configdata.put("exhaust_system", "m.exhaust_system");
+        configdata.put("fuel_system", "m.fuel_system");
         this.kafkaJsontemplate.send(new ProducerRecord<>("fluidsystemelements_analysis", "WF_Starts_Fluidsystemelements_Analysis", configdata));
     }
 
@@ -157,7 +170,7 @@ public class WorkflowController {
 
     //----------------------------------------------------------------------------------------------------------------
     //Powertransmissionelements
-    @KafkaListener(topics = "powertransmissionsystemelements_analysis", groupId = "One")
+    @KafkaListener(topics = "powertransmissionsystemelements_analysis", groupId = "Three")
     void powertransmissionsystemelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
             String recordKey = record.key().toString();
@@ -173,13 +186,14 @@ public class WorkflowController {
     }
 
     void start_powertransmissionsystemelements_analyse(String ID){
-        Motor m = findmotorbyID(ID);
+        //Motor m = findmotorbyID(ID);
         // cut up the data
         Map configdata = new HashMap();
-        configdata.put("mounting_system", m.in_compliance);
-        configdata.put("monitoring_control_system", m.blueVision);
-        configdata.put("powertransmission", m.torsionally_resilient_coupling);
-        configdata.put("gearbox_options", m.gearbox_options);
+        configdata.put("id",ID);
+        configdata.put("mounting_system", "m.in_compliance");
+        configdata.put("monitoring_control_system", "m.blueVision");
+        configdata.put("powertransmission", "m.torsionally_resilient_coupling");
+        configdata.put("gearbox_options", "m.gearbox_options");
         this.kafkaJsontemplate.send(new ProducerRecord<>("powertransmissionsystemelements_analysis", "WF_Starts_Powertransmissionsystemelements_Analysis", configdata));
     }
 
@@ -189,7 +203,7 @@ public class WorkflowController {
     //----------------------------------------------------------------------------------------------------------------
     //Startingsystemelements
 
-    @KafkaListener(topics = "startingsystemelements_analysis", groupId = "One")
+    @KafkaListener(topics = "startingsystemelements_analysis", groupId = "Three")
     void fluidelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
             String recordKey = record.key().toString();
@@ -205,12 +219,13 @@ public class WorkflowController {
     }
 
     void start_startingsystemelements_analyser(String ID){
-        Motor m = findmotorbyID(ID);
+        //Motor m = findmotorbyID(ID);
         // cut up the data
         Map configData = new HashMap();
-        configData.put("air_starter", m.exhaust_system);
-        configData.put("auxiliary_PTO", m.fuel_system);
-        configData.put("engine_management_system", m.in_compliance);
+        configData.put("id",ID);
+        configData.put("air_starter", "m.exhaust_system");
+        configData.put("auxiliary_PTO", "m.fuel_system");
+        configData.put("engine_management_system", "m.in_compliance");
         this.kafkaJsontemplate.send(new ProducerRecord<>("startingsystemelements_analysis", "WF_Starts_Startingsystemelements_Analysis", configData));
     }
 

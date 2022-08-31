@@ -27,6 +27,11 @@ public class PowerTransmissionElementsAnalyserController {
     @Autowired
     private ApplicationContext appContext;
 
+    private String status;
+
+    public PowerTransmissionElementsAnalyserController(){
+        status = "Idle";
+    }
     public void sendMessage(String msg){
 
         kafkaTemplate.send("powertransmissionsystemelements_analysis",new HashMap(){{put("Message",msg);}});
@@ -37,9 +42,9 @@ public class PowerTransmissionElementsAnalyserController {
         try {
             String recordKey = record.key().toString();
 
-            if (recordKey.equals("WF_Starts_Powertransmissionsystemelements_Analysis")) {
+            if (recordKey.equals("BFF_Starts_Powertransmissionsystem_Analysis")) {
                 HashMap startMap = (HashMap)record.value();
-                int id = (int)startMap.get("id");
+                String id = (String)startMap.get("id");
                 String name = (String)startMap.get("name");
                 performAnalysis(id,name);
 
@@ -73,7 +78,7 @@ public class PowerTransmissionElementsAnalyserController {
         return null;
     }
 
-    private Map createAnalysisValues(int id, String name){
+    private Map createAnalysisValues(String id, String name){
         Random rand = new Random();
         Map analysisValuesMap = new HashMap();
         analysisValuesMap.put("id",id);
@@ -85,12 +90,14 @@ public class PowerTransmissionElementsAnalyserController {
         return analysisValuesMap;
     }
 
-    private Map performAnalysis(int id, String name)
+    private Map performAnalysis(String id, String name)
     {
         try{
             kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Starts_Analysis",null));
+            status = "Started";
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
             Map calculationResults = createAnalysisValues(id,name);
+            status = "Finished";
             kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Finished",calculationResults));
             return calculationResults;
         }catch (Exception ex)
@@ -102,17 +109,17 @@ public class PowerTransmissionElementsAnalyserController {
 
     public static class PowerTransmissionElementsInformation {
 
-        private int id;
+        private String id;
         private String name;
         private String mountingsystem;
         private String monitoringsystem;
         private String powertransmission;
         private String gearboxoptions;
 
-        public int getId() {
+        public String getId() {
             return id;
         }
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
