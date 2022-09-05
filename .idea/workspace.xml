@@ -4,29 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Basic form functionality added">
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaProducerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaTopicConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/resources/application.properties" afterDir="false" />
+    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendForFrontend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/backendforfrontend/BackendForFrontendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/BackendForFrontendApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/WorkflowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/WorkflowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,9 +48,41 @@
         <task path="$PROJECT_DIR$/Workflow_Engine_MS">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/CoolingSystems_Analyser_MS">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/StartingElements_Analyser_MS">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/BackendForFrontend">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="BackendForFrontend" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Workflow_Engine_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -112,7 +130,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.27387804&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;10779d1e3b8b31764c069d3341324a76&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;10e0cf07da111535932acd87c9c89f2f&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/jonathan/IdeaProjects/WirSchiffendas/frontend/frontend/node_modules/typescript/lib&quot;
   }
 }</component>
@@ -135,7 +153,91 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.WorkflowEngineMsApplication">
+  <component name="RunManager" selected="Gradle.Workflow_Engine_MS [jar]">
+    <configuration name="Fluid_Analyser_MS [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Fluid_Analyser_MS" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Workflow_Engine_MS [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Workflow_Engine_MS" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Workflow_Engine_MS [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Workflow_Engine_MS" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Workflow_Engine_MS [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Workflow_Engine_MS" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="Workflow_Engine_MS [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -159,6 +261,8 @@
     </configuration>
     <configuration name="BackendForFrontendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-18" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="BackendForFrontend.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.backendforfrontend.BackendForFrontendApplication" />
       <extension name="coverage">
@@ -173,6 +277,8 @@
     </configuration>
     <configuration name="CoolingSystemsAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ACTIVE_PROFILES" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-18" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="CoolingSystems_Analyser_MS.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.CoolingSystems_Analyser_MS.CoolingSystemsAnalyserMsApplication" />
       <extension name="coverage">
@@ -187,7 +293,7 @@
     </configuration>
     <configuration name="FluidAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" />
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-18" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="Fluid_Analyser_MS.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Fluid_Analyser_MS.FluidAnalyserMsApplication" />
@@ -196,6 +302,9 @@
       </method>
     </configuration>
     <configuration name="PowerTransmissionElementsAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-18" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="PowerTransmissionElements_Analyser_MS.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.PowerTransmissionElements_Analyser_MS.PowerTransmissionElementsAnalyserMsApplication" />
       <extension name="coverage">
@@ -210,7 +319,7 @@
     </configuration>
     <configuration name="StartingElementsAnalyserMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ACTIVE_PROFILES" />
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-18" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="StartingElements_Analyser_MS.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.StartingElments_Analyser_MS.StartingElementsAnalyserMsApplication" />
@@ -226,6 +335,8 @@
     </configuration>
     <configuration name="WorkflowEngineMsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-18" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="Workflow_Engine_MS.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.Workflow_Engine.WorkflowEngineMsApplication" />
       <method v="2">
@@ -233,6 +344,10 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.Fluid_Analyser_MS [jar]" />
+      <item itemvalue="Gradle.Workflow_Engine_MS [bootJar]" />
+      <item itemvalue="Gradle.Workflow_Engine_MS [buildDependents]" />
+      <item itemvalue="Gradle.Workflow_Engine_MS [build]" />
       <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
       <item itemvalue="Spring Boot.CoolingSystemsAnalyserMsApplication" />
       <item itemvalue="Spring Boot.PowerTransmissionElementsAnalyserMsApplication" />
@@ -244,6 +359,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
+        <item itemvalue="Gradle.Workflow_Engine_MS [buildDependents]" />
+        <item itemvalue="Gradle.Workflow_Engine_MS [build]" />
+        <item itemvalue="Gradle.Workflow_Engine_MS [bootJar]" />
+        <item itemvalue="Gradle.Fluid_Analyser_MS [jar]" />
       </list>
     </recent_temporary>
   </component>
@@ -286,6 +405,8 @@
       <workItem from="1661599793653" duration="5113000" />
       <workItem from="1661751709387" duration="5272000" />
       <workItem from="1661768400518" duration="300000" />
+      <workItem from="1662121111334" duration="72000" />
+      <workItem from="1662367622683" duration="2634000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -364,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660905076068</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Für die Statusabfragen wurde der BFF angepasst.">
+      <created>1661964975504</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1661964975504</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,7 +533,8 @@
     <MESSAGE value="Die Kafka-Topics und Listener wurden für die Algorithmen-MS angepasst, damit diese mit der Workflow-Engine übereinstimmen." />
     <MESSAGE value="Die Verarbeitung der JSON-Daten wurde angepasst, damit diese bei allen Microservices einheitlich ist." />
     <MESSAGE value="Die Rückgabe des Fluid-MS wurde angepasst, sodass nun Float-Werte zurückgegeben werden." />
-    <option name="LAST_COMMIT_MESSAGE" value="Die Rückgabe des Fluid-MS wurde angepasst, sodass nun Float-Werte zurückgegeben werden." />
+    <MESSAGE value="Für die Statusabfragen wurde der BFF angepasst." />
+    <option name="LAST_COMMIT_MESSAGE" value="Für die Statusabfragen wurde der BFF angepasst." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
