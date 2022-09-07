@@ -5,14 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BackendForFrontend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaTopicConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docker/compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker/compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaTopicConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +78,27 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="BackendForFrontend" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="CoolingSystems_Analyser_MS" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="CoolingSystems_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="CoolingSystems_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="CoolingSystems_Analyser_MS" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -153,53 +186,11 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Workflow_Engine_MS [jar]">
-    <configuration name="Fluid_Analyser_MS [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.CoolingSystems_Analyser_MS [build]">
+    <configuration name="CoolingSystems_Analyser_MS [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/Fluid_Analyser_MS" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jar" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Workflow_Engine_MS [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/Workflow_Engine_MS" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="bootJar" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Workflow_Engine_MS [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/Workflow_Engine_MS" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -217,10 +208,31 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Workflow_Engine_MS [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CoolingSystems_Analyser_MS [buildNeeded]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/Workflow_Engine_MS" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildNeeded" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CoolingSystems_Analyser_MS [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -238,10 +250,31 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Workflow_Engine_MS [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CoolingSystems_Analyser_MS [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/Workflow_Engine_MS" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CoolingSystems_Analyser_MS [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -344,11 +377,11 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.Fluid_Analyser_MS [jar]" />
-      <item itemvalue="Gradle.Workflow_Engine_MS [bootJar]" />
-      <item itemvalue="Gradle.Workflow_Engine_MS [buildDependents]" />
-      <item itemvalue="Gradle.Workflow_Engine_MS [build]" />
-      <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
+      <item itemvalue="Gradle.CoolingSystems_Analyser_MS [buildDependents]" />
+      <item itemvalue="Gradle.CoolingSystems_Analyser_MS [buildNeeded]" />
+      <item itemvalue="Gradle.CoolingSystems_Analyser_MS [build]" />
+      <item itemvalue="Gradle.CoolingSystems_Analyser_MS [clean]" />
+      <item itemvalue="Gradle.CoolingSystems_Analyser_MS [jar]" />
       <item itemvalue="Spring Boot.CoolingSystemsAnalyserMsApplication" />
       <item itemvalue="Spring Boot.PowerTransmissionElementsAnalyserMsApplication" />
       <item itemvalue="Spring Boot.WorkflowEngineMsApplication" />
@@ -358,11 +391,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Workflow_Engine_MS [jar]" />
-        <item itemvalue="Gradle.Workflow_Engine_MS [buildDependents]" />
-        <item itemvalue="Gradle.Workflow_Engine_MS [build]" />
-        <item itemvalue="Gradle.Workflow_Engine_MS [bootJar]" />
-        <item itemvalue="Gradle.Fluid_Analyser_MS [jar]" />
+        <item itemvalue="Gradle.CoolingSystems_Analyser_MS [build]" />
+        <item itemvalue="Gradle.CoolingSystems_Analyser_MS [jar]" />
+        <item itemvalue="Gradle.CoolingSystems_Analyser_MS [clean]" />
+        <item itemvalue="Gradle.CoolingSystems_Analyser_MS [buildNeeded]" />
+        <item itemvalue="Gradle.CoolingSystems_Analyser_MS [buildDependents]" />
       </list>
     </recent_temporary>
   </component>
@@ -406,7 +439,10 @@
       <workItem from="1661751709387" duration="5272000" />
       <workItem from="1661768400518" duration="300000" />
       <workItem from="1662121111334" duration="72000" />
-      <workItem from="1662367622683" duration="2634000" />
+      <workItem from="1662367622683" duration="2742000" />
+      <workItem from="1662473835912" duration="2921000" />
+      <workItem from="1662561472443" duration="192000" />
+      <workItem from="1662562568998" duration="3956000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -492,7 +528,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661964975504</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Die Dockerfiles wurden angepasst.">
+      <created>1662370741600</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1662370741600</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +577,8 @@
     <MESSAGE value="Die Verarbeitung der JSON-Daten wurde angepasst, damit diese bei allen Microservices einheitlich ist." />
     <MESSAGE value="Die Rückgabe des Fluid-MS wurde angepasst, sodass nun Float-Werte zurückgegeben werden." />
     <MESSAGE value="Für die Statusabfragen wurde der BFF angepasst." />
-    <option name="LAST_COMMIT_MESSAGE" value="Für die Statusabfragen wurde der BFF angepasst." />
+    <MESSAGE value="Die Dockerfiles wurden angepasst." />
+    <option name="LAST_COMMIT_MESSAGE" value="Die Dockerfiles wurden angepasst." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
