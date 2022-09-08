@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import {Coolingsystem_config, Fluidsystem_config, Powertransmissionsystem_config, Startingsystem_config} from "../../Interfaces"
 import {HTTPBackendCommunicationService} from "../../Services/httpbackend-communication.service";
@@ -10,6 +10,9 @@ import {HTTPBackendCommunicationService} from "../../Services/httpbackend-commun
   styleUrls: ['./motor-config.component.css']
 })
 export class MotorConfigComponent {
+
+  @Output() signalDone = new EventEmitter<number>();
+
 
   Coolingsystem_config : Coolingsystem_config = {
     oil_system: ['', 'basic', 'performance', 'supreme'],
@@ -60,8 +63,6 @@ export class MotorConfigComponent {
   constructor(private bffcommunicator: HTTPBackendCommunicationService, private fb: FormBuilder){
   }
 
-  ngOnInit() {}
-
   saveForm(){
     if (this.MotorConfigForm.valid){
       let data = {
@@ -78,7 +79,12 @@ export class MotorConfigComponent {
         engine_management_system : this.MotorConfigForm.value.startingsystem?.engine_management_system
       };
       this.bffcommunicator.send_Motorconfig(data).subscribe()
+
     }
   }
 
+  switchState() {
+    //this.saveForm();
+    this.signalDone.emit(1);
+  }
 }

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { MotorConfigComponent } from './Components/motor-config/motor-config.component';
-import { AnalysersOverviewComponent } from './Components/analysers-overview/analysers-overview.component';
+import {AnalysersOverviewComponent} from './Components/analysers-overview/analysers-overview.component';
 import { MotorFinishedComponent } from './Components/motor-finished/motor-finished.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
