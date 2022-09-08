@@ -44,6 +44,9 @@ public class FluidAnalyserController {
     @Autowired
     private ApplicationContext appContext;
 
+    @GetMapping(path="/status")
+    public String getStatus(){ return status;}
+
     @GetMapping("sendKafkaMessage/{message}")
     public HttpStatus sendKafkaMessage(@PathVariable String message){
         sendMessage(message);

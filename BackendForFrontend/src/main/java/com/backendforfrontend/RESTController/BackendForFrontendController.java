@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
@@ -168,6 +169,38 @@ public class BackendForFrontendController {
         {
             System.out.println(ex);
         }
+    }
+
+    @GetMapping(path="/getFluidsystemStatus")
+    public String getFluidsystemStatus()
+    {
+        final String uri = "http://localhost:8081/status";
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(uri, String.class);
+    }
+
+    @GetMapping(path="/getPowertransmissionsystemStatus")
+    public String getPowertransmissionsystemStatus()
+    {
+        final String uri = "http://localhost:8082/status";
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(uri, String.class);
+    }
+
+    @GetMapping(path="/getCoolingsystemStatus")
+    public String getCoolingsystemStatus()
+    {
+        final String uri = "http://localhost:8080/status";
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(uri, String.class);
+    }
+
+    @GetMapping(path="/getStartingsystemStatus")
+    public String getStartingsystemStatus()
+    {
+        final String uri = "http://localhost:8083/status";
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(uri, String.class);
     }
 
     @PostMapping(path="/getAnalyzerStatus")

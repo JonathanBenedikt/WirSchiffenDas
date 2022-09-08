@@ -60,6 +60,8 @@ public class StartingElementsAnalyserController {
         }
     }
 
+    @GetMapping(path="/status")
+    public String getStatus(){ return status;}
     @GetMapping(path="/information")
     public String showInfo() {return "Name: StartingElements-Analyser\nType: Microservice\nVersion: 1.0.0";}
 

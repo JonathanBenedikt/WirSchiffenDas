@@ -67,6 +67,8 @@ public class CoolingSystemsAnalyserController {
                 }
         }
 
+        @GetMapping(path="/status")
+        public String getStatus(){ return status;}
         @GetMapping(path="/information")
         public String showInfo() {return "Name: CoolingSystem-Analyser\nType: Microservice\nVersion: 1.0.0";}
 
