@@ -6,25 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/KafkaTopicConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docker/compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker/compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/KafkaTopicConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -442,7 +423,7 @@
       <workItem from="1662367622683" duration="2742000" />
       <workItem from="1662473835912" duration="2921000" />
       <workItem from="1662561472443" duration="192000" />
-      <workItem from="1662562568998" duration="3956000" />
+      <workItem from="1662562568998" duration="4395000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -535,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662370741600</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Die Docker-Compose wurde angepasst, damit alle Microservices zusammen in Docker bereitgestellt werden können.">
+      <created>1662566952406</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1662566952406</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,7 +566,8 @@
     <MESSAGE value="Die Rückgabe des Fluid-MS wurde angepasst, sodass nun Float-Werte zurückgegeben werden." />
     <MESSAGE value="Für die Statusabfragen wurde der BFF angepasst." />
     <MESSAGE value="Die Dockerfiles wurden angepasst." />
-    <option name="LAST_COMMIT_MESSAGE" value="Die Dockerfiles wurden angepasst." />
+    <MESSAGE value="Die Docker-Compose wurde angepasst, damit alle Microservices zusammen in Docker bereitgestellt werden können." />
+    <option name="LAST_COMMIT_MESSAGE" value="Die Docker-Compose wurde angepasst, damit alle Microservices zusammen in Docker bereitgestellt werden können." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
