@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HTTPBackendCommunicationService} from '../../Services/httpbackend-communication.service';
 
 @Component({
@@ -7,6 +7,8 @@ import {HTTPBackendCommunicationService} from '../../Services/httpbackend-commun
   styleUrls: ['./analysers-overview.component.css']
 })
 export class AnalysersOverviewComponent implements OnInit {
+
+  @Output() signalDone = new EventEmitter<number>();
 
   displayedColumns: string[] = ['Analyser', 'Status', 'RefreshStatus', 'StopStart', 'Restart'];
   AnalyserData = [
@@ -19,6 +21,7 @@ export class AnalysersOverviewComponent implements OnInit {
   constructor(private backendcommunication : HTTPBackendCommunicationService) { }
 
   ngOnInit(): void {
+    //todo kann hier dann die Analysedaten ziehen!
   }
 
   refresh_status(analysername : string){
@@ -55,9 +58,10 @@ export class AnalysersOverviewComponent implements OnInit {
 
   get_simulationresults() {
     if(this.AnalyserData.every((row) => {row.Status === "finsihed"})){
-      this.backendcommunication.get_Simulationresults().subscribe() //todo hier einfach nur die flag setzen, dass andere Komponente get_Simulationresults zeigen kann
-    } else {
-
+      this.signalDone.emit(2);
+    } else
+      this.signalDone.emit(2); //Todo loeschen wenn getestet
+    //todo popup das noch nicht ready
     }
-  }
 }
+
