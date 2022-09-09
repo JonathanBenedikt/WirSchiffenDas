@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
+    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Es wurden Methoden für die einzelnen Status-Abfragen der Algorithmen-MS hinzugefügt.">
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/StatusRequestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendForFrontend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/KafkaTopicConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +65,29 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="BackendForFrontend" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="BackendForFrontend" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="BackendForFrontend" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="BackendForFrontend" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="BackendForFrontend" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -175,11 +196,11 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CoolingSystemsAnalyserMsApplication">
-    <configuration name="CoolingSystems_Analyser_MS [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Spring Boot.BackendForFrontendApplication">
+    <configuration name="BackendForFrontend [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/BackendForFrontend" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -187,7 +208,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="buildDependents" />
+            <option value="bootJar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -366,7 +387,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.CoolingSystems_Analyser_MS [buildDependents]" />
+      <item itemvalue="Gradle.BackendForFrontend [bootJar]" />
       <item itemvalue="Gradle.CoolingSystems_Analyser_MS [buildNeeded]" />
       <item itemvalue="Gradle.CoolingSystems_Analyser_MS [build]" />
       <item itemvalue="Gradle.CoolingSystems_Analyser_MS [clean]" />
@@ -380,11 +401,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.BackendForFrontend [bootJar]" />
         <item itemvalue="Gradle.CoolingSystems_Analyser_MS [build]" />
         <item itemvalue="Gradle.CoolingSystems_Analyser_MS [jar]" />
         <item itemvalue="Gradle.CoolingSystems_Analyser_MS [clean]" />
         <item itemvalue="Gradle.CoolingSystems_Analyser_MS [buildNeeded]" />
-        <item itemvalue="Gradle.CoolingSystems_Analyser_MS [buildDependents]" />
       </list>
     </recent_temporary>
   </component>
@@ -432,7 +453,8 @@
       <workItem from="1662473835912" duration="2921000" />
       <workItem from="1662561472443" duration="192000" />
       <workItem from="1662562568998" duration="4395000" />
-      <workItem from="1662646877998" duration="1799000" />
+      <workItem from="1662646877998" duration="2216000" />
+      <workItem from="1662739816090" duration="6150000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -539,7 +561,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662647102473</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Es wurden Methoden für die einzelnen Status-Abfragen der Algorithmen-MS hinzugefügt.">
+      <created>1662650531331</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1662650531332</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -584,7 +613,8 @@
     <MESSAGE value="Die Dockerfiles wurden angepasst." />
     <MESSAGE value="Die Docker-Compose wurde angepasst, damit alle Microservices zusammen in Docker bereitgestellt werden können." />
     <MESSAGE value="Die lokalen Gradle-Dateien wurden ergänzt." />
-    <option name="LAST_COMMIT_MESSAGE" value="Die lokalen Gradle-Dateien wurden ergänzt." />
+    <MESSAGE value="Es wurden Methoden für die einzelnen Status-Abfragen der Algorithmen-MS hinzugefügt." />
+    <option name="LAST_COMMIT_MESSAGE" value="Es wurden Methoden für die einzelnen Status-Abfragen der Algorithmen-MS hinzugefügt." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -593,6 +623,16 @@
           <url>file://$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/WorkflowController.java</url>
           <line>36</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/StatusRequestService.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java</url>
+          <line>198</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -10,9 +10,15 @@ sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
+    maven { url 'https://oss.jfrog.org/artifactory/oss-snapshot-local/' }
 }
 
 dependencies {
+    implementation 'org.springframework:spring-aspects:3.2.4.RELEASE'
+    implementation 'io.github.resilience4j:resilience4j-circuitbreaker:1.7.1'
+    implementation 'io.github.resilience4j:resilience4j-retry:1.7.1'
+    implementation 'io.github.resilience4j:resilience4j-annotations:1.7.1'
+    implementation 'io.github.resilience4j:resilience4j-circuitbreaker:1.7.1'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.kafka:spring-kafka'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

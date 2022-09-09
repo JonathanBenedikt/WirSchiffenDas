@@ -1,4 +1,13 @@
 package com.backendforfrontend.RESTController;
+
+
+
+
+import com.backendforfrontend.StatusRequestService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.Retry;
+import io.github.resilience4j.retry.RetryConfig;
+import io.github.resilience4j.retry.RetryRegistry;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +19,10 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.function.Supplier;
 
 @RestController
 public class BackendForFrontendController {
@@ -171,13 +183,22 @@ public class BackendForFrontendController {
         }
     }
 
+
     @GetMapping(path="/getFluidsystemStatus")
     public String getFluidsystemStatus()
     {
-        final String uri = "http://localhost:8081/status";
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(uri, String.class);
+
+        StatusRequestService requestService = new StatusRequestService("http://localhost:8081/status");
+        RetryConfig config = RetryConfig.custom().maxAttempts(10).waitDuration(Duration.of(2, ChronoUnit.SECONDS)).build();
+        RetryRegistry registry = RetryRegistry.of(config);
+        Retry retry = registry.retry("requestServiceRetry");
+        Supplier<String> statusRequest = () -> requestService.fetchStatus();
+        Supplier<String> retryingStatusRequest = Retry.decorateSupplier(retry,statusRequest);
+        return retryingStatusRequest.get();
+
     }
+
+
 
     @GetMapping(path="/getPowertransmissionsystemStatus")
     public String getPowertransmissionsystemStatus()
