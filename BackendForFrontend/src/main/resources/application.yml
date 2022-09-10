@@ -1,5 +1,5 @@
 resilience4j.retry:
   instances:
-    statusRequestRetry:
-      maxRetryAttempts: 3
-      waitDuration: 110000
+    fetchStatusRetry:
+      maxRetryAttempts: 5
+      waitDuration: 2s

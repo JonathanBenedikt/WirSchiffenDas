@@ -1,10 +1,9 @@
 package com.backendforfrontend.RESTController;
 
-
-
-
 import com.backendforfrontend.StatusRequestService;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.retry.RetryConfig;
 import io.github.resilience4j.retry.RetryRegistry;
@@ -34,9 +33,20 @@ public class BackendForFrontendController {
 
     private static Map<String, ArrayList<AnalyserStatus>> analysisMapper;
 
+    private CircuitBreaker fluidCircuitBreaker;
+    private CircuitBreaker powerCircuitBreaker;
+    private CircuitBreaker coolingCircuitBreaker;
+    private CircuitBreaker startingCircuitBreaker;
+
     public BackendForFrontendController()
     {
-       analysisMapper = new HashMap<String, ArrayList<AnalyserStatus>>();
+        CircuitBreakerConfig config = CircuitBreakerConfig.custom().slidingWindowType(CircuitBreakerConfig.SlidingWindowType.COUNT_BASED).slidingWindowSize(10).failureRateThreshold(70.0f).build();
+        CircuitBreakerRegistry registry = CircuitBreakerRegistry.of(config);
+        fluidCircuitBreaker = registry.circuitBreaker("fluidStatusService");
+        powerCircuitBreaker = registry.circuitBreaker("powerStatusService");
+        coolingCircuitBreaker = registry.circuitBreaker("coolingStatusService");
+        startingCircuitBreaker = registry.circuitBreaker("startingStatusService");
+        analysisMapper = new HashMap<String, ArrayList<AnalyserStatus>>();
     }
 
     public void setAnalysisStatus(String id, String analyserName, String currentStatus)
@@ -187,7 +197,7 @@ public class BackendForFrontendController {
     @GetMapping(path="/getFluidsystemStatus")
     public String getFluidsystemStatus()
     {
-
+        /*
         StatusRequestService requestService = new StatusRequestService("http://localhost:8081/status");
         RetryConfig config = RetryConfig.custom().maxAttempts(10).waitDuration(Duration.of(2, ChronoUnit.SECONDS)).build();
         RetryRegistry registry = RetryRegistry.of(config);
@@ -195,7 +205,11 @@ public class BackendForFrontendController {
         Supplier<String> statusRequest = () -> requestService.fetchStatus();
         Supplier<String> retryingStatusRequest = Retry.decorateSupplier(retry,statusRequest);
         return retryingStatusRequest.get();
-
+        */
+        StatusRequestService requestService = new StatusRequestService("http://localhost:8081/status");
+        Supplier<String> statusSupplier = () -> requestService.fetchStatus();
+        Supplier<String> decoratedStatusSupplier = fluidCircuitBreaker.decorateSupplier(statusSupplier);
+        return decoratedStatusSupplier.get();
     }
 
 
@@ -203,25 +217,28 @@ public class BackendForFrontendController {
     @GetMapping(path="/getPowertransmissionsystemStatus")
     public String getPowertransmissionsystemStatus()
     {
-        final String uri = "http://localhost:8082/status";
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(uri, String.class);
+        StatusRequestService requestService = new StatusRequestService("http://localhost:8082/status");
+        Supplier<String> statusSupplier = () -> requestService.fetchStatus();
+        Supplier<String> decoratedStatusSupplier = powerCircuitBreaker.decorateSupplier(statusSupplier);
+        return decoratedStatusSupplier.get();
     }
 
     @GetMapping(path="/getCoolingsystemStatus")
     public String getCoolingsystemStatus()
     {
-        final String uri = "http://localhost:8080/status";
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(uri, String.class);
+        StatusRequestService requestService = new StatusRequestService("http://localhost:8080/status");
+        Supplier<String> statusSupplier = () -> requestService.fetchStatus();
+        Supplier<String> decoratedStatusSupplier = coolingCircuitBreaker.decorateSupplier(statusSupplier);
+        return decoratedStatusSupplier.get();
     }
 
     @GetMapping(path="/getStartingsystemStatus")
     public String getStartingsystemStatus()
     {
-        final String uri = "http://localhost:8083/status";
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(uri, String.class);
+        StatusRequestService requestService = new StatusRequestService("http://localhost:8083/status");
+        Supplier<String> statusSupplier = () -> requestService.fetchStatus();
+        Supplier<String> decoratedStatusSupplier = startingCircuitBreaker.decorateSupplier(statusSupplier);
+        return decoratedStatusSupplier.get();
     }
 
     @PostMapping(path="/getAnalyzerStatus")
