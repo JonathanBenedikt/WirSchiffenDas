@@ -4,9 +4,7 @@ import com.backendforfrontend.StatusRequestService;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import io.github.resilience4j.retry.Retry;
-import io.github.resilience4j.retry.RetryConfig;
-import io.github.resilience4j.retry.RetryRegistry;
+import io.github.resilience4j.decorators.Decorators;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.web.client.RestTemplate;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 @RestController
@@ -37,6 +33,11 @@ public class BackendForFrontendController {
     private CircuitBreaker powerCircuitBreaker;
     private CircuitBreaker coolingCircuitBreaker;
     private CircuitBreaker startingCircuitBreaker;
+
+    private static String lastFluidReponse;
+    private static String lastPowerRepsonse;
+    private static String lastCoolingResponse;
+    private static String lastStartingResponse;
 
     public BackendForFrontendController()
     {
@@ -208,8 +209,14 @@ public class BackendForFrontendController {
         */
         StatusRequestService requestService = new StatusRequestService("http://localhost:8081/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
-        Supplier<String> decoratedStatusSupplier = fluidCircuitBreaker.decorateSupplier(statusSupplier);
+        Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(fluidCircuitBreaker).withFallback( e -> this.getFluidsystemFallback()).decorate();
         return decoratedStatusSupplier.get();
+
+    }
+
+    public String getFluidsystemFallback()
+    {
+        return "The Fluidsystem-Analyser is unreachable. The last good response was "+lastFluidReponse;
     }
 
 
@@ -219,8 +226,13 @@ public class BackendForFrontendController {
     {
         StatusRequestService requestService = new StatusRequestService("http://localhost:8082/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
-        Supplier<String> decoratedStatusSupplier = powerCircuitBreaker.decorateSupplier(statusSupplier);
+        Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(powerCircuitBreaker).withFallback( e -> this.getPowerTransmissionsystemFallback()).decorate();
         return decoratedStatusSupplier.get();
+    }
+
+    public String getPowerTransmissionsystemFallback()
+    {
+        return "The PowerTransmissionsystem-Analyser is unreachable. The last good response was "+lastPowerRepsonse;
     }
 
     @GetMapping(path="/getCoolingsystemStatus")
@@ -228,8 +240,13 @@ public class BackendForFrontendController {
     {
         StatusRequestService requestService = new StatusRequestService("http://localhost:8080/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
-        Supplier<String> decoratedStatusSupplier = coolingCircuitBreaker.decorateSupplier(statusSupplier);
+        Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(coolingCircuitBreaker).withFallback( e -> this.getCoolingsystemFallback()).decorate();
         return decoratedStatusSupplier.get();
+    }
+
+    public String getCoolingsystemFallback()
+    {
+        return "The Coolingsystem-Analyser is unreachable. The last good response was "+lastCoolingResponse;
     }
 
     @GetMapping(path="/getStartingsystemStatus")
@@ -237,8 +254,13 @@ public class BackendForFrontendController {
     {
         StatusRequestService requestService = new StatusRequestService("http://localhost:8083/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
-        Supplier<String> decoratedStatusSupplier = startingCircuitBreaker.decorateSupplier(statusSupplier);
+        Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(startingCircuitBreaker).withFallback( e -> this.getStartingsystemFallback()).decorate();
         return decoratedStatusSupplier.get();
+    }
+
+    public String getStartingsystemFallback()
+    {
+        return "The Startingsystem-Analyser is unreachable. The last good response was "+lastStartingResponse;
     }
 
     @PostMapping(path="/getAnalyzerStatus")
