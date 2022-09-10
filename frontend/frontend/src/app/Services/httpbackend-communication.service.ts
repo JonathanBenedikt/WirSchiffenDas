@@ -27,16 +27,20 @@ export class HTTPBackendCommunicationService {
       );
   }
 
-  get_Simulationresults(){
-    return this.http.get<Simulationresults[]>(this.baseurl+'/simulation_results').pipe(
-      catchError(this.handleError)
-    );
-  }
-
   get_Analyserstatus(analysername : string) : Observable<string>{
-    return this.http.post<string>(this.baseurl+'/getAnalyzerStatus', {Analysername : analysername}, httpOptions).pipe(
-      catchError(this.handleError)
-    ); //todo post
+    let path = "";
+    if(analysername=="Coolingsystem"){
+      path ="getCoolingsystemStatus"
+    } else if(analysername=="Fluidsystem"){
+      path = "getFluidsystemStatus"
+    } else if(analysername=="Powertransmissionsystem"){
+      path="getPowertransmissionsystemStatus"
+    } else if(analysername=="Startingsystem"){
+      path="getStartingsystemStatus"
+    } else{
+      console.log(analysername + " is not known")
+    }
+    return this.http.get<string>(this.baseurl+path);
   }
 
   start_Analyser(analysername : string){
@@ -51,11 +55,12 @@ export class HTTPBackendCommunicationService {
     );
   }
 
-  restart(analysername : string){
-    return this.http.post(this.baseurl+'/restart_analyser', {'analysername' : analysername}, httpOptions).pipe(
+  get_Simulationresults(){
+    return this.http.get<Simulationresults[]>(this.baseurl+'/simulation_results').pipe(
       catchError(this.handleError)
-    );;
+    );
   }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

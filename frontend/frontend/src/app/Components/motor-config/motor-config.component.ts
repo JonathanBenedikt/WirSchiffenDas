@@ -79,12 +79,11 @@ export class MotorConfigComponent {
         engine_management_system : this.MotorConfigForm.value.startingsystem?.engine_management_system
       };
       this.bffcommunicator.send_Motorconfig(data).subscribe()
-
     }
   }
 
   switchState() {
-    //this.saveForm();
+    this.saveForm();
     this.signalDone.emit(1);
   }
 }

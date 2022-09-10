@@ -1,16 +1,19 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HTTPBackendCommunicationService} from '../../Services/httpbackend-communication.service';
+import {interval, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-analysers-overview',
   templateUrl: './analysers-overview.component.html',
   styleUrls: ['./analysers-overview.component.css']
 })
-export class AnalysersOverviewComponent implements OnInit {
-
+export class AnalysersOverviewComponent {
   @Output() signalDone = new EventEmitter<number>();
 
-  displayedColumns: string[] = ['Analyser', 'Status', 'RefreshStatus', 'StopStart', 'Restart'];
+  period$ = interval(30000).subscribe();
+
+
+  displayedColumns: string[] = ['Analyser', 'Status', 'RefreshStatus', 'StopStart'];
   AnalyserData = [
     {Analyser : "Coolingsystem", Status : 'Running', Checked : true},
     {Analyser : "Fluidsystem", Status : "Running", Checked : true},
@@ -18,33 +21,27 @@ export class AnalysersOverviewComponent implements OnInit {
     {Analyser : "Startingsystem", Status : "Running", Checked : true},
   ];
 
-  constructor(private backendcommunication : HTTPBackendCommunicationService) { }
+  constructor(private backendcommunication : HTTPBackendCommunicationService) {}
 
-  ngOnInit(): void {
-    //todo kann hier dann die Analysedaten ziehen!
-  }
 
-  refresh_status(analysername : string){
-    this.backendcommunication.get_Analyserstatus(analysername).subscribe(
-      (currentStatus) => {
-        let spezRow = this.AnalyserData.find((obj) => {obj.Analyser === analysername})
-        if(spezRow === undefined){
-          throw new Error("No fitting rowname");
-        } else {
-          spezRow.Status = currentStatus;
-        }
-      }
-    )
-  }
+   refresh_status(analysername : string){
+     let spezRow = this.AnalyserData.find(obj => obj.Analyser === analysername)
+     if(spezRow === undefined){
+       console.log("No fitting rowname");
+       return;
+     } else {
+       spezRow.Status = "Pending";
+       this.backendcommunication.get_Analyserstatus(analysername).subscribe(
+         (currentStatus) => {
+           spezRow !== undefined ? spezRow.Status = currentStatus : undefined;
+         }
+       )
+     }
+   }
 
-  restart_analyser(analysername : string){
-    this.backendcommunication.restart(analysername).subscribe();
-  }
 
   toggle_analyser(analysername : string){
-    let row = this.AnalyserData.find((row) => {
-      row.Analyser === analysername
-    });
+    let row = this.AnalyserData.find(row => row.Analyser === analysername);
     if(row === undefined){
       throw new Error("No fitting Rowname")
     } else {
