@@ -5,15 +5,6 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/BackenForFrontend" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/BackenForFrontend" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/BackendForFrontend" />
         <option name="modules">
           <set>

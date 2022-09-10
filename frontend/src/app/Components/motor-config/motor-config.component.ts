@@ -51,7 +51,7 @@ export class MotorConfigComponent {
       resilient_mounts: [''],
       bluevision: [''],
       torsionally_resilient_coupling: [''],
-      gearbox_options: ['']
+      gearbox_options: [['']]
     }),
     startingsystem: this.fb.group({
       air_starter: [''],
@@ -68,17 +68,20 @@ export class MotorConfigComponent {
       let data = {
         oil_system: this.MotorConfigForm.value.coolingsystem?.oil_system,
         cooling_system: this.MotorConfigForm.value.coolingsystem?.cooling_system,
+
         fuel_system : this.MotorConfigForm.value.fluidsystem?.fuel_system,
         exhaust_system : this.MotorConfigForm.value.fluidsystem?.exhaust_system,
-        bluevision : this.MotorConfigForm.value.powertransmissionsystem?.bluevision,
-        gearbox_options : this.MotorConfigForm.value.powertransmissionsystem?.gearbox_options,
+
         resilient_mounts : this.MotorConfigForm.value.powertransmissionsystem?.resilient_mounts,
+        bluevision : this.MotorConfigForm.value.powertransmissionsystem?.bluevision,
         torsionally_resilient_coupling : this.MotorConfigForm.value.powertransmissionsystem?.torsionally_resilient_coupling,
+        gearbox_options : this.MotorConfigForm.value.powertransmissionsystem?.gearbox_options,
+
         air_starter : this.MotorConfigForm.value.startingsystem?.air_starter,
         auxiliary_PTO : this.MotorConfigForm.value.startingsystem?.auxiliary_PTO,
         engine_management_system : this.MotorConfigForm.value.startingsystem?.engine_management_system
       };
-      this.bffcommunicator.send_Motorconfig(data).subscribe()
+      this.bffcommunicator.send_Motorconfig(data).subscribe();
     }
   }
 
