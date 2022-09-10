@@ -11,9 +11,10 @@ public class StatusRequestService {
     }
     String url;
 
-    @Retry(name="statusRequestRetry",fallbackMethod = "statusRequestFallback")
+    @Retry(name="fetchStatusRetry")
     public String fetchStatus()
     {
+        System.out.println("Aufruf von fetchStatus");
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(url, String.class);
     }
