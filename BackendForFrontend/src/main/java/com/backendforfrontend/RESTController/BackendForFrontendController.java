@@ -370,7 +370,7 @@ public class BackendForFrontendController {
 
             HashMap startingMap = new HashMap();
             startingMap.put("id",id);
-            startingMap.put("name","Maria Kosovo");
+            startingMap.put("configdata",configData);
             this.kafkaTemplate.send(new ProducerRecord<>("wf_bff", "BFF_AnalysisStartingRequest", startingMap));
 
             while(!checkAllAnalyserFinished(analyserStatusList))

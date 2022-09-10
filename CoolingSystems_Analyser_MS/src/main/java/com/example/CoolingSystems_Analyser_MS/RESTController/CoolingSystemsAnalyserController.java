@@ -43,11 +43,14 @@ public class CoolingSystemsAnalyserController {
                 try {
                         String recordKey = record.key().toString();
 
-                        if (recordKey.equals("BFF_Starts_Coolingsystem_Analysis")) {
+                        if (recordKey.equals("WF_Starts_Coolingsystemelements_Analysis")) {
+
                                 HashMap startMap = (HashMap)record.value();
                                 String id = (String)startMap.get("id");
-                                String name = (String)startMap.get("name");
-                                performAnalysis(id,name);
+                                CoolingSystemInformation coolingdata = new CoolingSystemInformation();
+                                coolingdata.oilsystem = (String)startMap.get("oil_system");
+                                coolingdata.coolingsystem = (String)startMap.get("cooling_system");
+                                performAnalysis(id,coolingdata);
 
                         } else if (recordKey.equals("Analyser_Finished")) {
                                 HashMap resultMap = (HashMap) record.value();
@@ -81,7 +84,7 @@ public class CoolingSystemsAnalyserController {
         public ResponseEntity<Map> getData(@RequestBody CoolingSystemInformation providedCoolingInfos){
                 try {
                         List<CoolingSystemInformation> coolingDataList = Collections.singletonList(providedCoolingInfos);
-                        Map analysisResult = performAnalysis(coolingDataList.get(0).id, coolingDataList.get(0).name);
+                        Map analysisResult = performAnalysis(coolingDataList.get(0).id, coolingDataList.get(0));
                         return ResponseEntity.ok(analysisResult);
                 }catch (Exception ex){
                         System.out.println(ex);
@@ -90,24 +93,26 @@ public class CoolingSystemsAnalyserController {
         }
 
 
-        private Map createAnalysisValues(String id, String name){
+        private Map createAnalysisValues(String id, CoolingSystemInformation data){
                 Random rand = new Random();
                 Map analysisValuesMap = new HashMap();
                 analysisValuesMap.put("id",id);
-                analysisValuesMap.put("name",name);
-                analysisValuesMap.put("coolingsystem",(rand.nextFloat() * (100 - 1) + 1));
-                analysisValuesMap.put("oilsystem",(rand.nextFloat() * (100 - 1) + 1));
+                if((data.coolingsystem != null) && (data.coolingsystem != ""))
+                        analysisValuesMap.put("coolingsystem",(rand.nextFloat() * (100 - 1) + 1));
+                if((data.oilsystem != null) && (data.oilsystem != ""))
+                        analysisValuesMap.put("oilsystem",(rand.nextFloat() * (100 - 1) + 1));
+
                 return analysisValuesMap;
         }
 
-        private Map performAnalysis(String id, String name)
+        private Map performAnalysis(String id, CoolingSystemInformation data)
         {
                 try{
 
                         kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Analyser_Starts_Analysis",null));
                         status = "Started";
                         TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-                        Map calculationResults = createAnalysisValues(id, name);
+                        Map calculationResults = createAnalysisValues(id, data);
                         status = "Finished";
                         kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Analyser_Finished",calculationResults));
                         return calculationResults;
