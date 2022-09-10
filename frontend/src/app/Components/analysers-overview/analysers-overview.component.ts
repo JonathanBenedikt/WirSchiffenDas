@@ -10,19 +10,32 @@ import {interval, Subscription} from "rxjs";
 export class AnalysersOverviewComponent {
   @Output() signalDone = new EventEmitter<number>();
 
-  period$ = interval(30000).subscribe();
+  interval: any;
 
+  ngOnInit() {
+    this.interval = setInterval(() => {
+      this.refreshStati();
+    }, 30000);
+  }
 
-  displayedColumns: string[] = ['Analyser', 'Status', 'RefreshStatus', 'StopStart'];
+  refreshStati(){
+    this.backendcommunication.get_all_Analyserstati().subscribe((stati) => {
+        for (let i = 0; i < this.AnalyserData.length; i++) {
+          this.AnalyserData[i].Status = stati[i];
+        }
+      }
+    );
+  }
+
+  displayedColumns: string[] = ['Analyser', 'Status', 'RefreshStatus', 'Retry'];
   AnalyserData = [
-    {Analyser : "Coolingsystem", Status : 'Running', Checked : true},
-    {Analyser : "Fluidsystem", Status : "Running", Checked : true},
-    {Analyser : "Powertransmissionsystem", Status : "Running", Checked : false},
-    {Analyser : "Startingsystem", Status : "Running", Checked : true},
+    {Analyser : "Coolingsystem", Status : 'Running'},
+    {Analyser : "Fluidsystem", Status : "Running"},
+    {Analyser : "Powertransmissionsystem", Status : "Running"},
+    {Analyser : "Startingsystem", Status : "Running"},
   ];
 
   constructor(private backendcommunication : HTTPBackendCommunicationService) {}
-
 
    refresh_status(analysername : string){
      let spezRow = this.AnalyserData.find(obj => obj.Analyser === analysername)
@@ -40,25 +53,28 @@ export class AnalysersOverviewComponent {
    }
 
 
-  toggle_analyser(analysername : string){
-    let row = this.AnalyserData.find(row => row.Analyser === analysername);
-    if(row === undefined){
-      throw new Error("No fitting Rowname")
-    } else {
-      if(row.Checked){
-        this.backendcommunication.start_Analyser(analysername).subscribe();
-      } else {
-        this.backendcommunication.stop_Analyser(analysername).subscribe();
-      }
-    }
-  }
+   retry(analysername : string){
+     let spezRow = this.AnalyserData.find(obj => obj.Analyser === analysername)
+     if(spezRow === undefined){
+       console.log("No fitting rowname");
+       return;
+     } else {
+       spezRow.Status = "Pending";
+       this.backendcommunication.retry(analysername).subscribe(
+         (currentStatus) => {
+           spezRow !== undefined ? spezRow.Status = currentStatus : undefined;
+         }
+       )
+     }
+   }
+
+
 
   get_simulationresults() {
     if(this.AnalyserData.every((row) => {row.Status === "finsihed"})){
       this.signalDone.emit(2);
-    } else
-      this.signalDone.emit(2); //Todo loeschen wenn getestet
-    //todo popup das noch nicht ready
+    } else {
     }
+  }
 }
 

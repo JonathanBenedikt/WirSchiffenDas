@@ -1,0 +1,42 @@
+{
+  "/startAnalysis": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/getCoolingsystemStatus": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/getFluidsystemStatus": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/getPowertransmissionsystemStatus": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/getStartingsystemStatus": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/retry_Analyser": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/simulation_results": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/getAllStatusresults": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

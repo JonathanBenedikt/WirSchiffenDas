@@ -19,11 +19,12 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="StopStart">
-      <th mat-header-cell *matHeaderCellDef> Stop/Start </th>
+    <ng-container matColumnDef="Retry">
+      <th mat-header-cell *matHeaderCellDef> Refresh</th>
       <td mat-cell *matCellDef="let element">
-        <mat-slide-toggle checked = {{element.Checked}} color="accent" (click)="toggle_analyser(element.Analyser)">
-        </mat-slide-toggle>
+        <button mat-mini-fab color="red" (click)="retry(element.Analyser)">
+          <mat-icon>Retry</mat-icon>
+        </button>
       </td>
     </ng-container>
 
