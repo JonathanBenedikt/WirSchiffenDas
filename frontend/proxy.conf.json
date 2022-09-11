@@ -34,7 +34,7 @@
     "secure": false,
     "logLevel": "debug"
   },
-  "/getAllStatusresults": {
+  "/getAllStati": {
     "target": "http://localhost:8582",
     "secure": false,
     "logLevel": "debug"

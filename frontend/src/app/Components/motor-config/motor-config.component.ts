@@ -87,6 +87,6 @@ export class MotorConfigComponent {
 
   switchState() {
     this.saveForm();
-    //this.signalDone.emit(1);
+    this.signalDone.emit(1);
   }
 }

@@ -1,52 +1,48 @@
 package com.Workflow_Engine;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
-//TODO Wir muessen wahrscheinlich Saga Pattern implementieren...
-//Allows communication between the internal Workflow, the Analyse-MS and the angular frontend
+
 @RestController
 public class WorkflowController {
     @Autowired
     KafkaTemplate<String, Map> kafkaJsontemplate;
-    String analyse_topic_name = "analyse";
 
-    private Motor motor;
+    Database Database = new Database();
 
+    //Testmethoden
+    @GetMapping("/get")
 
-    @Autowired
-    private MotorRepository motors;
 
 
     //----------------------------------------------------------------------------------------------------------------
     //BFF
 
 
-    @KafkaListener(topics = "wf_bff", groupId = "One") //group doesn't really matter atm
+    @KafkaListener(topics = "wf_bff", groupId = "Two")
     void wfbfflistener(ConsumerRecord<String, Map> record){
         try {
             String recordKey = record.key();
             if(recordKey.equals("BFF_AnalysisStartingRequest")){
-                HashMap resultMap = (HashMap) record.value();
-
-                LinkedHashMap configmap = (LinkedHashMap) resultMap.get("configdata");
-               Configdata configdata = createConfigData(configmap);
-
-
-                start_coolingsystemelements_analyser((String)resultMap.get("id"),configdata);
-                start_fluidsystemelements_analyser((String)resultMap.get("id"),configdata);
-                start_powertransmissionsystemelements_analyse((String)resultMap.get("id"),configdata);
-                start_startingsystemelements_analyser((String)resultMap.get("id"),configdata);
-
-
+                HashMap payload = (HashMap) record.value();
+                Configdata configdata = initialMessageToConfigdata(payload);
+                //Persistence
+                this.Database.save_new_workflow(configdata);
+                //starting der Analyser
+                start_coolingsystemelements_analyser(configdata);
+                start_fluidsystemelements_analyser(configdata);
+                start_powertransmissionsystemelements_analyse(configdata);
+                start_startingsystemelements_analyser(configdata);
             }
          /*   if (recordKey.equals("BFF_Passes_Configdata")) {
                 save_bff_configdata(record.value());
@@ -64,56 +60,50 @@ public class WorkflowController {
         }
     }
 
-    public Configdata createConfigData(LinkedHashMap map)
-    {
+    public Configdata initialMessageToConfigdata(HashMap data){
+        LinkedHashMap configmap = (LinkedHashMap) data.get("configdata");
+        String id = (String)data.get("id");
+        configmap.put("id", id);
         Gson gson = new Gson();
-        JsonElement jsonElement = gson.toJsonTree(map);
+        JsonElement jsonElement = gson.toJsonTree(configmap);
         Configdata config =  gson.fromJson(jsonElement, Configdata.class);
         return config;
     }
-    @PostMapping("/send_analysisresults")
-    public void send_analysisresults(@RequestParam(value="ID", defaultValue = "0") String ID) {
-        Motor m = findmotorbyID(ID);
 
-    }
-
-    private void save_bff_configdata(Map data){ //TODO write as type converter (?)
-        this.motor = new Diesel(data);
-        motors.save(motor);
-    }
-
+//    public Configdata createConfigData(LinkedHashMap map)
+//    {
+//        Gson gson = new Gson();
+//        JsonElement jsonElement = gson.toJsonTree(map);
+//        Configdata config =  gson.fromJson(jsonElement, Configdata.class);
+//        return config;
+//    }
+//
+//    public Configdata createConfigData(String id, LinkedHashMap map)
+//    {
+//        map.put("id", id);
+//        Gson gson = new Gson();
+//        JsonElement jsonElement = gson.toJsonTree(map);
+//        Configdata config =  gson.fromJson(jsonElement, Configdata.class);
+//        return config;
+//    }
 
     //Aggregation of Starting Methods
-    @PostMapping("/start_analysers")
-    public void start_analysers(@RequestParam(value = "ID", defaultValue = "") String ID,Configdata configdata){
-        start_coolingsystemelements_analyser(ID,configdata);
-        start_fluidsystemelements_analyser(ID, configdata);
-        start_powertransmissionsystemelements_analyse(ID, configdata);
-        start_startingsystemelements_analyser(ID, configdata);
-    }
+//    @PostMapping("/start_analysers")
+//    public void start_analysers(@RequestParam(value = "ID", defaultValue = "") String ID,Configdata configdata){
+//        start_coolingsystemelements_analyser(ID,configdata);
+//        start_fluidsystemelements_analyser(ID, configdata);
+//        start_powertransmissionsystemelements_analyse(ID, configdata);
+//        start_startingsystemelements_analyser(ID, configdata);
+//    }
 
-    //Aggregation of Restarting Methods (maybe not necessary if direct communication between
+    /*//Aggregation of Restarting Methods (maybe not necessary if direct communication between
     @PostMapping("/restart_analysers")
     public void restart_analysers(@RequestParam(value = "ID", defaultValue = "") String ID){
         restart_start_coolingsystemelements_analyser(ID);
         restart_fluidelements_analyser(ID);
         restart_powertransmissionelements_analyser(ID);
         restart_startingelements_analyser(ID);
-    }
-
-
-    private Motor findmotorbyID(String ID) {
-        Optional<Motor> opt = this.motors.findById(ID);
-        Motor m = null;
-        if (opt.isEmpty()) {
-            System.out.println("ID not Found");
-        } else {
-            m = opt.get();
-        }
-        return m;
-    }
-
-
+    }*/
 
     //----------------------------------------------------------------------------------------------------------------
     //Coolingsystemelements
@@ -121,33 +111,38 @@ public class WorkflowController {
     @KafkaListener(topics = "coolingsystemelements_analysis", groupId = "Three")
     void coolingsystemelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
-            String recordKey = record.key().toString();
+            String recordKey = record.key();
+            Map payload = record.value();
+            String id = payload.get("id").toString();
+            AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
             if (recordKey.equals("Analyser_Starts_Analysis")) {
-                return; //Nothing to do with it
+                this.Database.update_analyserstatus(id, "coolingsystem", "running");
             } else if (recordKey.equals("Analyser_Finished")) {
-                //integrate data into the workflow
-                //persist it(?)
+                //Extract new Information
+                Map csd  = (HashMap) payload.get("coolingsystem");
+                Map osd = (HashMap) payload.get("oilsystem");
+                Map<String, Double> partAndResult = new HashMap<>();
+                if (!(csd == null)){
+                    partAndResult.put("cooling_system", (double) csd.values().toArray()[0]);
+                }
+                if (!(osd == null)){
+                    partAndResult.put("oil_system", (double) osd.values().toArray()[0]);
+                }
+                //Save to Database
+                this.Database.update_simulationresuls(id, partAndResult);
+                this.Database.update_analyserstatus(id, "coolingsystem", "ready");
             }
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }
 
-    void start_coolingsystemelements_analyser(String ID, Configdata confidata){
-        //Motor m = findmotorbyID(ID);
-        // cut up the data (
+    void start_coolingsystemelements_analyser(Configdata configdata){
         Map coolingdata = new HashMap();
-        coolingdata.put("id",ID);
-        //configdata.put("oil_system", m.exhaust_system);
-        coolingdata.put("oil_system", confidata.oil_system);
-        //configdata.put("cooling_system", m.fuel_system);
-        coolingdata.put("cooling_system",confidata.cooling_system);
+        coolingdata.put("id",configdata.id);
+        coolingdata.put("oil_system", configdata.oil_system);
+        coolingdata.put("cooling_system",configdata.cooling_system);
         this.kafkaJsontemplate.send(new ProducerRecord<>("coolingsystemelements_analysis", "WF_Starts_Coolingsystemelements_Analysis", coolingdata));
-    }
-
-
-
-    private void restart_start_coolingsystemelements_analyser(String ID) {
     }
 
 
@@ -157,53 +152,83 @@ public class WorkflowController {
     @KafkaListener(topics = "fluidsystemelements_analysis", groupId = "Three")
     void fluidsystemelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
-            String recordKey = record.key().toString();
+            String recordKey = record.key();
+            Map payload = record.value();
+            String id = payload.get("id").toString();
+            AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
             if (recordKey.equals("Analyser_Starts_Analysis")) {
-                return; //Nothing to do with it
+                this.Database.update_analyserstatus(id, "fluidsystem", "running");
             } else if (recordKey.equals("Analyser_Finished")) {
-                //integrate data into the workflow
-                //persist it(?)
+                //Extract new Information
+                Map fsd  = (HashMap) payload.get("fuel_system");
+                Map esd = (HashMap) payload.get("exhaust_system");
+                Map<String, Double> partAndResult = new HashMap<>();
+                if (!(fsd == null)){
+                    partAndResult.put("fuel_system", (double) fsd.values().toArray()[0]);
+                }
+                if (!(esd == null)){
+                    partAndResult.put("exhaust_system", (double) esd.values().toArray()[0]);
+                }
+                //Save to Database
+                this.Database.update_simulationresuls(id, partAndResult);
+                this.Database.update_analyserstatus(id, "fluidsystem", "ready");
             }
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }
 
-    void start_fluidsystemelements_analyser(String ID, Configdata configdata){
-        //Motor m = findmotorbyID(ID);
-        // cut up the data
+    void start_fluidsystemelements_analyser(Configdata configdata){
         Map fluiddata = new HashMap();
-        fluiddata.put("id",ID);
+        fluiddata.put("id",configdata);
         fluiddata.put("exhaust_system", configdata.exhaust_system);
         fluiddata.put("fuel_system", configdata.fuel_system);
         this.kafkaJsontemplate.send(new ProducerRecord<>("fluidsystemelements_analysis", "WF_Starts_Fluidsystemelements_Analysis", fluiddata));
     }
 
-    private void restart_fluidelements_analyser(String ID) {
-    }
 
     //----------------------------------------------------------------------------------------------------------------
     //Powertransmissionelements
     @KafkaListener(topics = "powertransmissionsystemelements_analysis", groupId = "Three")
     void powertransmissionsystemelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
-            String recordKey = record.key().toString();
+            String recordKey = record.key();
+            Map payload = record.value();
+            String id = payload.get("id").toString();
+            AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
             if (recordKey.equals("Analyser_Starts_Analysis")) {
-                return; //Nothing to do with it
+                this.Database.update_analyserstatus(id, "powertransmissionsystem", "running");
             } else if (recordKey.equals("Analyser_Finished")) {
-                //integrate data into the workflow
-                //persist it(?)
+                //Extract new Information
+                Map rm  = (HashMap) payload.get("resilient_mounts");
+                Map bv = (HashMap) payload.get("bluevision");
+                Map tsc = (HashMap) payload.get("torsionally_resilient_coupling");
+                Map gbo = (HashMap) payload.get("gearboxoptions");
+                Map<String, Double> partAndResult = new HashMap<>();
+                if (!(rm == null)){
+                    partAndResult.put("fuel_system", (double) rm.values().toArray()[0]);
+                }
+                if (!(bv == null)){
+                    partAndResult.put("exhaust_system", (double) bv.values().toArray()[0]);
+                }
+                if (!(tsc == null)){
+                    partAndResult.put("exhaust_system", (double) tsc.values().toArray()[0]);
+                }
+                if (!(gbo == null)){
+                    partAndResult.put("exhaust_system", (double) gbo.values().toArray()[0]);
+                }
+                //Save to Database
+                this.Database.update_simulationresuls(id, partAndResult);
+                this.Database.update_analyserstatus(id, "powertransmissionsystem", "ready");
             }
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }
 
-    void start_powertransmissionsystemelements_analyse(String ID, Configdata configdata){
-        //Motor m = findmotorbyID(ID);
-        // cut up the data
+    void start_powertransmissionsystemelements_analyse(Configdata configdata){
         Map powerdata = new HashMap();
-        powerdata.put("id",ID);
+        powerdata.put("id",configdata.id);
         powerdata.put("resilient_mounts", configdata.resilient_mounts);
         powerdata.put("bluevision", configdata.bluevision);
         powerdata.put("torsionally_resilient_coupling", configdata.torsionally_resilient_coupling);
@@ -211,8 +236,6 @@ public class WorkflowController {
         this.kafkaJsontemplate.send(new ProducerRecord<>("powertransmissionsystemelements_analysis", "WF_Starts_Powertransmissionsystemelements_Analysis", powerdata));
     }
 
-    private void restart_powertransmissionelements_analyser(String ID) {
-    }
 
     //----------------------------------------------------------------------------------------------------------------
     //Startingsystemelements
@@ -220,163 +243,41 @@ public class WorkflowController {
     @KafkaListener(topics = "startingsystemelements_analysis", groupId = "Three")
     void fluidelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
-            String recordKey = record.key().toString();
+            String recordKey = record.key();
+            Map payload = record.value();
+            String id = payload.get("id").toString();
+            AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
             if (recordKey.equals("Analyser_Starts_Analysis")) {
-                return; //Nothing to do with it
+                this.Database.update_analyserstatus(id, "startingelements", "running");
             } else if (recordKey.equals("Analyser_Finished")) {
-                //integrate data into the workflow
-                //persist it(?)
+                //Extract new Information
+                Map aux  = (HashMap) payload.get("auxiliary_PTO");
+                Map ems = (HashMap) payload.get("engine_management_system");
+                Map<String, Double> partAndResult = new HashMap<>();
+                if (!(aux == null)){
+                    partAndResult.put("fuel_system", (double) aux.values().toArray()[0]);
+                }
+                if (!(ems == null)){
+                    partAndResult.put("exhaust_system", (double) ems.values().toArray()[0]);
+                }
+                //Save to Database
+                this.Database.update_simulationresuls(id, partAndResult);
+                this.Database.update_analyserstatus(id, "startingelements", "ready");
             }
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }
 
-    void start_startingsystemelements_analyser(String ID, Configdata configdata){
-        //Motor m = findmotorbyID(ID);
-        // cut up the data
+    void start_startingsystemelements_analyser(Configdata configdata){
         Map startingdata = new HashMap();
-        startingdata.put("id",ID);
+        startingdata.put("id",configdata.id);
         startingdata.put("air_starter", configdata.air_starter);
         startingdata.put("auxiliary_PTO", configdata.auxiliary_PTO);
         startingdata.put("engine_management_system", configdata.engine_management_system);
         this.kafkaJsontemplate.send(new ProducerRecord<>("startingsystemelements_analysis", "WF_Starts_Startingsystemelements_Analysis", startingdata));
     }
 
-    private void restart_startingelements_analyser(String ID) {
-    }
-
     //----------------------------------------------------------------------------------------------------------------
-
-
-
-    //Just to check if kafka works locally
-    @PostMapping("/sendtestJson")
-    public void sendtestJson() {
-        Motor testdata = new Diesel();
-        testdata.ID = 0;
-        testdata.oil_system = "oily";
-        testdata.cooling_system = "icy";
-        HashMap<String, Object> testmap = new HashMap<>();
-        testmap.put("OrderNr", testdata.ID);
-        testmap.put("oil_system", testdata.oil_system);
-        testmap.put("cooling_system", testdata.cooling_system);
-        kafkaJsontemplate.send(analyse_topic_name, testmap);
-    }
-
-
-    public static class Configdata{
-        String oil_system;
-        String cooling_system;
-
-        String fuel_system;
-        Boolean exhaust_system;
-
-        Boolean resilient_mounts;
-        Boolean bluevision;
-        Boolean torsionally_resilient_coupling;
-        String[] gearbox_options;
-
-        Boolean air_starter;
-        String auxiliary_PTO;
-        Boolean engine_management_system;
-
-        public String getOil_system() {
-            return oil_system;
-        }
-
-        public void setOil_system(String oil_system) {
-            this.oil_system = oil_system;
-        }
-
-        public String getFuel_system() {
-            return fuel_system;
-        }
-
-        public void setFuel_system(String fuel_system) {
-            this.fuel_system = fuel_system;
-        }
-
-        public Boolean getExhaust_system() {
-            return exhaust_system;
-        }
-
-        public void setExhaust_system(Boolean exhaust_system) {
-            this.exhaust_system = exhaust_system;
-        }
-
-        public Boolean getResilient_mounts() {
-            return resilient_mounts;
-        }
-
-        public void setResilient_mounts(Boolean resilient_mounts) {
-            this.resilient_mounts = resilient_mounts;
-        }
-
-        public Boolean getBluevision() {
-            return bluevision;
-        }
-
-        public void setBluevision(Boolean bluevision) {
-            this.bluevision = bluevision;
-        }
-
-        public Boolean getTorsionally_resilient_coupling() {
-            return torsionally_resilient_coupling;
-        }
-
-        public void setTorsionally_resilient_coupling(Boolean torsionally_resilient_coupling) {
-            this.torsionally_resilient_coupling = torsionally_resilient_coupling;
-        }
-
-        public String[] getGearbox_options() {
-            return gearbox_options;
-        }
-
-        public void setGearbox_options(String[] gearbox_options) {
-            this.gearbox_options = gearbox_options;
-        }
-
-        public Boolean getAir_starter() {
-            return air_starter;
-        }
-
-        public void setAir_starter(Boolean air_starter) {
-            this.air_starter = air_starter;
-        }
-
-        public String getAuxiliary_PTO() {
-            return auxiliary_PTO;
-        }
-
-        public void setAuxiliary_PTO(String auxiliary_PTO) {
-            this.auxiliary_PTO = auxiliary_PTO;
-        }
-
-        public Boolean getEngine_management_system() {
-            return engine_management_system;
-        }
-
-        public void setEngine_management_system(Boolean engine_management_system) {
-            this.engine_management_system = engine_management_system;
-        }
-
-        @Override
-        public String toString() {
-            return "Configdata{" +
-                    "oil_system='" + oil_system + '\'' +
-                    ", cooling_system='" + cooling_system + '\'' +
-                    ", fuel_system='" + fuel_system + '\'' +
-                    ", exhaust_system=" + exhaust_system +
-                    ", resilient_mounts=" + resilient_mounts +
-                    ", bluevision=" + bluevision +
-                    ", torsionally_resilient_coupling=" + torsionally_resilient_coupling +
-                    ", gearbox_options=" + Arrays.toString(gearbox_options) +
-                    ", air_starter=" + air_starter +
-                    ", auxiliary_PTO='" + auxiliary_PTO + '\'' +
-                    ", engine_management_system=" + engine_management_system +
-                    '}';
-        }
-    }
 
 }
