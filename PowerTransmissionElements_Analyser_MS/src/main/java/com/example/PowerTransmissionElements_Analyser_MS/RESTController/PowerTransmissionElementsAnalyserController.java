@@ -44,7 +44,9 @@ public class PowerTransmissionElementsAnalyserController {
             if (recordKey.equals("WF_Starts_Powertransmissionsystemelements_Analysis")) {
                 HashMap startMap = (HashMap)record.value();
                 String id = (String)startMap.get("id");
+
                 PowerTransmissionElementsInformation data = new PowerTransmissionElementsInformation();
+                data.id = id;
                 data.resilientmounts = (Boolean)startMap.get("resilient_mounts");
                 data.bluevision = (Boolean)startMap.get("bluevision");
                 data.torsionallyresilientcoupling = (Boolean)startMap.get("torsionally_resilient_coupling");
@@ -128,10 +130,14 @@ public class PowerTransmissionElementsAnalyserController {
     private Map performAnalysis(String id, PowerTransmissionElementsInformation data)
     {
         try{
-            kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Starts_Analysis",null));
+            HashMap startingMap = new HashMap();
+            startingMap.put("id",data.id);
+            kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Starts_Analysis",startingMap));
             status = "Started";
+
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
             Map calculationResults = createAnalysisValues(id,data);
+
             status = "Finished";
             kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Finished",calculationResults));
             return calculationResults;

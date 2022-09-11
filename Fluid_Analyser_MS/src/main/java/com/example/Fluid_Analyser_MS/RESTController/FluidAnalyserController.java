@@ -54,7 +54,7 @@ public class FluidAnalyserController {
     }
 
     @KafkaListener(topics="fluidsystemelements_analysis", groupId = "One")
-    public void listen(Exception e, ConsumerRecord<?, ?> record ){
+    public void listen(ConsumerRecord<?, ?> record ){
         try {
             String recordKey = record.key().toString();
 
@@ -63,6 +63,7 @@ public class FluidAnalyserController {
                 String id = (String)startMap.get("id");
 
                 FluidInformation data = new FluidInformation();
+                data.id = id;
                 data.exhaustsystem = (Boolean)startMap.get("exhaust_system");
                 data.fuelsystem = (String)startMap.get("fuel_system");
 
@@ -124,9 +125,10 @@ public class FluidAnalyserController {
     private Map performAnalysis(String id, FluidInformation data)
     {
         try {
+
             HashMap startingMap = new HashMap();
             startingMap.put("id",data.id);
-            kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Starts_Analysis", null));
+            kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Starts_Analysis", startingMap));
             status = "Started";
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
             Map calculationResults = createAnalysisValues(id, data);
@@ -164,7 +166,6 @@ public class FluidAnalyserController {
     public static class FluidInformation {
 
         private String id;
-        private String name;
         private String fuelsystem;
 
         private Boolean exhaustsystem;
@@ -175,14 +176,6 @@ public class FluidAnalyserController {
 
         public void setId(String id) {
             this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
         }
 
         public String getFuelsystem() {

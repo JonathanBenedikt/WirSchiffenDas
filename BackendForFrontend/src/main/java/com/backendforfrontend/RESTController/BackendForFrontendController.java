@@ -41,6 +41,10 @@ public class BackendForFrontendController {
     private static String lastCoolingResponse;
     private static String lastStartingResponse;
 
+    private static Boolean coolingAnalyserWorking = false;
+    private static Boolean fluidAnalyserWorking = false;
+    private static Boolean powerAnalyserWorking = false;
+    private static Boolean startingAnalyserWorking = false;
     public BackendForFrontendController()
     {
         CircuitBreakerConfig config = CircuitBreakerConfig.custom().slidingWindowType(CircuitBreakerConfig.SlidingWindowType.COUNT_BASED).slidingWindowSize(10).failureRateThreshold(70.0f).build();
@@ -113,11 +117,13 @@ public class BackendForFrontendController {
             {
                 HashMap resultMap = (HashMap) record.value();
                 setAnalysisStatus((String)resultMap.get("id"),"coolingsystem","Started");
+                coolingAnalyserWorking = true;
             }
             else if (recordKey.equals("Analyser_Finished"))
             {
                 HashMap resultMap = (HashMap) record.value();
                 setAnalysisStatus((String)resultMap.get("id"),"coolingsystem","Finished");
+                coolingAnalyserWorking = false;
             }
             else if(recordKey.equals("Status_Response"))
             {
@@ -139,11 +145,13 @@ public class BackendForFrontendController {
             {
                 HashMap resultMap = (HashMap) record.value();
                 setAnalysisStatus((String)resultMap.get("id"),"fluidsystem","Started");
+                fluidAnalyserWorking = true;
             }
             else if (recordKey.equals("Analyser_Finished"))
             {
                 HashMap resultMap = (HashMap) record.value();
                 setAnalysisStatus((String)resultMap.get("id"),"fluidsystem","Finished");
+                fluidAnalyserWorking = false;
             }
 
         }catch (Exception ex)
@@ -161,11 +169,13 @@ public class BackendForFrontendController {
             {
                 HashMap resultMap = (HashMap) record.value();
                 setAnalysisStatus((String)resultMap.get("id"),"powertransmissionsystem","Started");
+                powerAnalyserWorking = true;
             }
             else if (recordKey.equals("Analyser_Finished"))
             {
                 HashMap resultMap = (HashMap) record.value();
                 setAnalysisStatus((String)resultMap.get("id"),"powertransmissionsystem","Finished");
+                powerAnalyserWorking = false;
             }
 
         }catch (Exception ex)
@@ -183,11 +193,13 @@ public class BackendForFrontendController {
             {
                 HashMap resultMap = (HashMap) record.value();
                 setAnalysisStatus((String)resultMap.get("id"),"startingsystem","Started");
+                startingAnalyserWorking = true;
             }
             else if (recordKey.equals("Analyser_Finished"))
             {
                 HashMap resultMap = (HashMap) record.value();
                 setAnalysisStatus((String)resultMap.get("id"),"startingsystem","Finished");
+                startingAnalyserWorking = false;
             }
 
         }catch (Exception ex)
@@ -209,6 +221,9 @@ public class BackendForFrontendController {
         Supplier<String> retryingStatusRequest = Retry.decorateSupplier(retry,statusRequest);
         return retryingStatusRequest.get();
         */
+        if(fluidAnalyserWorking)
+            return "Running";
+
         StatusRequestService requestService = new StatusRequestService("http://localhost:8081/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(fluidCircuitBreaker).withFallback( e -> this.getFluidsystemFallback()).decorate();
@@ -229,6 +244,9 @@ public class BackendForFrontendController {
     @GetMapping(path="/getPowertransmissionsystemStatus")
     public String getPowertransmissionsystemStatus()
     {
+        if(powerAnalyserWorking)
+            return "Running";
+
         StatusRequestService requestService = new StatusRequestService("http://localhost:8082/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(powerCircuitBreaker).withFallback( e -> this.getPowerTransmissionsystemFallback()).decorate();
@@ -257,6 +275,9 @@ public class BackendForFrontendController {
     @GetMapping(path="/getCoolingsystemStatus")
     public String getCoolingsystemStatus()
     {
+        if(coolingAnalyserWorking)
+            return "Running";
+
         StatusRequestService requestService = new StatusRequestService("http://localhost:8080/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(coolingCircuitBreaker).withFallback( e -> this.getCoolingsystemFallback()).decorate();
@@ -274,6 +295,9 @@ public class BackendForFrontendController {
     @GetMapping(path="/getStartingsystemStatus")
     public String getStartingsystemStatus()
     {
+        if(startingAnalyserWorking)
+            return "Running";
+
         StatusRequestService requestService = new StatusRequestService("http://localhost:8083/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(startingCircuitBreaker).withFallback( e -> this.getStartingsystemFallback()).decorate();

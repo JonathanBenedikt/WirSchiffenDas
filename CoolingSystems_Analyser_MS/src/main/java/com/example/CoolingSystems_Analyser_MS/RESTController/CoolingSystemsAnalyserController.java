@@ -48,6 +48,7 @@ public class CoolingSystemsAnalyserController {
                                 HashMap startMap = (HashMap)record.value();
                                 String id = (String)startMap.get("id");
                                 CoolingSystemInformation coolingdata = new CoolingSystemInformation();
+                                coolingdata.id = id;
                                 coolingdata.oilsystem = (String)startMap.get("oil_system");
                                 coolingdata.coolingsystem = (String)startMap.get("cooling_system");
                                 performAnalysis(id,coolingdata);
@@ -118,8 +119,9 @@ public class CoolingSystemsAnalyserController {
         private Map performAnalysis(String id, CoolingSystemInformation data)
         {
                 try{
-
-                        kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Analyser_Starts_Analysis",null));
+                        HashMap startingMap = new HashMap();
+                        startingMap.put("id",data.id);
+                        kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Analyser_Starts_Analysis",startingMap));
                         status = "Started";
                         TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
                         Map calculationResults = createAnalysisValues(id, data);

@@ -44,8 +44,9 @@ public class StartingElementsAnalyserController {
             if (recordKey.equals("WF_Starts_Startingsystemelements_Analysis")) {
                 HashMap startMap = (HashMap)record.value();
                 String id = (String)startMap.get("id");
-                StartingElementsInformation data = new StartingElementsInformation();
 
+                StartingElementsInformation data = new StartingElementsInformation();
+                data.id = id;
                 data.air_starter = (Boolean)startMap.get("air_starter");
                 data.auxiliarypto = (String)startMap.get("auxiliary_PTO");
                 data.enginemanagementsystem = (Boolean)startMap.get("engine_management_system");
@@ -119,7 +120,9 @@ public class StartingElementsAnalyserController {
     private Map performAnalysis(String id, StartingElementsInformation data)
     {
         try{
-            kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Starts_Analysis",null));
+            HashMap starterMap = new HashMap();
+            starterMap.put("id",data.id);
+            kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Starts_Analysis",starterMap));
             status = "Started";
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
             Map calculationResults = createAnalysisValues(id, data);
