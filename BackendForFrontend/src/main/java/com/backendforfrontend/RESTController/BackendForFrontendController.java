@@ -244,7 +244,7 @@ public class BackendForFrontendController {
     }
 
 
-    @GetMapping(path="/getAllStatusresults")
+    @GetMapping(path="/getAllStati")
     public String[] getAllStatusresults(){
         String[] currentStati = new String[4];
         currentStati[0] = this.getCoolingsystemStatus();
@@ -360,6 +360,7 @@ public class BackendForFrontendController {
     @PostMapping(path="/startAnalysis")
     public ResponseEntity<Map> getData(@RequestBody  Configdata configData){
         try {
+            System.out.println(configData);
             String id = UUID.randomUUID().toString();
             ArrayList<AnalyserStatus> analyserStatusList = new ArrayList<AnalyserStatus>();
             analysisMapper.put(id,analyserStatusList);
@@ -402,57 +403,23 @@ public class BackendForFrontendController {
         String analysisStatus;
     }
 
-    public static class CoolingSystemInformation {
-
-        private String id;
-        private String name;
-        private String coolingsystem;
-
-        private String oilsystem;
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getCoolingsystem() {
-            return coolingsystem;
-        }
-
-        public void setCoolingsystem(String coolingsystem) {
-            this.coolingsystem = coolingsystem;
-        }
-
-        public String getOilsystem() {return oilsystem;}
-
-        public void setOilsystem(String oilsystem) { this.oilsystem = oilsystem;}
-
-    }
-
-
     public static class Configdata{
+        //Info for Coolingsystem
         String oil_system;
+
         String cooling_system;
 
+        //Info for Fluidsystem
         String fuel_system;
         Boolean exhaust_system;
 
+        //Info for Powertransmissionsystem
         Boolean resilient_mounts;
         Boolean bluevision;
         Boolean torsionally_resilient_coupling;
         String[] gearbox_options;
 
+        //Info for Startingsystem
         Boolean air_starter;
         String auxiliary_PTO;
         Boolean engine_management_system;
@@ -463,6 +430,14 @@ public class BackendForFrontendController {
 
         public void setOil_system(String oil_system) {
             this.oil_system = oil_system;
+        }
+
+        public String getCooling_system() {
+            return cooling_system;
+        }
+
+        public void setCooling_system(String cooling_system) {
+            this.cooling_system = cooling_system;
         }
 
         public String getFuel_system() {

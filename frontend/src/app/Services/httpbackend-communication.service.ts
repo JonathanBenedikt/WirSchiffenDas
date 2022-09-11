@@ -57,7 +57,7 @@ export class HTTPBackendCommunicationService {
   }
 
   get_all_Analyserstati() {
-    return this.http.get<string[]>('/getAllStatusresults').pipe(
+    return this.http.get<string[]>('/getAllStati').pipe(
       catchError(this.handleError)
     );
   }

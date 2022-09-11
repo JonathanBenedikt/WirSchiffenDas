@@ -67,7 +67,7 @@ export class MotorConfigComponent {
     if (this.MotorConfigForm.valid){
       let data = {
         oil_system: this.MotorConfigForm.value.coolingsystem?.oil_system,
-        cooling_system: this.MotorConfigForm.value.coolingsystem?.cooling_system,
+        cooling_systemtest: this.MotorConfigForm.value.coolingsystem?.cooling_system,
 
         fuel_system : this.MotorConfigForm.value.fluidsystem?.fuel_system,
         exhaust_system : this.MotorConfigForm.value.fluidsystem?.exhaust_system,
@@ -87,6 +87,6 @@ export class MotorConfigComponent {
 
   switchState() {
     this.saveForm();
-    this.signalDone.emit(1);
+    //this.signalDone.emit(1);
   }
 }
