@@ -14,8 +14,6 @@ import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.conversions.Bson;
-import org.springframework.data.mongodb.core.query.Update;
-
 
 import java.util.LinkedList;
 import java.util.List;
