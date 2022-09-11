@@ -212,7 +212,10 @@ public class BackendForFrontendController {
         StatusRequestService requestService = new StatusRequestService("http://localhost:8081/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(fluidCircuitBreaker).withFallback( e -> this.getFluidsystemFallback()).decorate();
-        return decoratedStatusSupplier.get();
+        String response = decoratedStatusSupplier.get();
+        if(response != null)
+            lastFluidReponse = response;
+        return response;
 
     }
 
@@ -229,7 +232,10 @@ public class BackendForFrontendController {
         StatusRequestService requestService = new StatusRequestService("http://localhost:8082/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(powerCircuitBreaker).withFallback( e -> this.getPowerTransmissionsystemFallback()).decorate();
-        return decoratedStatusSupplier.get();
+        String response = decoratedStatusSupplier.get();
+        if(response != null)
+            lastPowerRepsonse = response;
+        return response;
     }
 
     public String getPowerTransmissionsystemFallback()
@@ -254,7 +260,10 @@ public class BackendForFrontendController {
         StatusRequestService requestService = new StatusRequestService("http://localhost:8080/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(coolingCircuitBreaker).withFallback( e -> this.getCoolingsystemFallback()).decorate();
-        return decoratedStatusSupplier.get();
+        String response = decoratedStatusSupplier.get();
+        if(response != null)
+            lastCoolingResponse = response;
+        return response;
     }
 
     public String getCoolingsystemFallback()
@@ -268,7 +277,10 @@ public class BackendForFrontendController {
         StatusRequestService requestService = new StatusRequestService("http://localhost:8083/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(startingCircuitBreaker).withFallback( e -> this.getStartingsystemFallback()).decorate();
-        return decoratedStatusSupplier.get();
+        String response = decoratedStatusSupplier.get();
+        if(response != null)
+            lastStartingResponse = response;
+        return response;
     }
 
     public String getStartingsystemFallback()

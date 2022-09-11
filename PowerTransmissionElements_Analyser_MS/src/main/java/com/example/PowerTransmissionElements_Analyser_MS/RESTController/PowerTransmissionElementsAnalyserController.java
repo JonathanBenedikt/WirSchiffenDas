@@ -1,6 +1,5 @@
 package com.example.PowerTransmissionElements_Analyser_MS.RESTController;
 
-import com.google.gson.Gson;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,11 +41,16 @@ public class PowerTransmissionElementsAnalyserController {
         try {
             String recordKey = record.key().toString();
 
-            if (recordKey.equals("BFF_Starts_Powertransmissionsystem_Analysis")) {
+            if (recordKey.equals("WF_Starts_Powertransmissionsystemelements_Analysis")) {
                 HashMap startMap = (HashMap)record.value();
                 String id = (String)startMap.get("id");
-                String name = (String)startMap.get("name");
-                performAnalysis(id,name);
+                PowerTransmissionElementsInformation data = new PowerTransmissionElementsInformation();
+                data.resilientmounts = (Boolean)startMap.get("resilient_mounts");
+                data.bluevision = (Boolean)startMap.get("bluevision");
+                data.torsionallyresilientcoupling = (Boolean)startMap.get("torsionally_resilient_coupling");
+                ArrayList<String> gearboxArray = (ArrayList) startMap.get("gearbox_options");
+                data.gearboxoptions = gearboxArray.toArray(new String[0]);
+                performAnalysis(id,data);
 
             } else if (recordKey.equals("Analyser_Finished")) {
                 HashMap resultMap = (HashMap) record.value();
@@ -73,7 +77,7 @@ public class PowerTransmissionElementsAnalyserController {
     public ResponseEntity<Map> getData(@RequestBody PowerTransmissionElementsInformation providedPowerInfos){
         try {
             List<PowerTransmissionElementsInformation> powertransmissionData = Collections.singletonList(providedPowerInfos);
-            Map analysisResult = performAnalysis(powertransmissionData.get(0).id,powertransmissionData.get(0).name);
+            Map analysisResult = performAnalysis(powertransmissionData.get(0).id,powertransmissionData.get(0));
             return ResponseEntity.ok(analysisResult);
         }catch (Exception ex){
             System.out.println(ex);
@@ -81,25 +85,53 @@ public class PowerTransmissionElementsAnalyserController {
         return null;
     }
 
-    private Map createAnalysisValues(String id, String name){
+    private Map createAnalysisValues(String id, PowerTransmissionElementsInformation data){
         Random rand = new Random();
         Map analysisValuesMap = new HashMap();
         analysisValuesMap.put("id",id);
-        analysisValuesMap.put("name",name);
-        analysisValuesMap.put("mountingsystem",(rand.nextFloat() * (100 - 1) + 1));
-        analysisValuesMap.put("monitoringsystem",(rand.nextFloat() * (100 - 1) + 1));
-        analysisValuesMap.put("powertransmission",(rand.nextFloat() * (100 - 1) + 1));
-        analysisValuesMap.put("gearboxoptions",(rand.nextFloat() * (100 - 1) + 1));
+
+        if((data.resilientmounts != null)) {
+            HashMap resilientmountsMap = new HashMap();
+            resilientmountsMap.put(data.resilientmounts,(rand.nextFloat() * (100 - 1) + 1));
+            analysisValuesMap.put("resilient_mounts",resilientmountsMap);
+        }else{
+            analysisValuesMap.put("resilient_mounts", null);
+        }
+
+        if((data.bluevision != null)) {
+            HashMap bluevisionMap = new HashMap();
+            bluevisionMap.put(data.bluevision,(rand.nextFloat() * (100 - 1) + 1));
+            analysisValuesMap.put("bluevision",bluevisionMap);
+        }else {
+            analysisValuesMap.put("bluevision",null);
+        }
+
+        if((data.torsionallyresilientcoupling != null)) {
+            HashMap torsionallyresMap = new HashMap();
+            torsionallyresMap.put(data.torsionallyresilientcoupling,(rand.nextFloat() * (100 - 1) + 1));
+            analysisValuesMap.put("torsionally_resilient_coupling",torsionallyresMap);
+        }else{
+            analysisValuesMap.put("torsionally_resilient_coupling",null);
+        }
+
+        if((data.gearboxoptions != null)){
+            HashMap gearboxMap = new HashMap();
+            gearboxMap.put(data.gearboxoptions,(rand.nextFloat() * (100 - 1) + 1));
+            analysisValuesMap.put("gearboxoptions",gearboxMap);
+        }else{
+            analysisValuesMap.put("gearboxoptions",null);
+        }
+
         return analysisValuesMap;
     }
 
-    private Map performAnalysis(String id, String name)
+    private Map performAnalysis(String id, PowerTransmissionElementsInformation data)
     {
         try{
             kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Starts_Analysis",null));
             status = "Started";
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-            Map calculationResults = createAnalysisValues(id,name);
+            Map calculationResults = createAnalysisValues(id,data);
             status = "Finished";
             kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_Finished",calculationResults));
             return calculationResults;
@@ -113,11 +145,10 @@ public class PowerTransmissionElementsAnalyserController {
     public static class PowerTransmissionElementsInformation {
 
         private String id;
-        private String name;
-        private String mountingsystem;
-        private String monitoringsystem;
-        private String powertransmission;
-        private String gearboxoptions;
+        private Boolean resilientmounts;
+        private Boolean bluevision;
+        private Boolean torsionallyresilientcoupling;
+        private String[] gearboxoptions;
 
         public String getId() {
             return id;
@@ -126,27 +157,21 @@ public class PowerTransmissionElementsAnalyserController {
             this.id = id;
         }
 
-        public String getName() {
-            return name;
-        }
-        public void setName(String name) {
-            this.name = name;
-        }
 
-        public String getMountingsystem() {
-            return mountingsystem;
+        public Boolean getResilientmounts() {
+            return resilientmounts;
         }
-        public void setMountingsystem(String mountingsystem) {
-            this.mountingsystem = mountingsystem;
+        public void setResilientmounts(Boolean resilientmounts) {
+            this.resilientmounts = resilientmounts;
         }
 
-        public String getMonitoringsystem() {return monitoringsystem;}
-        public void setMonitoringsystem(String monitoringsystem) { this.monitoringsystem = monitoringsystem;}
+        public Boolean getBluevision() {return bluevision;}
+        public void setBluevision(Boolean bluevision) { this.bluevision = bluevision;}
 
-        public String getPowertransmission() { return powertransmission; }
-        public void setPowertransmission(String powertransmission) { this.powertransmission = powertransmission; }
+        public Boolean getTorsionallyresilientcoupling() { return torsionallyresilientcoupling; }
+        public void setTorsionallyresilientcoupling(Boolean torsionallyresilientcoupling) { this.torsionallyresilientcoupling = torsionallyresilientcoupling; }
 
-        public String getGearboxoptions() { return gearboxoptions; }
-        public void setGearboxoptions(String gearboxoptions) { this.gearboxoptions = gearboxoptions; }
+        public String[] getGearboxoptions() { return gearboxoptions; }
+        public void setGearboxoptions(String[] gearboxoptions) { this.gearboxoptions = gearboxoptions; }
     }
 }

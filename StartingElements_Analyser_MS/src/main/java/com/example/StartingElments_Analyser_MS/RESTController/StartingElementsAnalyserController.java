@@ -1,6 +1,5 @@
 package com.example.StartingElments_Analyser_MS.RESTController;
 
-import com.google.gson.Gson;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,11 +41,15 @@ public class StartingElementsAnalyserController {
         try {
             String recordKey = record.key().toString();
 
-            if (recordKey.equals("BFF_Starts_Startingsystem_Analysis")) {
+            if (recordKey.equals("WF_Starts_Startingsystemelements_Analysis")) {
                 HashMap startMap = (HashMap)record.value();
                 String id = (String)startMap.get("id");
-                String name = (String)startMap.get("name");
-                performAnalysis(id,name);
+                StartingElementsInformation data = new StartingElementsInformation();
+
+                data.air_starter = (Boolean)startMap.get("air_starter");
+                data.auxiliarypto = (String)startMap.get("auxiliary_PTO");
+                data.enginemanagementsystem = (Boolean)startMap.get("engine_management_system");
+                performAnalysis(id,data);
 
             } else if (recordKey.equals("Analyser_Finished")) {
                 HashMap resultMap = (HashMap) record.value();
@@ -74,7 +77,7 @@ public class StartingElementsAnalyserController {
     public ResponseEntity<Map> getData(@RequestBody StartingElementsInformation providedStartingInfos){
         try {
             List<StartingElementsInformation> startingSystemData = Collections.singletonList(providedStartingInfos);
-            Map analysisResult = performAnalysis(startingSystemData.get(0).id,startingSystemData.get(0).name);
+            Map analysisResult = performAnalysis(startingSystemData.get(0).id,startingSystemData.get(0));
             return ResponseEntity.ok(analysisResult);
         }catch (Exception ex){
             System.out.println(ex);
@@ -82,23 +85,44 @@ public class StartingElementsAnalyserController {
         return null;
     }
 
-    private Map createAnalysisValues(String id, String name){
+    private Map createAnalysisValues(String id, StartingElementsInformation data){
         Random rand = new Random();Map analysisValuesMap = new HashMap();
         analysisValuesMap.put("id",id);
-        analysisValuesMap.put("name",name);
-        analysisValuesMap.put("startingsystem",(rand.nextFloat() * (100 - 1) + 1));
-        analysisValuesMap.put("auxilliarypto",(rand.nextFloat() * (100 - 1) + 1));
-        analysisValuesMap.put("enginemanagementsystem",(rand.nextFloat() * (100 - 1) + 1));
+
+        if((data.air_starter!= null)) {
+            HashMap airstarterMap = new HashMap();
+            airstarterMap.put(data.air_starter,(rand.nextFloat() * (100 - 1) + 1));
+            analysisValuesMap.put("air_starter", airstarterMap);
+        } else {
+            analysisValuesMap.put("air_starter",null);
+        }
+
+        if((data.auxiliarypto != null) && (data.auxiliarypto != "")){
+            HashMap auxiliaryMap = new HashMap();
+            auxiliaryMap.put(data.auxiliarypto,(rand.nextFloat() * (100 - 1) + 1));
+            analysisValuesMap.put("auxiliary_PTO",auxiliaryMap);
+        } else {
+            analysisValuesMap.put("auxiliary_PTO",null);
+        }
+
+        if((data.enginemanagementsystem != null)){
+            HashMap engineMap = new HashMap();
+            engineMap.put(data.enginemanagementsystem,(rand.nextFloat() * (100 - 1) + 1));
+            analysisValuesMap.put("engine_management_system",engineMap);
+        } else {
+            analysisValuesMap.put("engine_management_system",null);
+        }
+
         return analysisValuesMap;
     }
 
-    private Map performAnalysis(String id, String name)
+    private Map performAnalysis(String id, StartingElementsInformation data)
     {
         try{
             kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Starts_Analysis",null));
             status = "Started";
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-            Map calculationResults = createAnalysisValues(id, name);
+            Map calculationResults = createAnalysisValues(id, data);
             status = "Finished";
             kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Analyser_Finished", calculationResults));
         }catch (Exception ex)
@@ -111,10 +135,9 @@ public class StartingElementsAnalyserController {
     public static class StartingElementsInformation {
 
         private String id;
-        private String name;
-        private String startingsystem;
-        private String auxilliarypto;
-        private String enginemanagementsystem;
+        private Boolean air_starter;
+        private String auxiliarypto;
+        private Boolean enginemanagementsystem;
 
 
         public String getId() {
@@ -124,25 +147,19 @@ public class StartingElementsAnalyserController {
             this.id = id;
         }
 
-        public String getName() {
-            return name;
+
+        public Boolean getAir_starter() {
+            return air_starter;
         }
-        public void setName(String name) {
-            this.name = name;
+        public void setAir_starter(Boolean air_starter) {
+            this.air_starter = air_starter;
         }
 
-        public String getStartingsystem() {
-            return startingsystem;
-        }
-        public void setStartingsystem(String startingsystem) {
-            this.startingsystem = startingsystem;
-        }
+        public String getAuxiliarypto() {return auxiliarypto;}
+        public void setAuxiliarypto(String auxiliarypto) { this.auxiliarypto = auxiliarypto;}
 
-        public String getAuxilliarypto() {return auxilliarypto;}
-        public void setAuxilliarypto(String auxilliarypto) { this.auxilliarypto = auxilliarypto;}
-
-        public String getEnginemanagementsystem() { return enginemanagementsystem; }
-        public void setEnginemanagementsystem(String enginemanagementsystem) { this.enginemanagementsystem = enginemanagementsystem; }
+        public Boolean getEnginemanagementsystem() { return enginemanagementsystem; }
+        public void setEnginemanagementsystem(Boolean enginemanagementsystem) { this.enginemanagementsystem = enginemanagementsystem; }
 
     }
 }

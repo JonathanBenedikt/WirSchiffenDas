@@ -54,15 +54,19 @@ public class FluidAnalyserController {
     }
 
     @KafkaListener(topics="fluidsystemelements_analysis", groupId = "One")
-    public void listen(ConsumerRecord<?, ?> record ){
+    public void listen(Exception e, ConsumerRecord<?, ?> record ){
         try {
             String recordKey = record.key().toString();
 
-            if (recordKey.equals("BFF_Starts_Fluidsystem_Analysis")) {
+            if (recordKey.equals("WF_Starts_Fluidsystemelements_Analysis")) {
                 HashMap startMap = (HashMap)record.value();
                 String id = (String)startMap.get("id");
-                String name = (String)startMap.get("name");
-                performAnalysis(id,name);
+
+                FluidInformation data = new FluidInformation();
+                data.exhaustsystem = (Boolean)startMap.get("exhaust_system");
+                data.fuelsystem = (String)startMap.get("fuel_system");
+
+                performAnalysis(id,data);
 
             } else if (recordKey.equals("Analyser_Finished")) {
                 HashMap resultMap = (HashMap) record.value();
@@ -82,7 +86,7 @@ public class FluidAnalyserController {
     public ResponseEntity<Map> getData(@RequestBody FluidInformation providedFluid){
         try {
             List<FluidInformation> fluidData = Collections.singletonList(providedFluid);
-            Map analysisResult = performAnalysis(fluidData.get(0).id,fluidData.get(0).name);
+            Map analysisResult = performAnalysis(fluidData.get(0).id,fluidData.get(0));
             return ResponseEntity.ok(analysisResult);
         }catch (Exception ex){
             System.out.println(ex);
@@ -95,24 +99,37 @@ public class FluidAnalyserController {
     }
 
 
-    private Map createAnalysisValues(String id, String name){
+    private Map createAnalysisValues(String id, FluidInformation data){
         Random rand = new Random();
         Map analysisValuesMap = new HashMap();
         analysisValuesMap.put("id",id);
-        analysisValuesMap.put("name",name);
-        analysisValuesMap.put("fuel_system",(rand.nextFloat() * (100 - 1) + 1));
-        analysisValuesMap.put("exhaust_system",(rand.nextFloat() * (100 - 1) + 1));
+        if((data.fuelsystem != null) && (data.fuelsystem != "")) {
+            HashMap fuelsystemMap = new HashMap();
+            fuelsystemMap.put(data.fuelsystem,(rand.nextFloat() * (100 - 1) + 1));
+            analysisValuesMap.put("fuel_system", fuelsystemMap);
+        }else{
+            analysisValuesMap.put("fuel_system",null);
+        }
+        if((data.exhaustsystem != null)) {
+            HashMap exhaustsystemMap = new HashMap();
+            exhaustsystemMap.put(data.exhaustsystem,(rand.nextFloat() * (100 - 1) + 1));
+            analysisValuesMap.put("exhaust_system", exhaustsystemMap);
+        }else{
+            analysisValuesMap.put("exhaust_system",null);
+        }
 
         return analysisValuesMap;
     }
 
-    private Map performAnalysis(String id, String name)
+    private Map performAnalysis(String id, FluidInformation data)
     {
         try {
+            HashMap startingMap = new HashMap();
+            startingMap.put("id",data.id);
             kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Starts_Analysis", null));
             status = "Started";
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));
-            Map calculationResults = createAnalysisValues(id, name);
+            Map calculationResults = createAnalysisValues(id, data);
             status = "Finished";
             kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Finished", calculationResults));
             return calculationResults;
@@ -150,7 +167,7 @@ public class FluidAnalyserController {
         private String name;
         private String fuelsystem;
 
-        private String exhaustsystem;
+        private Boolean exhaustsystem;
 
         public String getId() {
             return id;
@@ -176,9 +193,9 @@ public class FluidAnalyserController {
             this.fuelsystem = fuelsystem;
         }
 
-        public String getExhaustsystem() {return exhaustsystem;}
+        public Boolean getExhaustsystem() {return exhaustsystem;}
 
-        public void setExhaustsystem(String exhaustsystem) { this.exhaustsystem = exhaustsystem;}
+        public void setExhaustsystem(Boolean exhaustsystem) { this.exhaustsystem = exhaustsystem;}
 
     }
 }

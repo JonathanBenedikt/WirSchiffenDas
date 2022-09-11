@@ -97,10 +97,20 @@ public class CoolingSystemsAnalyserController {
                 Random rand = new Random();
                 Map analysisValuesMap = new HashMap();
                 analysisValuesMap.put("id",id);
-                if((data.coolingsystem != null) && (data.coolingsystem != ""))
-                        analysisValuesMap.put("coolingsystem",(rand.nextFloat() * (100 - 1) + 1));
-                if((data.oilsystem != null) && (data.oilsystem != ""))
-                        analysisValuesMap.put("oilsystem",(rand.nextFloat() * (100 - 1) + 1));
+                if((data.coolingsystem != null) && (data.coolingsystem != "")) {
+                        HashMap coolingsystemMap = new HashMap();
+                        coolingsystemMap.put(data.coolingsystem,(rand.nextFloat() * (100 - 1) + 1));
+                        analysisValuesMap.put("coolingsystem",coolingsystemMap );
+                }else {
+                        analysisValuesMap.put("coolingsystem",null);
+                }
+                if((data.oilsystem != null) && (data.oilsystem != "")) {
+                        HashMap oilsystemMap = new HashMap();
+                        oilsystemMap.put(data.oilsystem,(rand.nextFloat() * (100 - 1) + 1));
+                        analysisValuesMap.put("oilsystem", oilsystemMap);
+                } else {
+                        analysisValuesMap.put("oilsystem",null);
+                }
 
                 return analysisValuesMap;
         }
