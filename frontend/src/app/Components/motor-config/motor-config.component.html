@@ -1,69 +1,111 @@
 <form [formGroup]="MotorConfigForm">
-  <div formGroupName="coolingsystem">
-    <h4>Coolingsystem Configuration</h4>
-    <mat-form-field appearance="outline">
-      <mat-label>Oilsystem options</mat-label>
-      <mat-select formControlName = 'oil_system'>
-        <mat-option *ngFor="let opt of Coolingsystem_config.oil_system" [value]="opt">
-          {{opt}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Coolingsystem options</mat-label>
-      <mat-select formControlName = 'cooling_system'>
-        <mat-option *ngFor="let opt of Coolingsystem_config.cooling_system" [value]="opt">
-          {{opt}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-<div formGroupName="fluidsystem">
-  <h4>Fluidsystem Configuration</h4>
-  <mat-form-field appearance="outline">
-    <mat-label>Fluidsystem options</mat-label>
-    <mat-select formControlName = 'fuel_system'>
-      <mat-option *ngFor="let opt of Fluidsystem_config.fuel_system" [value]="opt">
-        {{opt}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-label>Enhanced Exhaustsystem</mat-label>
-  <mat-checkbox formControlName = "exhaust_system"></mat-checkbox>
-</div>
-<div formGroupName="powertransmissionsystem">
-  <h4>Powertransmissionsystem Configuration</h4>
-  <mat-label>Resilient Mounts</mat-label>
-  <mat-checkbox formControlName = "resilient_mounts"></mat-checkbox>
-  <mat-label>Blue Vision</mat-label>
-  <mat-checkbox formControlName = "bluevision"></mat-checkbox>
-  <mat-label>Torsionally Resilient Coupling</mat-label>
-  <mat-checkbox formControlName = "torsionally_resilient_coupling"></mat-checkbox>
-  <mat-form-field appearance="outline">
-    <mat-label>Gearbox options</mat-label>
-    <mat-select formControlName='gearbox_options' multiple>
-      <mat-option *ngFor="let opt of Powertransmissionsystem_config.gearbox_options" [value]="opt">
-        {{opt}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-<div formGroupName="startingsystem">
-  <h4>Startingsystem Configuration</h4>
-  <mat-label>Airstarter Delux</mat-label>
-  <mat-checkbox formControlName = "air_starter"></mat-checkbox>
-  <mat-label>Compliancy Check for Engine</mat-label>
-  <mat-checkbox formControlName = "engine_management_system"></mat-checkbox>
-  <mat-form-field>
-    <mat-label>Auxiliary PTO</mat-label>
-    <mat-select formControlName="auxiliary_PTO">
-      <mat-option *ngFor="let opt of Startingsystem_config.auxiliary_PTO" [value]="opt">
-        {{opt}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-  <mat-card-actions>
-    <button (click)="switchState()" mat-raised-button color="primary">Send Configuration</button>
-  </mat-card-actions>
+    <mat-card>
+      <mat-card-title>Coolingsystem</mat-card-title>
+      <mat-card-content>
+        <div formGroupName="coolingsystem">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Oilsystem options</mat-label>
+              <mat-select formControlName = 'oil_system'>
+                <mat-option *ngFor="let opt of Coolingsystem_config.oil_system" [value]="opt">
+                  {{opt}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Coolingsystem options</mat-label>
+              <mat-select formControlName = 'cooling_system'>
+                <mat-option *ngFor="let opt of Coolingsystem_config.cooling_system" [value]="opt">
+                  {{opt}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-title>Fluidsystem</mat-card-title>
+      <mat-card-content>
+        <div formGroupName="fluidsystem">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Fluidsystem options</mat-label>
+              <mat-select formControlName = 'fuel_system'>
+                <mat-option *ngFor="let opt of Fluidsystem_config.fuel_system" [value]="opt">
+                  {{opt}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-label>Enhanced Exhaustsystem </mat-label>
+            <mat-checkbox formControlName = "exhaust_system"></mat-checkbox>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-title>Powertransmissionsystem</mat-card-title>
+      <mat-card-content>
+        <div formGroupName="powertransmissionsystem">
+          <mat-list>
+            <mat-list-item>
+              <mat-label>Resilient Mounts </mat-label>
+              <mat-checkbox formControlName = "resilient_mounts"></mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-label>Blue Vision </mat-label>
+              <mat-checkbox formControlName = "bluevision"></mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-label>Torsionally Resilient Coupling </mat-label>
+              <mat-checkbox formControlName = "torsionally_resilient_coupling"></mat-checkbox>
+            </mat-list-item>
+          </mat-list>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Gearbox options</mat-label>
+              <mat-select formControlName='gearbox_options' multiple>
+                <mat-option *ngFor="let opt of Powertransmissionsystem_config.gearbox_options" [value]="opt">
+                  {{opt}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-title>Startingsystem</mat-card-title>
+      <mat-card-content>
+        <div formGroupName="startingsystem">
+          <mat-list>
+            <mat-list-item>
+              <mat-label class="margin">Airstarter Delux </mat-label>
+              <mat-checkbox class="margin" formControlName = "air_starter"></mat-checkbox>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-label>Compliance Check for Engine </mat-label>
+              <mat-checkbox formControlName = "engine_management_system"></mat-checkbox>
+            </mat-list-item>
+          </mat-list>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Auxiliary PTO </mat-label>
+              <mat-select formControlName="auxiliary_PTO">
+                <mat-option *ngFor="let opt of Startingsystem_config.auxiliary_PTO" [value]="opt">
+                  {{opt}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card-actions>
+      <button (click)="switchState()" mat-raised-button color="primary">Send Configuration </button>
+    </mat-card-actions>
 </form>

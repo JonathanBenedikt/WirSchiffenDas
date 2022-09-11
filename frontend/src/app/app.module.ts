@@ -17,6 +17,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -25,22 +27,24 @@ import {MatButtonModule} from "@angular/material/button";
     AnalysersOverviewComponent,
     MotorFinishedComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatSlideToggleModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatCheckboxModule,
+        MatCardModule,
+        MatSlideToggleModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatListModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
