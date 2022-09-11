@@ -29,7 +29,7 @@
     "secure": false,
     "logLevel": "debug"
   },
-  "/simulation_results": {
+  "/getSimulationresults": {
     "target": "http://localhost:8582",
     "secure": false,
     "logLevel": "debug"

@@ -466,6 +466,18 @@ public class BackendForFrontendController {
         return null;
     }
 
+    @GetMapping("/getSimulationresults")
+    public HashMap getSimulationresults(){
+        //Todo gather data in right format end send it
+        //so dass es auf der Frontendseite mit /src/app/components/motor-finished/motor-finsihed.components.ts
+        //"datasource : Simulationresults[] = [
+        //    {Property : "", Configuration : "", Result : 0.0}
+        //  ];"
+        //Übereinstimmt
+        //Beispiel {{oil_system, basic, 2.523},...}
+        return null;
+    }
+
     class AnalyserStatus
     {
         String name;

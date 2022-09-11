@@ -49,15 +49,14 @@ export class HTTPBackendCommunicationService {
     );
   }
 
-
-  get_Simulationresults() {
-    return this.http.get<Simulationresults[]>('/simulation_results').pipe(
-      catchError(this.handleError)
+  get_all_Analyserstati() {
+    return this.http.get<string[]>('/getAllStati').pipe(
+        catchError(this.handleError)
     );
   }
 
-  get_all_Analyserstati() {
-    return this.http.get<string[]>('/getAllStati').pipe(
+  get_Simulationresults() {
+    return this.http.get<Simulationresults[]>('/getSimulationresults').pipe(
       catchError(this.handleError)
     );
   }
