@@ -44,9 +44,19 @@ export class HTTPBackendCommunicationService {
   }
 
   retry(analysername: string) {
-    return this.http.post<string>('/retry_Analyser', {name: analysername}, httpOptions).pipe(
-      catchError(this.handleError)
-    );
+    let path = "";
+    if (analysername == "Coolingsystem") {
+      path = "retryCoolingsystemStatus"
+    } else if (analysername == "Fluidsystem") {
+      path = "retryFluidsystemStatus"
+    } else if (analysername == "Powertransmissionsystem") {
+      path = "retryPowertransmissionsystemStatus"
+    } else if (analysername == "Startingsystem") {
+      path = "retryStartingsystemStatus"
+    } else {
+      console.log(analysername + " is not known")
+    }
+    return this.http.get<string>("/"+path);
   }
 
   get_all_Analyserstati() {
