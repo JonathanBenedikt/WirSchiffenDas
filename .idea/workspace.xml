@@ -5,14 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicediscovery/src/main/java/com/example/servicediscovery/Controller/DiscoveryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/WorkflowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Workflow_Engine_MS/src/main/java/com/Workflow_Engine/WorkflowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/Components/analysers-overview/analysers-overview.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/Components/analysers-overview/analysers-overview.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servicediscovery/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/servicediscovery/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +220,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ServicediscoveryApplication">
+  <component name="RunManager" selected="Spring Boot.StartingElementsAnalyserMsApplication">
     <configuration name="BackendForFrontend [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -485,7 +494,7 @@
       <workItem from="1662900430732" duration="2658000" />
       <workItem from="1662903438529" duration="884000" />
       <workItem from="1662971673672" duration="3834000" />
-      <workItem from="1662976018279" duration="9310000" />
+      <workItem from="1662976018279" duration="11334000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -641,7 +650,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662979739361</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Es wurden kleinere Anpassungen für die Retry-Methoden vorgenommen.">
+      <created>1662989857455</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1662989857455</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -693,7 +709,8 @@
     <MESSAGE value="Es wurden Anpassungen an den Algorithmen-MS vorgenommen." />
     <MESSAGE value="Die Statusabfrage der Algorithmen-MS wurde angepasst." />
     <MESSAGE value="Es wurden Retry-Methoden ergänzt." />
-    <option name="LAST_COMMIT_MESSAGE" value="Es wurden Retry-Methoden ergänzt." />
+    <MESSAGE value="Es wurden kleinere Anpassungen für die Retry-Methoden vorgenommen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Es wurden kleinere Anpassungen für die Retry-Methoden vorgenommen." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -705,7 +722,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java</url>
-          <line>377</line>
+          <line>379</line>
           <option name="timeStamp" value="66" />
         </line-breakpoint>
       </breakpoints>

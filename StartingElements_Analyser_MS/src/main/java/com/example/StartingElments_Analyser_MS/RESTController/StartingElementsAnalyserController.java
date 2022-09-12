@@ -1,9 +1,11 @@
 package com.example.StartingElments_Analyser_MS.RESTController;
 
+import com.netflix.discovery.EurekaClient;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -17,9 +19,12 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
+@EnableEurekaClient
 @RestController
 public class StartingElementsAnalyserController {
 
+    @Autowired
+    private EurekaClient eurekaClient;
     @Autowired
     private KafkaTemplate<String, Map> kafkaTemplate;
 
