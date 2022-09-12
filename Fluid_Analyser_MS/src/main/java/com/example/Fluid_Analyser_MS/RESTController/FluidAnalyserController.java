@@ -104,6 +104,7 @@ public class FluidAnalyserController {
         Random rand = new Random();
         Map analysisValuesMap = new HashMap();
         analysisValuesMap.put("id",id);
+
         if((data.fuelsystem != null) && (data.fuelsystem != "")) {
             HashMap fuelsystemMap = new HashMap();
             fuelsystemMap.put(data.fuelsystem,(rand.nextFloat() * (100 - 1) + 1));
@@ -131,7 +132,7 @@ public class FluidAnalyserController {
 
             SplittableRandom random = new SplittableRandom();
             // Probability of 20% to fail
-            if(random.nextInt(1,11) <= 2)
+            if(random.nextInt(1,11) <= 3)
             {
                 this.status = "Error";
                 kafkaTemplate.send(new ProducerRecord<String,Map>("fluidsystemelements_analysis","Analyser_In_Error-State",startingMap));

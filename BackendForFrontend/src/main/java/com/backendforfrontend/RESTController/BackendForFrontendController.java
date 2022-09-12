@@ -265,14 +265,13 @@ public class BackendForFrontendController {
     }
 
     @GetMapping(path="/retryFluidsystem")
-    public ResponseEntity retryFluidsystem()
+    public void retryFluidsystem()
     {
         for(Map map : requestMapper.values())
         {
             this.kafkaTemplate.send(new ProducerRecord<>("wf_bff", "BFF_RestartingFluidsystem", map));
         }
 
-        return ResponseEntity.ok(null);
     }
 
     @GetMapping(path="/getFluidsystemStatus")
@@ -294,26 +293,24 @@ public class BackendForFrontendController {
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(fluidCircuitBreaker).withFallback( e -> this.getFluidsystemFallback()).decorate();
         String response = decoratedStatusSupplier.get();
-        if(response != null)
-            lastFluidReponse = response;
         return response;
 
     }
 
     public String getFluidsystemFallback()
     {
-        return "The Fluidsystem-Analyser is unreachable. The last good response was "+lastFluidReponse;
+        return "The Fluidsystem-Analyser is currently unreachable...";
     }
 
     @GetMapping(path="/retryPowersystem")
-    public ResponseEntity retryPowersystem()
+    public void retryPowersystem()
     {
         for(Map map : requestMapper.values())
         {
             this.kafkaTemplate.send(new ProducerRecord<>("wf_bff", "BFF_RestartingPowersystem", map));
         }
 
-        return ResponseEntity.ok(null);
+
     }
 
     @GetMapping(path="/getPowertransmissionsystemStatus")
@@ -326,14 +323,12 @@ public class BackendForFrontendController {
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(powerCircuitBreaker).withFallback( e -> this.getPowerTransmissionsystemFallback()).decorate();
         String response = decoratedStatusSupplier.get();
-        if(response != null)
-            lastPowerRepsonse = response;
         return response;
     }
 
     public String getPowerTransmissionsystemFallback()
     {
-        return "The PowerTransmissionsystem-Analyser is unreachable. The last good response was "+lastPowerRepsonse;
+        return "The PowerTransmissionsystem-Analyser is currently unreachable...";
     }
 
 
@@ -348,14 +343,13 @@ public class BackendForFrontendController {
     }
 
     @GetMapping(path="/retryCoolingsystem")
-    public ResponseEntity retryCoolingsystem()
+    public void retryCoolingsystem()
     {
         for(Map map : requestMapper.values())
         {
             this.kafkaTemplate.send(new ProducerRecord<>("wf_bff", "BFF_RestartingCoolingsystem", map));
         }
 
-        return ResponseEntity.ok(null);
     }
 
     @GetMapping(path="/getCoolingsystemStatus")
@@ -368,25 +362,22 @@ public class BackendForFrontendController {
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(coolingCircuitBreaker).withFallback( e -> this.getCoolingsystemFallback()).decorate();
         String response = decoratedStatusSupplier.get();
-        if(response != null)
-            lastCoolingResponse = response;
         return response;
     }
 
     public String getCoolingsystemFallback()
     {
-        return "The Coolingsystem-Analyser is unreachable. The last good response was "+lastCoolingResponse;
+        return "The Coolingsystem-Analyser is currently unreachable...";
     }
 
     @GetMapping(path="/retryStartingsystem")
-    public ResponseEntity retryStartingsystem()
+    public void retryStartingsystem()
     {
         for(Map map : requestMapper.values())
         {
             this.kafkaTemplate.send(new ProducerRecord<>("wf_bff", "BFF_RestartingStartingsystem", map));
         }
 
-        return ResponseEntity.ok(null);
     }
 
     @GetMapping(path="/getStartingsystemStatus")
@@ -399,14 +390,12 @@ public class BackendForFrontendController {
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(startingCircuitBreaker).withFallback( e -> this.getStartingsystemFallback()).decorate();
         String response = decoratedStatusSupplier.get();
-        if(response != null)
-            lastStartingResponse = response;
         return response;
     }
 
     public String getStartingsystemFallback()
     {
-        return "The Startingsystem-Analyser is unreachable. The last good response was "+lastStartingResponse;
+        return "The Startingsystem-Analyser is currently unreachable...";
     }
 
     @PostMapping(path="/getAnalyzerStatus")

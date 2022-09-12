@@ -62,7 +62,7 @@ export class AnalysersOverviewComponent {
        spezRow.Status = "Pending";
        this.backendcommunication.retry(analysername).subscribe(
          (currentStatus) => {
-           spezRow !== undefined ? spezRow.Status = currentStatus : undefined;
+
          }
        )
      }

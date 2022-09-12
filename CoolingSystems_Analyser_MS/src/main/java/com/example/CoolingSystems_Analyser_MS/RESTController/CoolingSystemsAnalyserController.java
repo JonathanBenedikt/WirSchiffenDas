@@ -72,7 +72,9 @@ public class CoolingSystemsAnalyserController {
         }
 
         @GetMapping(path="/status")
-        public String getStatus(){ return status;}
+        public String getStatus(){
+                return status;
+        }
         @GetMapping(path="/information")
         public String showInfo() {return "Name: CoolingSystem-Analyser\nType: Microservice\nVersion: 1.0.0";}
 
@@ -124,7 +126,7 @@ public class CoolingSystemsAnalyserController {
 
                         SplittableRandom random = new SplittableRandom();
                         // Probability of 20% to fail
-                        if(random.nextInt(1,11) <= 2)
+                        if(random.nextInt(1,11) <= 3)
                         {
                                 System.out.println("An Error occured for the Cooling-analyser...");
                                 this.status = "Error";

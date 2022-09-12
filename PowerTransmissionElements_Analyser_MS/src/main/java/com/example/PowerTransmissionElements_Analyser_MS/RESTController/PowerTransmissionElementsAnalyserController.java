@@ -118,7 +118,10 @@ public class PowerTransmissionElementsAnalyserController {
 
         if((data.gearboxoptions != null)){
             HashMap gearboxMap = new HashMap();
-            gearboxMap.put(data.gearboxoptions,(rand.nextFloat() * (100 - 1) + 1));
+            for(Object o: data.gearboxoptions)
+            {
+                gearboxMap.put(o,(rand.nextFloat() * (100 - 1) + 1));
+            }
             analysisValuesMap.put("gearboxoptions",gearboxMap);
         }else{
             analysisValuesMap.put("gearboxoptions",null);
@@ -135,7 +138,7 @@ public class PowerTransmissionElementsAnalyserController {
 
             SplittableRandom random = new SplittableRandom();
             // Probability of 20% to fail
-            if(random.nextInt(1,11) <= 2)
+            if(random.nextInt(1,11) <= 3)
             {
                 this.status = "Error";
                 kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Analyser_In_Error-State",startingMap));

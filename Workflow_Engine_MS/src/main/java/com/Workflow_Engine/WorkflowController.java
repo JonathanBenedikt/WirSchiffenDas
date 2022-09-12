@@ -210,7 +210,7 @@ public class WorkflowController {
 
     void start_fluidsystemelements_analyser(Configdata configdata){
         Map fluiddata = new HashMap();
-        fluiddata.put("id",configdata);
+        fluiddata.put("id",configdata.id);
         fluiddata.put("exhaust_system", configdata.exhaust_system);
         fluiddata.put("fuel_system", configdata.fuel_system);
         this.kafkaJsontemplate.send(new ProducerRecord<>("fluidsystemelements_analysis", "WF_Starts_Fluidsystemelements_Analysis", fluiddata));
