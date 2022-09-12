@@ -292,7 +292,7 @@ public class BackendForFrontendController {
         if(fluidAnalyserWorking)
             return "Running";
 
-        StatusRequestService requestService = new StatusRequestService("http://localhost:8081/status");
+        StatusRequestService requestService = new StatusRequestService("http://localhost:8100/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(fluidCircuitBreaker).withFallback( e -> this.getFluidsystemFallback()).decorate();
         String response = decoratedStatusSupplier.get();
@@ -402,78 +402,6 @@ public class BackendForFrontendController {
         return "The Startingsystem-Analyser is currently unreachable...";
     }
 
-    @PostMapping(path="/getAnalyzerStatus")
-    public ResponseEntity<Map> getCurrentAnalyserStatus(@RequestBody String analyserInfo)
-    {
-        HashMap statusResponse = new HashMap();
-        String id = UUID.randomUUID().toString();
-        switch (analyserInfo){
-            case "Coolingsystem":
-                ArrayList<AnalyserStatus> coolingList = new ArrayList<>();
-                AnalyserStatus coolingsystemStatus = new AnalyserStatus(){{name = "coolingsystem";}};
-                coolingList.add(coolingsystemStatus);
-                analysisMapper.put(id,coolingList);
-                kafkaTemplate.send(new ProducerRecord<String,Map>("coolingsystemelements_analysis","Status_Request",null));
-
-                while(!checkAnalyzerResponded(coolingList))
-                {}
-                statusResponse.put("analyser",analyserInfo);
-                statusResponse.put("status",coolingsystemStatus);
-                analysisMapper.remove(coolingList);
-                break;
-            case "Fluidsystem":
-                ArrayList<AnalyserStatus> fluidList = new ArrayList<>();
-                AnalyserStatus fluidsystemStatus = new AnalyserStatus(){{name = "fluidsystem";}};
-                fluidList.add(fluidsystemStatus);
-                analysisMapper.put(id,fluidList);
-
-                ArrayList responseList = new ArrayList();
-
-                kafkaTemplate.send(new ProducerRecord<String,Map>("fluidsystemelements_analysis","Status_Request",null));
-
-                while(!checkAnalyzerResponded(fluidList))
-                {}
-                statusResponse.put("analyser",analyserInfo);
-                statusResponse.put("status",fluidsystemStatus);
-
-                analysisMapper.remove(fluidList);
-                break;
-            case "Powertransmissionsystem":
-                ArrayList<AnalyserStatus> powertransmissionList = new ArrayList<>();
-                AnalyserStatus powertransmissionStatus = new AnalyserStatus(){{name = "powertransmissionsystem";}};
-                powertransmissionList.add(powertransmissionStatus);
-                analysisMapper.put(id,powertransmissionList);
-                kafkaTemplate.send(new ProducerRecord<String,Map>("powertransmissionsystemelements_analysis","Status_Request",null));
-
-                while(!checkAnalyzerResponded(powertransmissionList))
-                {}
-                statusResponse.put("analyser",analyserInfo);
-                statusResponse.put("status",powertransmissionStatus);
-
-                analysisMapper.remove(powertransmissionList);
-                break;
-            case "Startingsystem":
-                ArrayList<AnalyserStatus> startingsystemList = new ArrayList<>();
-                AnalyserStatus startingsystemStatus = new AnalyserStatus(){{name = "startingsystem";}};
-                startingsystemList.add(startingsystemStatus);
-                analysisMapper.put(id,startingsystemList);
-                kafkaTemplate.send(new ProducerRecord<String,Map>("startingsystemelements_analysis","Status_Request",null));
-
-                while(!checkAnalyzerResponded(startingsystemList))
-                {}
-                statusResponse.put("analyser",analyserInfo);
-                statusResponse.put("status",startingsystemStatus);
-
-                analysisMapper.remove(startingsystemList);
-                break;
-            default:
-               ResponseEntity.notFound();
-        }
-
-
-        return ResponseEntity.ok(statusResponse);
-    }
-
     @PostMapping(path="/startAnalysis")
     public ResponseEntity<String> getData(@RequestBody  Configdata configData){
         try {
@@ -530,30 +458,24 @@ public class BackendForFrontendController {
 
     @GetMapping("/getSimulationresults")
     public List<Simulationresult> getSimulationresults(){
-        //Todo gather data in right format end send it
-        //so dass es auf der Frontendseite mit /src/app/components/motor-finished/motor-finsihed.components.ts
-        //"datasource : Simulationresults[] = [
-        //    {Property : "", Configuration : "", Result : 0.0}
-        //  ];"
-        //Übereinstimmt
-        //Beispiel {{oil_system, basic, 2.523},...}
-        //Bekomme letzte ID
         ArrayList<AnalyserStatus> stati = this.analysisMapper.get(this.currentID);
         if(! stati.stream().allMatch((status) -> status.analysisStatus.equals("ready"))){
             return null;
         }
         List<Simulationresult> simres = new LinkedList<>();
-        HashMap<String, Map> simulationresultResponses = (HashMap<String, Map>) this.responseMapper.get((String)this.currentID);
+        HashMap<String, Map> simulationresultResponses = (HashMap<String, Map>) this.responseMapper.get(this.currentID);
+
         for (var entry : simulationresultResponses.entrySet()) {
             String name = entry.getKey();
             Map tmp = entry.getValue();
             if (tmp == null) {
                 simres.add(new Simulationresult(name, "", 0.0));
             } else {
-                tmp.forEach((k,v) -> simres.add(new Simulationresult(name, (String) k, (double) k)));
+                tmp.forEach((k,v) -> simres.add(new Simulationresult(name, (String) k, (double) v)));
             }
-
         }
+        //Gson gson = new Gson();
+        //String json = gson.toJson(simres);
         return simres;
     }
 
@@ -564,6 +486,15 @@ public class BackendForFrontendController {
 
         public Simulationresult(){
 
+        }
+
+        @Override
+        public String toString() {
+            return "Simulationresult{" +
+                    "name='" + name + '\'' +
+                    ", choosenOption='" + choosenOption + '\'' +
+                    ", simulationresult=" + simulationresult +
+                    '}';
         }
 
         public Simulationresult(String name, String choosenOption, double simulationresult) {
@@ -588,7 +519,7 @@ public class BackendForFrontendController {
             this.choosenOption = choosenOption;
         }
 
-        public float getSimulationresult() {
+        public double getSimulationresult() {
             return simulationresult;
         }
 

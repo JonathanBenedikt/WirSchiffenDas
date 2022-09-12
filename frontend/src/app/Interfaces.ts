@@ -31,7 +31,7 @@ export type Startingsystem_config = {
 }
 
 export interface Simulationresults {
-  Property : string;
-  Configuration : string;
-  Result : number;
+  name : string;
+  choosenOption : string;
+  simulationresult : number;
 }
