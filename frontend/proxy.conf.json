@@ -38,5 +38,30 @@
     "target": "http://localhost:8582",
     "secure": false,
     "logLevel": "debug"
+  },
+  "/retryCoolingsystem": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/retryFluidsystem": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/retryPowersystem": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/retryStartingsystem": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/getSimulationresults": {
+    "target": "http://localhost:8582",
+    "secure": false,
+    "logLevel": "debug"
   }
 }

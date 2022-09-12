@@ -46,13 +46,13 @@ export class HTTPBackendCommunicationService {
   retry(analysername: string) {
     let path = "";
     if (analysername == "Coolingsystem") {
-      path = "retryCoolingsystemStatus"
+      path = "retryCoolingsystem"
     } else if (analysername == "Fluidsystem") {
-      path = "retryFluidsystemStatus"
+      path = "retryFluidsystem"
     } else if (analysername == "Powertransmissionsystem") {
-      path = "retryPowertransmissionsystemStatus"
+      path = "retryPowersystem"
     } else if (analysername == "Startingsystem") {
-      path = "retryStartingsystemStatus"
+      path = "retryStartingsystem"
     } else {
       console.log(analysername + " is not known")
     }
