@@ -128,6 +128,16 @@ public class FluidAnalyserController {
 
             HashMap startingMap = new HashMap();
             startingMap.put("id",data.id);
+
+            SplittableRandom random = new SplittableRandom();
+            // Probability of 20% to fail
+            if(random.nextInt(1,11) <= 2)
+            {
+                this.status = "Error";
+                kafkaTemplate.send(new ProducerRecord<String,Map>("fluidsystemelements_analysis","Analyser_In_Error-State",startingMap));
+                return null;
+            }
+
             kafkaTemplate.send(new ProducerRecord<String, Map>("fluidsystemelements_analysis", "Analyser_Starts_Analysis", startingMap));
             status = "Started";
             TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(5, 10));

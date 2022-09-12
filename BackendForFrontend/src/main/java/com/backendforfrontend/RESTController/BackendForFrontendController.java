@@ -31,6 +31,7 @@ public class BackendForFrontendController {
 
     private static Map<String, ArrayList<AnalyserStatus>> analysisMapper;
     private static Map responseMapper;
+    private static Map<String, Map> requestMapper;
 
     private CircuitBreaker fluidCircuitBreaker;
     private CircuitBreaker powerCircuitBreaker;
@@ -56,6 +57,7 @@ public class BackendForFrontendController {
         startingCircuitBreaker = registry.circuitBreaker("startingStatusService");
         analysisMapper = new HashMap<String, ArrayList<AnalyserStatus>>();
         responseMapper = new HashMap<>();
+        requestMapper = new HashMap<>();
     }
 
     public void setAnalysisStatus(String id, String analyserName, String currentStatus)
@@ -114,16 +116,20 @@ public class BackendForFrontendController {
         try {
             String recordKey = record.key().toString();
             System.out.println("Coolingsystem responded");
+            HashMap resultMap = (HashMap) record.value();
 
-            if(recordKey.equals("Analyser_Starts_Analysis"))
+            if(recordKey.equals("Analyser_In_Error-State"))
             {
-                HashMap resultMap = (HashMap) record.value();
+                setAnalysisStatus((String)resultMap.get("id"),"coolingsystem","Error");
+                coolingAnalyserWorking = false;
+            }
+            else if(recordKey.equals("Analyser_Starts_Analysis"))
+            {
                 setAnalysisStatus((String)resultMap.get("id"),"coolingsystem","Started");
                 coolingAnalyserWorking = true;
             }
             else if (recordKey.equals("Analyser_Finished"))
             {
-                HashMap resultMap = (HashMap) record.value();
                 HashMap responseMap = (HashMap) responseMapper.get((String)resultMap.get("id"));
                 Iterator it = resultMap.entrySet().iterator();
                 while(it.hasNext())
@@ -151,15 +157,21 @@ public class BackendForFrontendController {
         try {
             String recordKey = record.key().toString();
             System.out.println("FluidAnalyser responded");
-            if(recordKey.equals("Analyser_Starts_Analysis"))
+            HashMap resultMap = (HashMap) record.value();
+
+            if(recordKey.equals("Analyser_In_Error-State"))
             {
-                HashMap resultMap = (HashMap) record.value();
+                setAnalysisStatus((String)resultMap.get("id"),"fluidsystem","Error");
+                fluidAnalyserWorking = false;
+            }
+            else if(recordKey.equals("Analyser_Starts_Analysis"))
+            {
                 setAnalysisStatus((String)resultMap.get("id"),"fluidsystem","Started");
                 fluidAnalyserWorking = true;
             }
             else if (recordKey.equals("Analyser_Finished"))
             {
-                HashMap resultMap = (HashMap) record.value();
+
                 HashMap responseMap = (HashMap) responseMapper.get((String)resultMap.get("id"));
                 Iterator it = resultMap.entrySet().iterator();
                 while(it.hasNext())
@@ -182,15 +194,21 @@ public class BackendForFrontendController {
         try {
             String recordKey = record.key().toString();
             System.out.println("PowertransmissionAnalyser responded");
-            if(recordKey.equals("Analyser_Starts_Analysis"))
+            HashMap resultMap = (HashMap) record.value();
+
+            if(recordKey.equals("Analyser_In_Error-State"))
             {
-                HashMap resultMap = (HashMap) record.value();
+                setAnalysisStatus((String)resultMap.get("id"),"powertransmissionsystem","Error");
+                powerAnalyserWorking = false;
+            }
+            else if(recordKey.equals("Analyser_Starts_Analysis"))
+            {
+
                 setAnalysisStatus((String)resultMap.get("id"),"powertransmissionsystem","Started");
                 powerAnalyserWorking = true;
             }
             else if (recordKey.equals("Analyser_Finished"))
             {
-                HashMap resultMap = (HashMap) record.value();
                 HashMap responseMap = (HashMap) responseMapper.get((String)resultMap.get("id"));
                 Iterator it = resultMap.entrySet().iterator();
                 while(it.hasNext())
@@ -214,15 +232,21 @@ public class BackendForFrontendController {
         try {
             String recordKey = record.key().toString();
             System.out.println("Startingsytemelementsanalyser responded");
-            if(recordKey.equals("Analyser_Starts_Analysis"))
+            HashMap resultMap = (HashMap) record.value();
+
+            if(recordKey.equals("Analyser_In_Error-State"))
             {
-                HashMap resultMap = (HashMap) record.value();
+                setAnalysisStatus((String)resultMap.get("id"),"startingsystem","Error");
+                startingAnalyserWorking = false;
+            }
+            else if(recordKey.equals("Analyser_Starts_Analysis"))
+            {
                 setAnalysisStatus((String)resultMap.get("id"),"startingsystem","Started");
                 startingAnalyserWorking = true;
             }
             else if (recordKey.equals("Analyser_Finished"))
             {
-                HashMap resultMap = (HashMap) record.value();
+
                 HashMap responseMap = (HashMap) responseMapper.get((String)resultMap.get("id"));
                 Iterator it = resultMap.entrySet().iterator();
                 while(it.hasNext())
@@ -240,6 +264,16 @@ public class BackendForFrontendController {
         }
     }
 
+    @GetMapping(path="/retryFluidsystem")
+    public ResponseEntity retryFluidsystem()
+    {
+        for(Map map : requestMapper.values())
+        {
+            this.kafkaTemplate.send(new ProducerRecord<>("wf_bff", "BFF_RestartingFluidsystem", map));
+        }
+
+        return ResponseEntity.ok(null);
+    }
 
     @GetMapping(path="/getFluidsystemStatus")
     public String getFluidsystemStatus()
@@ -271,7 +305,16 @@ public class BackendForFrontendController {
         return "The Fluidsystem-Analyser is unreachable. The last good response was "+lastFluidReponse;
     }
 
+    @GetMapping(path="/retryPowersystem")
+    public ResponseEntity retryPowersystem()
+    {
+        for(Map map : requestMapper.values())
+        {
+            this.kafkaTemplate.send(new ProducerRecord<>("wf_bff", "BFF_RestartingPowersystem", map));
+        }
 
+        return ResponseEntity.ok(null);
+    }
 
     @GetMapping(path="/getPowertransmissionsystemStatus")
     public String getPowertransmissionsystemStatus()
@@ -304,13 +347,24 @@ public class BackendForFrontendController {
         return currentStati;
     }
 
+    @GetMapping(path="/retryCoolingsystem")
+    public ResponseEntity retryCoolingsystem()
+    {
+        for(Map map : requestMapper.values())
+        {
+            this.kafkaTemplate.send(new ProducerRecord<>("wf_bff", "BFF_RestartingCoolingsystem", map));
+        }
+
+        return ResponseEntity.ok(null);
+    }
+
     @GetMapping(path="/getCoolingsystemStatus")
     public String getCoolingsystemStatus()
     {
         if(coolingAnalyserWorking)
             return "Running";
 
-        StatusRequestService requestService = new StatusRequestService("http://localhost:8080/status");
+        StatusRequestService requestService = new StatusRequestService("http://localhost:8089/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(coolingCircuitBreaker).withFallback( e -> this.getCoolingsystemFallback()).decorate();
         String response = decoratedStatusSupplier.get();
@@ -322,6 +376,17 @@ public class BackendForFrontendController {
     public String getCoolingsystemFallback()
     {
         return "The Coolingsystem-Analyser is unreachable. The last good response was "+lastCoolingResponse;
+    }
+
+    @GetMapping(path="/retryStartingsystem")
+    public ResponseEntity retryStartingsystem()
+    {
+        for(Map map : requestMapper.values())
+        {
+            this.kafkaTemplate.send(new ProducerRecord<>("wf_bff", "BFF_RestartingStartingsystem", map));
+        }
+
+        return ResponseEntity.ok(null);
     }
 
     @GetMapping(path="/getStartingsystemStatus")
@@ -443,13 +508,14 @@ public class BackendForFrontendController {
             HashMap startingMap = new HashMap();
             startingMap.put("id",id);
             startingMap.put("configdata",configData);
+            requestMapper.put(id,startingMap);
 
             HashMap finalResponseMap = new HashMap();
             finalResponseMap.put("id",id);
             responseMapper.put(id,finalResponseMap);
 
             this.kafkaTemplate.send(new ProducerRecord<>("wf_bff", "BFF_AnalysisStartingRequest", startingMap));
-
+            /*
             while(!checkAllAnalyserFinished(analyserStatusList))
             {}
 
@@ -458,8 +524,8 @@ public class BackendForFrontendController {
             String resultJSON = gson.toJson(responseMapper.get(id));
             finalResponseMap = null;
             responseMapper.remove(id);
-
-            return ResponseEntity.ok(resultJSON);
+            */
+            return ResponseEntity.ok(null);
         }catch (Exception ex){
             System.out.println(ex);
         }

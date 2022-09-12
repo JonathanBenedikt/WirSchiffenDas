@@ -33,17 +33,30 @@ public class WorkflowController {
     void wfbfflistener(ConsumerRecord<String, Map> record){
         try {
             String recordKey = record.key();
+            HashMap payload = (HashMap) record.value();
+            Configdata configdata = initialMessageToConfigdata(payload);
             if(recordKey.equals("BFF_AnalysisStartingRequest")){
-                HashMap payload = (HashMap) record.value();
-                Configdata configdata = initialMessageToConfigdata(payload);
                 //Persistence
-                this.Database.save_new_workflow(configdata);
+                //this.Database.save_new_workflow(configdata);
                 //starting der Analyser
                 start_coolingsystemelements_analyser(configdata);
                 start_fluidsystemelements_analyser(configdata);
                 start_powertransmissionsystemelements_analyse(configdata);
                 start_startingsystemelements_analyser(configdata);
+            } else if(recordKey.equals("BFF_RestartingCoolingsystem"))
+            {
+                start_coolingsystemelements_analyser(configdata);
+            } else if(recordKey.equals("BFF_RestartingFluidsystem"))
+            {
+                start_fluidsystemelements_analyser(configdata);
+            } else if(recordKey.equals("BFF_RestartingPowersystem"))
+            {
+                start_powertransmissionsystemelements_analyse(configdata);
+            } else if(recordKey.equals("BFF_RestartingStartingsystem"))
+            {
+                start_startingsystemelements_analyser(configdata);
             }
+
          /*   if (recordKey.equals("BFF_Passes_Configdata")) {
                 save_bff_configdata(record.value());
             } else if (recordKey.equals("BFF_Ready_For_Analysisresults")) {
@@ -111,14 +124,21 @@ public class WorkflowController {
     @KafkaListener(topics = "coolingsystemelements_analysis", groupId = "Three")
     void coolingsystemelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
+
             String recordKey = record.key();
+            if(recordKey.equals("Analyser_In_Error-State"))
+            {
+                return;
+            }
             Map payload = record.value();
             String id = payload.get("id").toString();
-            AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
+            //AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
+
             if (recordKey.equals("Analyser_Starts_Analysis")) {
-                this.Database.update_analyserstatus(id, "coolingsystem", "running");
+               // this.Database.update_analyserstatus(id, "coolingsystem", "running");
             } else if (recordKey.equals("Analyser_Finished")) {
                 //Extract new Information
+                /*
                 Map csd  = (HashMap) payload.get("coolingsystem");
                 Map osd = (HashMap) payload.get("oilsystem");
                 Map<String, Double> partAndResult = new HashMap<>();
@@ -131,6 +151,8 @@ public class WorkflowController {
                 //Save to Database
                 this.Database.update_simulationresuls(id, partAndResult);
                 this.Database.update_analyserstatus(id, "coolingsystem", "ready");
+                */
+
             }
         } catch (Exception ex) {
             System.out.println(ex);
@@ -153,13 +175,19 @@ public class WorkflowController {
     void fluidsystemelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
             String recordKey = record.key();
+            if(recordKey.equals("Analyser_In_Error-State"))
+            {
+                return;
+            }
+
             Map payload = record.value();
             String id = payload.get("id").toString();
-            AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
+            //AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
             if (recordKey.equals("Analyser_Starts_Analysis")) {
-                this.Database.update_analyserstatus(id, "fluidsystem", "running");
+               // this.Database.update_analyserstatus(id, "fluidsystem", "running");
             } else if (recordKey.equals("Analyser_Finished")) {
                 //Extract new Information
+                /*
                 Map fsd  = (HashMap) payload.get("fuel_system");
                 Map esd = (HashMap) payload.get("exhaust_system");
                 Map<String, Double> partAndResult = new HashMap<>();
@@ -172,6 +200,8 @@ public class WorkflowController {
                 //Save to Database
                 this.Database.update_simulationresuls(id, partAndResult);
                 this.Database.update_analyserstatus(id, "fluidsystem", "ready");
+
+                 */
             }
         } catch (Exception ex) {
             System.out.println(ex);
@@ -193,13 +223,19 @@ public class WorkflowController {
     void powertransmissionsystemelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
             String recordKey = record.key();
+            if(recordKey.equals("Analyser_In_Error-State"))
+            {
+                return;
+            }
+
             Map payload = record.value();
             String id = payload.get("id").toString();
-            AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
+            //AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
             if (recordKey.equals("Analyser_Starts_Analysis")) {
-                this.Database.update_analyserstatus(id, "powertransmissionsystem", "running");
+                //this.Database.update_analyserstatus(id, "powertransmissionsystem", "running");
             } else if (recordKey.equals("Analyser_Finished")) {
                 //Extract new Information
+                /*
                 Map rm  = (HashMap) payload.get("resilient_mounts");
                 Map bv = (HashMap) payload.get("bluevision");
                 Map tsc = (HashMap) payload.get("torsionally_resilient_coupling");
@@ -220,6 +256,8 @@ public class WorkflowController {
                 //Save to Database
                 this.Database.update_simulationresuls(id, partAndResult);
                 this.Database.update_analyserstatus(id, "powertransmissionsystem", "ready");
+
+                 */
             }
         } catch (Exception ex) {
             System.out.println(ex);
@@ -244,13 +282,19 @@ public class WorkflowController {
     void fluidelements_analyser_listener(ConsumerRecord<String, Map> record) {
         try {
             String recordKey = record.key();
+            if(recordKey.equals("Analyser_In_Error-State"))
+            {
+                return;
+            }
+
             Map payload = record.value();
             String id = payload.get("id").toString();
-            AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
+            //AnalyserStati analyserStati = this.Database.getAnalyserStatiByID(id);
             if (recordKey.equals("Analyser_Starts_Analysis")) {
-                this.Database.update_analyserstatus(id, "startingelements", "running");
+                //this.Database.update_analyserstatus(id, "startingelements", "running");
             } else if (recordKey.equals("Analyser_Finished")) {
                 //Extract new Information
+                /*
                 Map aux  = (HashMap) payload.get("auxiliary_PTO");
                 Map ems = (HashMap) payload.get("engine_management_system");
                 Map<String, Double> partAndResult = new HashMap<>();
@@ -263,6 +307,8 @@ public class WorkflowController {
                 //Save to Database
                 this.Database.update_simulationresuls(id, partAndResult);
                 this.Database.update_analyserstatus(id, "startingelements", "ready");
+
+                 */
             }
         } catch (Exception ex) {
             System.out.println(ex);

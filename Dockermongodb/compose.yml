@@ -33,10 +33,10 @@ services:
     volumes:
       - "../prometheus.yml:/etc/prometheus/prometheus.yml"
 
-  workflowEngineInstanz:
-    image: wirschiffendas/workflowengine
-    ports:
-      - "8080:8069"
+ # workflowEngineInstanz:
+ #   image: wirschiffendas/workflowengine
+ #   ports:
+ #     - "8080:8069"
 
 volumes:
   prometheus.yml:
