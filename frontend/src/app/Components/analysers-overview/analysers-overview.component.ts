@@ -18,14 +18,6 @@ export class AnalysersOverviewComponent {
     }, 30000);
   }
 
-  refreshStati(){
-    this.backendcommunication.get_all_Analyserstati().subscribe((stati) => {
-        for (let i = 0; i < this.AnalyserData.length; i++) {
-          this.AnalyserData[i].Status = stati[i];
-        }
-      }
-    );
-  }
 
   displayedColumns: string[] = ['Analyser', 'Status', 'RefreshStatus', 'Retry'];
   AnalyserData = [
@@ -34,6 +26,18 @@ export class AnalysersOverviewComponent {
     {Analyser : "Powertransmissionsystem", Status : "Running"},
     {Analyser : "Startingsystem", Status : "Running"},
   ];
+
+  refreshStati(){
+    for (let i = 0; i < this.AnalyserData.length; i++) {
+      this.AnalyserData[i].Status = "pending";
+    }
+    this.backendcommunication.get_all_Analyserstati().subscribe((stati) => {
+          for (let i = 0; i < this.AnalyserData.length; i++) {
+            this.AnalyserData[i].Status = stati[i];
+          }
+        }
+    );
+  }
 
   constructor(private backendcommunication : HTTPBackendCommunicationService) {}
 
@@ -61,9 +65,6 @@ export class AnalysersOverviewComponent {
      } else {
        spezRow.Status = "Pending";
        this.backendcommunication.retry(analysername).subscribe(
-         (currentStatus) => {
-
-         }
        )
      }
    }
@@ -71,7 +72,7 @@ export class AnalysersOverviewComponent {
 
 
   get_simulationresults() {
-    if(this.AnalyserData.every((row) => {row.Status === "finsihed"})){
+    if(this.AnalyserData.every((row) => {row.Status === "Finsihed"})){
       this.signalDone.emit(2);
     } else {
     }

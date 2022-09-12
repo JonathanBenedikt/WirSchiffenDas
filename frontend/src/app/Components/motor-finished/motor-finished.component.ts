@@ -15,12 +15,13 @@ export class MotorFinishedComponent implements OnInit {
 
   columns = ["Property", "Configuration", "Result"]
   datasource : Simulationresults[] = [
-    {Property : "", Configuration : "", Result : 0.0}
+    {name : "", choosenOption : "", simulationresult : 0.0}
   ];
 
   constructor(private backendcommunicator : HTTPBackendCommunicationService) { }
 
   ngOnInit(): void {
+    this.get_simulationdata()
   }
 
   get_simulationdata(){
@@ -29,14 +30,12 @@ export class MotorFinishedComponent implements OnInit {
     });
   }
 
-  restart_process() {
-    this.signalDone.emit(0);
-  }
-
   buy() {
 
   }
 
-
+  restart_process() {
+    this.signalDone.emit(0);
+  }
 
 }
