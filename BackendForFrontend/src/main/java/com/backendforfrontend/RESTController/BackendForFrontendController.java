@@ -34,7 +34,7 @@ public class BackendForFrontendController {
     private ApplicationContext appContext;
 
     private static Map<String, ArrayList<AnalyserStatus>> analysisMapper;
-    private static Map responseMapper;
+    private static Map<String, Map> responseMapper;
     private static Map<String, Map> requestMapper;
 
     private CircuitBreaker fluidCircuitBreaker;
@@ -175,7 +175,6 @@ public class BackendForFrontendController {
             }
             else if (recordKey.equals("Analyser_Finished"))
             {
-
                 HashMap responseMap = (HashMap) responseMapper.get((String)resultMap.get("id"));
                 Iterator it = resultMap.entrySet().iterator();
                 while(it.hasNext())
@@ -480,6 +479,7 @@ public class BackendForFrontendController {
         try {
             System.out.println(configData);
             String id = UUID.randomUUID().toString();
+            this.currentID = id;
             ArrayList<AnalyserStatus> analyserStatusList = new ArrayList<AnalyserStatus>();
             analysisMapper.put(id,analyserStatusList);
 
@@ -526,8 +526,10 @@ public class BackendForFrontendController {
         return null;
     }
 
+    private String currentID;
+
     @GetMapping("/getSimulationresults")
-    public HashMap getSimulationresults(){
+    public List<Simulationresult> getSimulationresults(){
         //Todo gather data in right format end send it
         //so dass es auf der Frontendseite mit /src/app/components/motor-finished/motor-finsihed.components.ts
         //"datasource : Simulationresults[] = [
@@ -535,7 +537,64 @@ public class BackendForFrontendController {
         //  ];"
         //Übereinstimmt
         //Beispiel {{oil_system, basic, 2.523},...}
-        return null;
+        //Bekomme letzte ID
+        ArrayList<AnalyserStatus> stati = this.analysisMapper.get(this.currentID);
+        if(! stati.stream().allMatch((status) -> status.analysisStatus.equals("ready"))){
+            return null;
+        }
+        List<Simulationresult> simres = new LinkedList<>();
+        HashMap<String, Map> simulationresultResponses = (HashMap<String, Map>) this.responseMapper.get((String)this.currentID);
+        for (var entry : simulationresultResponses.entrySet()) {
+            String name = entry.getKey();
+            Map tmp = entry.getValue();
+            if (tmp == null) {
+                simres.add(new Simulationresult(name, "", 0.0));
+            } else {
+                tmp.forEach((k,v) -> simres.add(new Simulationresult(name, (String) k, (double) k)));
+            }
+
+        }
+        return simres;
+    }
+
+    class Simulationresult{
+        String name;
+        String choosenOption;
+        double simulationresult;
+
+        public Simulationresult(){
+
+        }
+
+        public Simulationresult(String name, String choosenOption, double simulationresult) {
+            this.name = name;
+            this.choosenOption = choosenOption;
+            this.simulationresult = simulationresult;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getChoosenOption() {
+            return choosenOption;
+        }
+
+        public void setChoosenOption(String choosenOption) {
+            this.choosenOption = choosenOption;
+        }
+
+        public float getSimulationresult() {
+            return simulationresult;
+        }
+
+        public void setSimulationresult(float simulationresult) {
+            this.simulationresult = simulationresult;
+        }
     }
 
     class AnalyserStatus
