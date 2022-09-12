@@ -4,24 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/servicediscovery/src/main/java/com/example/servicediscovery/Controller/DiscoveryController.java" afterDir="false" />
+    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Es wurden weitere Anpassungen für Eureka gemacht.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendForFrontend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/java/com/example/CoolingSystems_Analyser_MS/RESTController/CoolingSystemsAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fluid_Analyser_MS/src/main/java/com/example/Fluid_Analyser_MS/RESTController/FluidAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/java/com/example/PowerTransmissionElements_Analyser_MS/RESTController/PowerTransmissionElementsAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PowerTransmissionElements_Analyser_MS/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StartingElements_Analyser_MS/src/main/java/com/example/StartingElments_Analyser_MS/RESTController/StartingElementsAnalyserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/servicediscovery/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/servicediscovery/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +209,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.StartingElementsAnalyserMsApplication">
+  <component name="RunManager" selected="Spring Boot.ServicediscoveryApplication">
     <configuration name="BackendForFrontend [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -242,10 +231,31 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="CoolingSystems_Analyser_MS [buildNeeded]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="BackendForFrontend [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/BackendForFrontend" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="BackendForFrontend [buildNeeded]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/BackendForFrontend" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -254,6 +264,27 @@
         <option name="taskNames">
           <list>
             <option value="buildNeeded" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="BackendForFrontend [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/BackendForFrontend" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -275,48 +306,6 @@
         <option name="taskNames">
           <list>
             <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="CoolingSystems_Analyser_MS [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="CoolingSystems_Analyser_MS [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/CoolingSystems_Analyser_MS" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -418,11 +407,11 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.BackendForFrontend [buildDependents]" />
+      <item itemvalue="Gradle.BackendForFrontend [buildNeeded]" />
+      <item itemvalue="Gradle.BackendForFrontend [build]" />
       <item itemvalue="Gradle.BackendForFrontend [bootJar]" />
-      <item itemvalue="Gradle.CoolingSystems_Analyser_MS [buildNeeded]" />
       <item itemvalue="Gradle.CoolingSystems_Analyser_MS [build]" />
-      <item itemvalue="Gradle.CoolingSystems_Analyser_MS [clean]" />
-      <item itemvalue="Gradle.CoolingSystems_Analyser_MS [jar]" />
       <item itemvalue="Spring Boot.ServicediscoveryApplication" />
       <item itemvalue="Spring Boot.CoolingSystemsAnalyserMsApplication" />
       <item itemvalue="Spring Boot.PowerTransmissionElementsAnalyserMsApplication" />
@@ -433,11 +422,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.BackendForFrontend [buildNeeded]" />
+        <item itemvalue="Gradle.BackendForFrontend [buildDependents]" />
+        <item itemvalue="Gradle.BackendForFrontend [build]" />
         <item itemvalue="Gradle.BackendForFrontend [bootJar]" />
         <item itemvalue="Gradle.CoolingSystems_Analyser_MS [build]" />
-        <item itemvalue="Gradle.CoolingSystems_Analyser_MS [jar]" />
-        <item itemvalue="Gradle.CoolingSystems_Analyser_MS [clean]" />
-        <item itemvalue="Gradle.CoolingSystems_Analyser_MS [buildNeeded]" />
       </list>
     </recent_temporary>
   </component>
@@ -494,7 +483,7 @@
       <workItem from="1662900430732" duration="2658000" />
       <workItem from="1662903438529" duration="884000" />
       <workItem from="1662971673672" duration="3834000" />
-      <workItem from="1662976018279" duration="11334000" />
+      <workItem from="1662976018279" duration="13050000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1654509640939</created>
@@ -657,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662989857455</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Der Discovery-Service Eureka wurde implementiert, zudem registrierten sich die Algorithmen-MS">
+      <created>1662991983808</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1662991983808</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -710,7 +706,8 @@
     <MESSAGE value="Die Statusabfrage der Algorithmen-MS wurde angepasst." />
     <MESSAGE value="Es wurden Retry-Methoden ergänzt." />
     <MESSAGE value="Es wurden kleinere Anpassungen für die Retry-Methoden vorgenommen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Es wurden kleinere Anpassungen für die Retry-Methoden vorgenommen." />
+    <MESSAGE value="Der Discovery-Service Eureka wurde implementiert, zudem registrierten sich die Algorithmen-MS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Der Discovery-Service Eureka wurde implementiert, zudem registrierten sich die Algorithmen-MS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -722,8 +719,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java</url>
-          <line>379</line>
+          <line>382</line>
           <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java</url>
+          <line>364</line>
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

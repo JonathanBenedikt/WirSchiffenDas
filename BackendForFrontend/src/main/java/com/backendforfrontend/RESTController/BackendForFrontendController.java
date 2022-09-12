@@ -2,7 +2,7 @@ package com.backendforfrontend.RESTController;
 
 import com.backendforfrontend.StatusRequestService;
 import com.google.gson.Gson;
-import com.sun.source.tree.LiteralTree;
+import com.netflix.discovery.EurekaClient;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
@@ -26,6 +26,8 @@ import java.util.function.Supplier;
 //@CrossOrigin(origins = {'http:local'})
 public class BackendForFrontendController {
 
+    @Autowired
+    private EurekaClient discoveryClient;
     @Autowired
     private KafkaTemplate<String, Map> kafkaTemplate;
     @Autowired
@@ -360,6 +362,7 @@ public class BackendForFrontendController {
         if(coolingAnalyserWorking)
             return "Running";
 
+        //List<InstanceInfo> info = discoveryClient.getInstancesById("CoolingSystems_Analyser");
         StatusRequestService requestService = new StatusRequestService("http://localhost:8089/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(coolingCircuitBreaker).withFallback( e -> this.getCoolingsystemFallback()).decorate();
