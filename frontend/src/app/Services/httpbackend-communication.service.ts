@@ -56,7 +56,7 @@ export class HTTPBackendCommunicationService {
     } else {
       console.log(analysername + " is not known")
     }
-    return this.http.get<string>("/"+path);
+    return this.http.get<null>("/"+path);
   }
 
   get_all_Analyserstati() {
