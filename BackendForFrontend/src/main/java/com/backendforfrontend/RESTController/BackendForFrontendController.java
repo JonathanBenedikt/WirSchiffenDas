@@ -2,6 +2,7 @@ package com.backendforfrontend.RESTController;
 
 import com.backendforfrontend.StatusRequestService;
 import com.google.gson.Gson;
+import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
@@ -292,7 +293,8 @@ public class BackendForFrontendController {
         if(fluidAnalyserWorking)
             return "Running";
 
-        StatusRequestService requestService = new StatusRequestService("http://localhost:8100/status");
+        InstanceInfo info = discoveryClient.getApplication("Fluid_Analyser").getInstances().get(0);
+        StatusRequestService requestService = new StatusRequestService("http://"+info.getIPAddr()+":"+info.getPort()+"/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(fluidCircuitBreaker).withFallback( e -> this.getFluidsystemFallback()).decorate();
         String response = decoratedStatusSupplier.get();
@@ -322,7 +324,8 @@ public class BackendForFrontendController {
         if(powerAnalyserWorking)
             return "Running";
 
-        StatusRequestService requestService = new StatusRequestService("http://localhost:8082/status");
+        InstanceInfo info = discoveryClient.getApplication("PowerTransmissionElements_Analyser").getInstances().get(0);
+        StatusRequestService requestService = new StatusRequestService("http://"+info.getIPAddr()+":"+info.getPort()+"/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(powerCircuitBreaker).withFallback( e -> this.getPowerTransmissionsystemFallback()).decorate();
         String response = decoratedStatusSupplier.get();
@@ -361,8 +364,8 @@ public class BackendForFrontendController {
         if(coolingAnalyserWorking)
             return "Running";
 
-        //List<InstanceInfo> info = discoveryClient.getInstancesById("CoolingSystems_Analyser");
-        StatusRequestService requestService = new StatusRequestService("http://localhost:8089/status");
+        InstanceInfo info = discoveryClient.getApplication("CoolingSystems_Analyser").getInstances().get(0);
+        StatusRequestService requestService = new StatusRequestService("http://"+info.getIPAddr()+":"+info.getPort()+"/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(coolingCircuitBreaker).withFallback( e -> this.getCoolingsystemFallback()).decorate();
         String response = decoratedStatusSupplier.get();
@@ -390,7 +393,8 @@ public class BackendForFrontendController {
         if(startingAnalyserWorking)
             return "Running";
 
-        StatusRequestService requestService = new StatusRequestService("http://localhost:8083/status");
+        InstanceInfo info = discoveryClient.getApplication("StartingElements_Analyser").getInstances().get(0);
+        StatusRequestService requestService = new StatusRequestService("http://"+info.getIPAddr()+":"+info.getPort()+"/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
         Supplier<String> decoratedStatusSupplier = Decorators.ofSupplier(statusSupplier).withCircuitBreaker(startingCircuitBreaker).withFallback( e -> this.getStartingsystemFallback()).decorate();
         String response = decoratedStatusSupplier.get();
