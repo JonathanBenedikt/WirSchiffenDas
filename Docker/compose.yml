@@ -27,83 +27,110 @@ services:
         app-tier:
           ipv4_address: 10.0.4.2
 
-  fluidAnalyserInstanz:
+  serviceDiscovery:
+      image: wirschiffendas/servicediscovery
+      ports:
+        - "8761:8761"
+      networks:
+        app-tier:
+          ipv4_address: 10.0.4.20
+  fluidAnalyser:
       image: wirschiffendas/fluidanalyser
       depends_on:
-        - workflowEngineInstanz
+        - workflowEngine
+        - serviceDiscovery
       networks:
         app-tier:
           ipv4_address: 10.0.4.5
-  workflowEngineInstanz:
+  workflowEngine:
       image: wirschiffendas/workflowengine
       depends_on:
-        - backendforfrontendInstanz
+        - backendforfrontend
+        - serviceDiscovery
       networks:
         app-tier:
           ipv4_address: 10.0.4.4
-  coolingsystemAnalyserInstanz:
+  coolingsystemAnalyser:
       image: wirschiffendas/coolingsystemanalyser
       depends_on:
-        - workflowEngineInstanz
+        - workflowEngine
+        - serviceDiscovery
       networks:
         app-tier:
           ipv4_address: 10.0.4.6
-  powertransmissionAnalyserInstanz:
+  powertransmissionAnalyser:
       image: wirschiffendas/powertransmissionanalyser
       depends_on:
-        - workflowEngineInstanz
+        - workflowEngine
+        - serviceDiscovery
       networks:
         app-tier:
           ipv4_address: 10.0.4.7
-  startingelementsAnalyserInstanz:
+  startingelementsAnalyser:
       image: wirschiffendas/startingelementsanalyser
       depends_on:
-        - workflowEngineInstanz
+        - workflowEngine
+        - serviceDiscovery
       networks:
           app-tier:
             ipv4_address: 10.0.4.8
 
-  backendforfrontendInstanz:
+  backendforfrontend:
       image: wirschiffendas/backendforfrontend
+      ports:
+        - "8582:8582"
+      depends_on:
+        - serviceDiscovery
       networks:
         app-tier:
           ipv4_address: 10.0.4.3
 
-  mongodb:
-    image: mongo:latest # use the latest image.
-    container_name: mongodb
-    restart: unless-stopped
-    environment: # set required env variables to access mongo
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-    ports:
-      - 27017:27017
-    volumes: # optional to preserve database after container is deleted.
-      - ./database-data:/data/db
-    depends_on:
-      - workflowEngineInstanz
-    networks:
-      app-tier:
-        - ipv4_address: 10.0.4.11
+  prometheus:
+      image: docker.io/wirschiffendas/prometheus
+      ports:
+        - "9090:9090"
+      depends_on:
+        - backendforfrontend
+      networks:
+        app-tier:
+          ipv4_address: 10.0.4.22
+
+
+  #  mongodb:
+#    image: mongo:latest # use the latest image.
+#    container_name: mongodb
+#    restart: unless-stopped
+#    environment: # set required env variables to access mongo
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: password
+#    ports:
+#      - 27017:27017
+#    volumes: # optional to preserve database after container is deleted.
+#      - ./database-data:/data/db
+#    depends_on:
+#      - workflowEngineInstanz
+#    networks:
+#     app-tier:
+#        - ipv4_address: 10.0.4.11
 
   # Mongo Express Service
-  mongo-express:
-    image: mongo-express:latest # latest image
-    container_name: mongo-express
-    restart: unless-stopped
-    ports:
-      - 8090:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: password
-      ME_CONFIG_MONGODB_SERVER: mongodb
-      # use the name of the mongo container above for server env var.
-      # In our case this is mongodb
-    depends_on:
-      - workflowEngineInstanz
-    networks:
-      app-tier:
-        - ipv4_address: 10.0.4.12
+ # mongo-express:
+ #   image: mongo-express:latest # latest image
+ #   container_name: mongo-express
+ #   restart: unless-stopped
+ #   ports:
+ #     - 8090:8081
+ #   environment:
+# ME_CONFIG_MONGODB_ADMINUSERNAME: root
+ #  ME_CONFIG_MONGODB_ADMINPASSWORD: password
+ #   ME_CONFIG_MONGODB_SERVER: mongodb
+  #    # use the name of the mongo container above for server env var.
+ #     # In our case this is mongodb
+#    depends_on:
+#      - workflowEngineInstanz
+#    networks:
+#      app-tier:
+#        - ipv4_address: 10.0.4.12
 
 networks:
   app-tier:

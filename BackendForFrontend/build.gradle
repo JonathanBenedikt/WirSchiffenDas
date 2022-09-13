@@ -18,7 +18,9 @@ ext {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.9.3'
+    implementation 'io.micrometer:micrometer-core:1.9.4'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.7.3'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.springframework:spring-aspects:3.2.4.RELEASE'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
