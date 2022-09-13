@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="Es wurden weitere Anpassungen für Eureka gemacht.">
+    <list default="true" id="c2caa50f-ed07-4fb7-824e-4ee7360b0bf9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendForFrontend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/BackendForFrontend/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CoolingSystems_Analyser_MS/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/Components/analysers-overview/analysers-overview.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/Components/analysers-overview/analysers-overview.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/Components/motor-finished/motor-finished.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/Components/motor-finished/motor-finished.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/Components/motor-finished/motor-finished.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/Components/motor-finished/motor-finished.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +208,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.StartingElementsAnalyserMsApplication">
+  <component name="RunManager" selected="Spring Boot.BackendForFrontendApplication">
     <configuration name="BackendForFrontend [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -653,7 +652,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662991983808</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Die Adressen der Algorithmen-MS werden von Eureka bezogen.">
+      <created>1663060154005</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1663060154005</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,7 +713,8 @@
     <MESSAGE value="Es wurden Retry-Methoden ergänzt." />
     <MESSAGE value="Es wurden kleinere Anpassungen für die Retry-Methoden vorgenommen." />
     <MESSAGE value="Der Discovery-Service Eureka wurde implementiert, zudem registrierten sich die Algorithmen-MS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Der Discovery-Service Eureka wurde implementiert, zudem registrierten sich die Algorithmen-MS" />
+    <MESSAGE value="Die Adressen der Algorithmen-MS werden von Eureka bezogen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Die Adressen der Algorithmen-MS werden von Eureka bezogen." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -716,16 +723,6 @@
           <url>file://$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/StatusRequestService.java</url>
           <line>23</line>
           <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java</url>
-          <line>367</line>
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/BackendForFrontend/src/main/java/com/backendforfrontend/RESTController/BackendForFrontendController.java</url>
-          <line>295</line>
-          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

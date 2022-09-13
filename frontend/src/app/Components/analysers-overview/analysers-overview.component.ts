@@ -72,7 +72,7 @@ export class AnalysersOverviewComponent {
 
 
   get_simulationresults() {
-    if(this.AnalyserData.every((row) => row.Status === "Finsihed")){
+    if(this.AnalyserData.every((row) => row.Status === "Finished")){
       this.signalDone.emit(2);
     } else {
     }

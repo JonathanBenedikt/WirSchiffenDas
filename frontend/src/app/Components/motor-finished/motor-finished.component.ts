@@ -13,7 +13,7 @@ export class MotorFinishedComponent implements OnInit {
 
   @Output() signalDone = new EventEmitter<number>();
 
-  columns = ["Property", "Configuration", "Result"]
+  columns = ["name", "choosenOption", "simulationresult"]
   datasource : Simulationresults[] = [
     {name : "", choosenOption : "", simulationresult : 0.0}
   ];
@@ -24,8 +24,11 @@ export class MotorFinishedComponent implements OnInit {
     this.get_simulationdata()
   }
 
+
+
   get_simulationdata(){
     this.backendcommunicator.get_Simulationresults().subscribe((simdata) => {
+      console.log(simdata)
       this.datasource = simdata;
     });
   }

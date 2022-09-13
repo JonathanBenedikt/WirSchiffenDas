@@ -364,6 +364,9 @@ public class BackendForFrontendController {
         if(coolingAnalyserWorking)
             return "Running";
 
+       // Gson gson = new Gson();
+       // String json = gson.toJson(responseMapper.get(currentID));
+
         InstanceInfo info = discoveryClient.getApplication("CoolingSystems_Analyser").getInstances().get(0);
         StatusRequestService requestService = new StatusRequestService("http://"+info.getIPAddr()+":"+info.getPort()+"/status");
         Supplier<String> statusSupplier = () -> requestService.fetchStatus();
@@ -463,7 +466,7 @@ public class BackendForFrontendController {
     @GetMapping("/getSimulationresults")
     public List<Simulationresult> getSimulationresults(){
         ArrayList<AnalyserStatus> stati = this.analysisMapper.get(this.currentID);
-        if(! stati.stream().allMatch((status) -> status.analysisStatus.equals("ready"))){
+        if(! stati.stream().allMatch((status) -> status.analysisStatus.equals("Finished"))){
             return null;
         }
         List<Simulationresult> simres = new LinkedList<>();
@@ -471,6 +474,10 @@ public class BackendForFrontendController {
 
         for (var entry : simulationresultResponses.entrySet()) {
             String name = entry.getKey();
+            if(name.equals("id"))
+            {
+                continue;
+            }
             Map tmp = entry.getValue();
             if (tmp == null) {
                 simres.add(new Simulationresult(name, "", 0.0));
@@ -478,8 +485,7 @@ public class BackendForFrontendController {
                 tmp.forEach((k,v) -> simres.add(new Simulationresult(name, (String) k, (double) v)));
             }
         }
-        //Gson gson = new Gson();
-        //String json = gson.toJson(simres);
+
         return simres;
     }
 
